@@ -11,19 +11,6 @@ from rest_framework.permissions import IsAuthenticated
 from .models import User
 
 from .serializers import UserSerializer
-
-# Create your views here.
-# class UserList(ListCreateAPIView):
-#     # permission_classes = [IsAuthenticated]
-#     queryset = User.objects.all()
-#     serializer_class = UserSerializer
-    
-    
-
-# class UserDetail(RetrieveUpdateDestroyAPIView):
-#     # permission_classes = [IsAuthenticated]
-#     queryset = User.objects.all()
-#     serializer_class = UserSerializer
     
 @api_view(['GET', 'POST'])
 def user_list(request):
