@@ -8,7 +8,10 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1

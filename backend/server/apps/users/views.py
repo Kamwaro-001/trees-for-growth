@@ -4,6 +4,9 @@ from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser 
 from rest_framework import status
 from rest_framework.decorators import api_view
+from rest_framework.decorators import authentication_classes
+from rest_framework.decorators import permission_classes
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
 from rest_framework.generics import ListCreateAPIView,  RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
@@ -11,8 +14,10 @@ from rest_framework.permissions import IsAuthenticated
 from .models import User
 
 from .serializers import UserSerializer
-    
+
 @api_view(['GET', 'POST'])
+# @authentication_classes([SessionAuthentication, BasicAuthentication])
+# @permission_classes([IsAuthenticated])
 def user_list(request):
     if request.method == 'GET':
         users = User.objects.all()
@@ -33,7 +38,10 @@ def user_list(request):
             return JsonResponse(user_serializer.data, status=status.HTTP_201_CREATED) 
         return JsonResponse(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-@api_view(['GET', 'PUT', 'DELETE'])   
+@api_view(['GET', 'PUT', 'DELETE'])
+# TODO check on adding the authentications
+# @authentication_classes([SessionAuthentication, BasicAuthentication])
+# @permission_classes([IsAuthenticated])   
 def user_detail(request, pk):
     try: 
         user = User.objects.get(pk=pk) 
