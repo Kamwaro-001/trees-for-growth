@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from rest_framework import viewsets
-
+from rest_framework.generics import ListCreateAPIView
 
 from .models import User, TreeInfo
 
@@ -18,7 +18,7 @@ class UserViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return self.queryset.filter(created_by=self.request.user)
 
-class TreeInfoViewSet(viewsets.ModelViewSet):
+class TreeInfoViewSet(ListCreateAPIView):
     
     serializer_class = TreeInfoSerializer
     queryset = TreeInfo.objects.all()

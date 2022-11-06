@@ -9,5 +9,5 @@ router.register('users', UserViewSet, basename="users")
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('trees/', include(TreeInfoViewSet.as_view()))
+    path('trees/', TreeInfoViewSet.as_view())
 ]
