@@ -3,9 +3,9 @@ from django.shortcuts import render
 from rest_framework import viewsets
 
 
-from .models import User
+from .models import User, TreeInfo
 
-from .serializers import UserSerializer
+from .serializers import UserSerializer, TreeInfoSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     
@@ -17,3 +17,15 @@ class UserViewSet(viewsets.ModelViewSet):
         
     def get_queryset(self):
         return self.queryset.filter(created_by=self.request.user)
+
+class TreeInfoViewSet(viewsets.ModelViewSet):
+    
+    serializer_class = TreeInfoSerializer
+    queryset = TreeInfo.objects.all()
+    
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
+        
+    def get_queryset(self):
+        return self.queryset.filter(created_by=self.request.user)
+    

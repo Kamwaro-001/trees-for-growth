@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from .models import User, TreeInfo
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -19,3 +19,18 @@ class UserSerializer(serializers.ModelSerializer):
             'email', 
             'phonenumber'
             )
+        
+class TreeInfoSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = TreeInfo
+        read_only_fields = (
+            'id',
+            'created_by',
+        )
+        fields = (
+            'id',
+            'created_by',
+            'tree_name',
+            'files',
+        )

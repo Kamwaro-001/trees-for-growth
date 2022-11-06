@@ -12,3 +12,9 @@ class User(models.Model):
     email = models.EmailField(unique=True)
     created_by = models.ForeignKey(Person, on_delete=models.CASCADE)
     phonenumber = models.CharField("Phone number", unique=True, max_length=40)
+    
+class TreeInfo(models.Model):
+    created_by = models.ForeignKey(Person, on_delete=models.CASCADE)
+    tree_name = models.CharField("Tree name")
+    files = models.FileField("Evidence")
+    
