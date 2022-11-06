@@ -3,3 +3,6 @@ djangorestframework==3.14.0
 dj-rest-auth==2.2.5
 django-cors-headers==3.13.0
 django-allauth==0.51.0
+djoser==2.1.0
+markdown==3.4.1
+django-filter==22.1
