@@ -9,7 +9,6 @@ DATABASES = {
     }
 }
 
-#configure DRF
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
@@ -19,13 +18,8 @@ REST_FRAMEWORK = {
     ]
 }
 
-# configure Djoser
 DJOSER = {
-    "USER_ID_FIELD": "email"
+    "USER_ID_FIELD": "username"
 }
-
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1

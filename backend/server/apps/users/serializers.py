@@ -6,4 +6,16 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('pk', 'first_name', 'last_name', 'email', 'phonenumber')
+        read_only_fields = (
+            'id',
+            'created_by',
+        )
+        fields = (
+            'id',
+            'created_by',
+            'first_name', 
+            'last_name', 
+            # TODO fix here after models
+            'email', 
+            'phonenumber'
+            )

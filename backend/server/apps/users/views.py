@@ -1,67 +1,19 @@
 from django.shortcuts import render
 
-from django.http.response import JsonResponse
-from rest_framework.parsers import JSONParser 
-from rest_framework import status
-from rest_framework.decorators import api_view
-from rest_framework.decorators import authentication_classes
-from rest_framework.decorators import permission_classes
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework import viewsets
 
-from rest_framework.generics import ListCreateAPIView,  RetrieveUpdateDestroyAPIView
-from rest_framework.permissions import IsAuthenticated
 
 from .models import User
 
 from .serializers import UserSerializer
 
-@api_view(['GET', 'POST'])
-# @authentication_classes([SessionAuthentication, BasicAuthentication])
-# @permission_classes([IsAuthenticated])
-def user_list(request):
-    if request.method == 'GET':
-        users = User.objects.all()
-        
-        # TODO change this to use email
-        email = request.GET.get('email', None)
-        if email is not None:
-            users = users.filter(email__contains = email)
-            
-        users_serializer = UserSerializer(users, many=True)
-        return JsonResponse(users_serializer.data, safe=False)
-
-    elif request.method == 'POST':
-        user_data = JSONParser().parse(request)
-        user_serializer =UserSerializer(data=user_data)
-        if user_serializer.is_valid():
-            user_serializer.save()
-            return JsonResponse(user_serializer.data, status=status.HTTP_201_CREATED) 
-        return JsonResponse(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class UserViewSet(viewsets.ModelViewSet):
     
-@api_view(['GET', 'PUT', 'DELETE'])
-# TODO check on adding the authentications
-# @authentication_classes([SessionAuthentication, BasicAuthentication])
-# @permission_classes([IsAuthenticated])   
-def user_detail(request, pk):
-    try: 
-        user = User.objects.get(pk=pk) 
-        
-        if request.method == 'GET': 
-            user_serializer = UserSerializer(user) 
-            return JsonResponse(user_serializer.data) 
-        
-        elif request.method == 'PUT': 
-            user_data = JSONParser().parse(request) 
-            user_serializer = UserSerializer(user, data=user_data) 
-            if user_serializer.is_valid(): 
-                user_serializer.save() 
-                return JsonResponse(user_serializer.data) 
-            return JsonResponse(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
-        elif request.method == 'DELETE': 
-            user.delete() 
-            return JsonResponse({'message': 'The User was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
-        
-    except User.DoesNotExist: 
-        return JsonResponse({'message': 'This user does not exist'}, status=status.HTTP_404_NOT_FOUND) 
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
     
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
+        
+    def get_queryset(self):
+        return self.queryset.filter(created_by=self.request.user)
