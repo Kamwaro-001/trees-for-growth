@@ -32,5 +32,6 @@ class TreeInfoSerializer(serializers.ModelSerializer):
             'id',
             'created_by',
             'tree_name',
+            'more_info',
             'files',
         )

@@ -16,5 +16,6 @@ class User(models.Model):
 class TreeInfo(models.Model):
     created_by = models.ForeignKey(Person, on_delete=models.CASCADE)
     tree_name = models.CharField("Tree name", max_length=255)
+    more_info = models.TextField("Additional information", max_length=255)
     files = models.FileField("Evidence")
     
