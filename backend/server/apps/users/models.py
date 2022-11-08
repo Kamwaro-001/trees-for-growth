@@ -19,3 +19,9 @@ class TreeInfo(models.Model):
     more_info = models.TextField("Additional information", default="", max_length=255)
     files = models.FileField("Evidence")
     
+class UserAddress(models.Model):
+    created_by = models.ForeignKey(Person, on_delete=models.CASCADE)
+    county = models.CharField("County", max_length=50)
+    town = models.CharField("Town", max_length=50)
+    full_address = models.CharField("Full Address", max_length=255)
+    
