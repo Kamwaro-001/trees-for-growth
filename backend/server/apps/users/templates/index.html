@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="{% static './index.css' %}">
+
+<body>
+    <nav>
+        <div class="navbar">
+            <a id="nav-brand" href="#">
+                TreesForGrowth
+            </a>
+            <div class="nav-items">
+                <a href="./index.html" class="nav-item">home</a>
+                <a href="./communities.html" class="nav-item">communities</a>
+            </div>
+            <a href="#" id="nav-login">Sign in</a>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock content %}
+</body>
+
+</html>

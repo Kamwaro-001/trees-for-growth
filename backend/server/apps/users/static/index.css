@@ -1,0 +1,75 @@
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+}
+
+.navbar {
+    background-color: #e6e6e6;
+    overflow: hidden;
+    position: relative;
+    border-top: #ff0000 solid 2px;
+    border-bottom: #000000 solid 1px;
+    top: 0%;
+    z-index: 5;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+nav-items {
+    /* float: right; */
+    text-align: center;
+}
+
+#nav-brand {
+    /* font-size: 2.5vw; */
+    color: #000000;
+    font-size: 25px;
+    float: left;
+    margin-left: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px 5px;
+    /* padding: 14px 16px; */
+    text-decoration: none;
+    text-align: center;
+    border-radius: 4px;
+}
+
+#nav-login:hover {
+    color: #000000;
+    text-decoration: underline;
+    background-color: #e0c528;
+}
+
+.nav-items {
+    float: left;
+    background-color: red;
+    display: inline;
+}
+
+.nav-item,
+#nav-login {
+    text-transform: capitalize;
+    font-size: 15px;
+    text-decoration: none;
+    color: #000000;
+    text-align: center;
+    /* float: none; */
+    /* margin: 5px 5px; */
+    padding: 12px 12px;
+}
+
+.nav-item:hover,
+#nav-login:hover {
+    text-decoration: underline;
+    color: #000000;
+}
+
+#nav-login {
+    border-radius: 4px;
+    background-color: #389855;
+    margin-right: 50px;
+    color: #000000;
+    text-decoration: none;
+    float: right;
+}

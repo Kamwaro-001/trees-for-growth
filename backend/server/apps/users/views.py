@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
+from django.http import HttpResponse
+from django.template import loader
+
 from rest_framework import viewsets
 from rest_framework.generics import ListCreateAPIView
 
@@ -39,3 +42,7 @@ class UserAddressViewSet(ListCreateAPIView):
         
     def get_queryset(self):
         return self.queryset.filter(created_by=self.request.user)
+    
+def hello(request):
+    template=loader.get_template('index.html')
+    return HttpResponse(template.render())

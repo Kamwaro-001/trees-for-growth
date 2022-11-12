@@ -48,5 +48,5 @@ class UserAddressSerializer(serializers.ModelSerializer):
             'created_by',
             'county',
             'town',
-            'full_address',
+            'full_address',1
         )

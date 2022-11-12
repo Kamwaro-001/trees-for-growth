@@ -11,4 +11,5 @@ urlpatterns = [
     path('', include(router.urls)),
     path('trees/', TreeInfoViewSet.as_view()),
     path('address/', UserAddressViewSet.as_view()),
+    path('hi/', views.hello, name='index'),
 ]
