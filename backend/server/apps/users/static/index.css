@@ -19,14 +19,15 @@
 
 #nav-fix {
     width: 80%;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 #nav-brand {
     color: #000000;
     font-size: 26px;
     float: left;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 5px;
     margin: 5px 5px;
     text-decoration: none;
     text-align: center;
@@ -50,7 +51,7 @@
     text-decoration: none;
     color: #000000;
     text-align: center;
-    padding: 12px 12px;
+    padding: 16px 14.5px;
     /* display: inline-block; */
 }
 
