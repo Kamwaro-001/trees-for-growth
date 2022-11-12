@@ -4,17 +4,29 @@
 <link rel="stylesheet" href="{% static './index.css' %}">
 
 <body>
-    <nav>
-        <div class="navbar">
+    <nav id="nav-bar">
+        <div id="nav-fix">
             <a id="nav-brand" href="#">
                 TreesForGrowth
             </a>
-            <div class="nav-items">
+            <div class="middle-nav">
                 <a href="./index.html" class="nav-item">home</a>
-                <a href="./communities.html" class="nav-item">communities</a>
+                <a href="./communities.html" class="nav-item">dashboard</a>
+                <a href="#" class="nav-item">buy</a>
+                <a href="#" class="nav-item">about us</a>
+                <a href="#" class="nav-item">communities</a>
+                <a href="#" id="nav-login">Sign in</a>
             </div>
-            <a href="#" id="nav-login">Sign in</a>
         </div>
+
+        <!-- <ul class="middle-nav">
+            <li><a href="#">home</a></li>
+            <li><a href="#">dashboard</a></li>
+            <li><a href="#">buy</a></li>
+            <li><a href="#">about us</a></li>
+            <li><a href="#">communities</a></li>
+        </ul>
+        <a href="#" id="nav-login">Sign in</a> -->
     </nav>
     {% block content %}
     {% endblock content %}
