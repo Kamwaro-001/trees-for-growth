@@ -46,11 +46,7 @@ class UserAddressViewSet(ListCreateAPIView):
         serializer.save(created_by=self.request.user)
         
     def get_queryset(self):
-        return self.queryset.filter(created_by=self.request.user)
-    
-def communities(request):
-    template=loader.get_template('communities.html')
-    return HttpResponse(template.render())  
+        return self.queryset.filter(created_by=self.request.user) 
 
 class Profile(APIView):
     renderer_classes = [TemplateHTMLRenderer]
@@ -67,3 +63,11 @@ class Home(APIView):
     def get(self, request):
         queryset = User.objects.all()
         return Response({'users': queryset})
+    
+def communities(request):
+    template=loader.get_template('communities.html')
+    return HttpResponse(template.render()) 
+    
+def userDash(request):
+    template=loader.get_template('userdashboard.html')
+    return HttpResponse(template.render()) 
