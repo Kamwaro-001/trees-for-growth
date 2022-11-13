@@ -11,7 +11,7 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api/trees/', TreeInfoViewSet.as_view()),
     path('api/address/', UserAddressViewSet.as_view()),
-    # path('', views.hello, name='base'),
+    path('communities/', views.communities, name='communities'),
     path('', Home.as_view()),
     path('profile/', Profile.as_view()), 
 ]

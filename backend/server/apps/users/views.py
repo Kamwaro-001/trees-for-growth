@@ -48,9 +48,9 @@ class UserAddressViewSet(ListCreateAPIView):
     def get_queryset(self):
         return self.queryset.filter(created_by=self.request.user)
     
-# def hello(request,APIView):
-#     template=loader.get_template('base.html')
-#     return HttpResponse(template.render())  
+def communities(request):
+    template=loader.get_template('communities.html')
+    return HttpResponse(template.render())  
 
 class Profile(APIView):
     renderer_classes = [TemplateHTMLRenderer]
