@@ -8,11 +8,11 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         read_only_fields = (
             'id',
-            'created_by',
+            'username',
         )
         fields = (
             'id',
-            'created_by',
+            'username',
             'first_name', 
             'last_name', 
             # TODO fix here after models
@@ -30,7 +30,7 @@ class TreeInfoSerializer(serializers.ModelSerializer):
         )
         fields = (
             'id',
-            'created_by',
+            'username',
             'tree_name',
             'more_info',
             'files',
@@ -41,12 +41,12 @@ class UserAddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserAddress
         read_only_fields = (
-            'created_by',
+            'username',
         )
         
         fields = (
-            'created_by',
+            'username',
             'county',
             'town',
-            'full_address',1
+            'full_address',
         )

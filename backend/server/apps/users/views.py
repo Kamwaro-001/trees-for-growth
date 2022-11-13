@@ -15,16 +15,23 @@ from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from rest_framework.authtoken.models import Token
+from django.contrib.auth import get_user_model
+import django.contrib.auth as alls
+
+acc_user = get_user_model
+persona = alls.get_user
+
 class UserViewSet(viewsets.ModelViewSet):
     
     serializer_class = UserSerializer
     queryset = User.objects.all()
     
     def perform_create(self, serializer):
-        serializer.save(created_by=self.request.user)
+        serializer.save(username=self.request.user)
         
     def get_queryset(self):
-        return self.queryset.filter(created_by=self.request.user)
+        return self.queryset.filter(username=self.request.user)
 
 class TreeInfoViewSet(ListCreateAPIView):
     
@@ -32,10 +39,10 @@ class TreeInfoViewSet(ListCreateAPIView):
     queryset = TreeInfo.objects.all()
     
     def perform_create(self, serializer):
-        serializer.save(created_by=self.request.user)
+        serializer.save(username=self.request.user)
         
     def get_queryset(self):
-        return self.queryset.filter(created_by=self.request.user)
+        return self.queryset.filter(username=self.request.user)
 
 class UserAddressViewSet(ListCreateAPIView):
     
@@ -43,10 +50,12 @@ class UserAddressViewSet(ListCreateAPIView):
     queryset = UserAddress.objects.all()
     
     def perform_create(self, serializer):
-        serializer.save(created_by=self.request.user)
+        serializer.save(username=self.request.user)
         
     def get_queryset(self):
-        return self.queryset.filter(created_by=self.request.user) 
+        return self.queryset.filter(username=self.request.user) 
+
+############################################
 
 class Profile(APIView):
     renderer_classes = [TemplateHTMLRenderer]
@@ -64,13 +73,19 @@ class Home(APIView):
         queryset = User.objects.all()
         return Response({'users': queryset})
     
-def homepage(request):
-    template=loader.get_template('homepage.html')
-    return HttpResponse(template.render()) 
+def homepage(response):
+    # template=loader.get_template('homepage.html')
+    # return HttpResponse(template.render())
+    name = User.objects.get()
+    return render(response, 'homepage.html', { 'name':name.email}) 
     
-def communities(request):
-    template=loader.get_template('communities.html')
-    return HttpResponse(template.render()) 
+def communities(response):
+    # template=loader.get_template('communities.html')
+    # return HttpResponse(template.render()) 
+    queryset = User.objects.all()
+    
+    
+    return render(response, 'communities.html', {'name': queryset })
     
 def userDash(request):
     template=loader.get_template('userdashboard.html')

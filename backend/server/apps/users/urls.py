@@ -15,5 +15,5 @@ urlpatterns = [
     path('', views.homepage, name='homepage'), 
     path('communities/', views.communities, name='communities'), 
     path('userdashboard/', views.userDash, name='dashboard'),
-    path('profile/', Profile.as_view()), 
+    path('profile/', Profile.as_view()),
 ]
