@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+{% endblock styles %}
+
+{% block content %}
+<div id="user-profile">
+    <h1>My Profile</h1>
+    <ul>
+        {% for profile in users %}
+            <div class="user-details">
+                <p class="detail">username: {{ profile.username }}</p>
+                <p class="detail">firstname: {{ profile.first_name }}</p>
+                <p class="detail">lastname: {{ profile.last_name }}</p>
+                <p class="detail">phone number: {{ profile.phonenumber }}</p>
+            </div>
+        {% endfor %}
+    </ul>
+</div>
+
+
+{% endblock %}

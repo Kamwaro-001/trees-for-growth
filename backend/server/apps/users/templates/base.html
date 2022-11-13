@@ -3,24 +3,38 @@
 <html>
 <link rel="stylesheet" href="{% static 'index.css' %}">
 
+{% block styles %}
+
+{% endblock styles %}
 <body>
+    {% block navbar %}
     <nav id="nav-bar">
         <div id="nav-fix">
-            <a id="nav-brand" href="#">
+            <a id="nav-brand" href="/">
                 TreesForGrowth
             </a>
             <div class="middle-nav">
-                <a href="./index.html" class="nav-item">home</a>
+                <a href="/" class="nav-item">home</a>
                 <a href="./communities.html" class="nav-item">dashboard</a>
                 <a href="#" class="nav-item">buy</a>
                 <a href="#" class="nav-item">about us</a>
                 <a href="#" class="nav-item">communities</a>
+                <!-- TODO add auth check for this tag -->
+                <!-- <a href="profile/" class="nav-item">
+                    <img src="{% static 'images/user.png' %}" alt="my profile" style="height: 30px; width:30px; vertical-align:sub;"/>
+                </a> -->
                 <a href="#" id="nav-login">Sign in</a>
             </div>
         </div>
     </nav>
+    {% endblock %}
+
+    
+
     {% block content %}
+    <h1>Welcome to homepage</h1>
     {% endblock content %}
+
 </body>
 
 </html>

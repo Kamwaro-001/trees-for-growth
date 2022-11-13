@@ -10,6 +10,11 @@ from .models import User, TreeInfo, UserAddress
 
 from .serializers import UserSerializer, TreeInfoSerializer, UserAddressSerializer
 
+
+from rest_framework.renderers import TemplateHTMLRenderer
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 class UserViewSet(viewsets.ModelViewSet):
     
     serializer_class = UserSerializer
@@ -43,6 +48,22 @@ class UserAddressViewSet(ListCreateAPIView):
     def get_queryset(self):
         return self.queryset.filter(created_by=self.request.user)
     
-def hello(request):
-    template=loader.get_template('index.html')
-    return HttpResponse(template.render())
+# def hello(request,APIView):
+#     template=loader.get_template('base.html')
+#     return HttpResponse(template.render())  
+
+class Profile(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'profile.html'
+
+    def get(self, request):
+        queryset = User.objects.all()
+        return Response({'users': queryset})
+
+class Home(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'base.html'
+
+    def get(self, request):
+        queryset = User.objects.all()
+        return Response({'users': queryset})
