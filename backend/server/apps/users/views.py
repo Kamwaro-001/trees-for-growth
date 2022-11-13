@@ -64,6 +64,10 @@ class Home(APIView):
         queryset = User.objects.all()
         return Response({'users': queryset})
     
+def homepage(request):
+    template=loader.get_template('homepage.html')
+    return HttpResponse(template.render()) 
+    
 def communities(request):
     template=loader.get_template('communities.html')
     return HttpResponse(template.render()) 

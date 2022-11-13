@@ -1,7 +1,8 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="{% static 'index.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
 
 {% block styles %}
 
@@ -29,10 +30,8 @@
     </nav>
     {% endblock %}
 
-    
-
     {% block content %}
-    <h1>Welcome to homepage</h1>
+    
     {% endblock content %}
 
 </body>
