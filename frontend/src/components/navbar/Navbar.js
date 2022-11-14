@@ -1,31 +1,34 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import "./Navbar.css"
+import "./Navbar.css";
+import user1 from "../images/user1.png";
 
-const Navbar = () => {
+function Navbar(props) {
+  
   return (
     <>
-    <div>
-      <nav id="nav-bar">
-        <div id="nav-fix">
+      <div>
+        <nav id="nav-bar">
+          <div id="nav-fix">
             <Link id="nav-brand" to="/">
-                TreesForGrowth
+              TreesForGrowth
             </Link>
             <div className="middle-nav">
-                <Link to="/" className="nav-item">home</Link>
-                <Link to="/dashboard/" className="nav-item">dashboard</Link>
-                <Link to="/communities/" className="nav-item">communities</Link>
-                <Link to="#" className="nav-item">about us</Link>
-                <Link to="#" className="nav-item">buy</Link>
-                 {/* TODO add auth check for this tag */}
-                {/* <Link to="profile/" className="nav-item">
-                    <img src="{% static 'images/user.png' %}" alt="my profile" style="height: 30px; width:30px; vertical-align:sub;"/>
-                </Link>  */}
-                <Link to="/login/" id="nav-login">Sign in</Link>
+              <Link to="/" className="nav-item">home</Link>
+              <Link to="/dashboard/" className="nav-item">dashboard</Link>
+              <Link to="/communities/" className="nav-item">communities</Link>
+              <Link to="#" className="nav-item">about us</Link>
+              <Link to="#" className="nav-item">buy</Link>
+              {/* TODO add auth check for this tag */}
+              <Link to="profile/" className="nav-item">
+                    <img src={user1} alt="my profile"  className='to-profile'/>
+              </Link> 
+              <Link to="/login/" id="nav-login">Sign in</Link>
+              {props.isAuthenticated ? <Link id='nav-login' onClick={() => props.logout()}>Logout</Link> : null}
             </div>
-        </div>
-    </nav>
-    </div>
+          </div>
+        </nav>
+      </div>
     </>
   )
 }

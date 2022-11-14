@@ -5,8 +5,8 @@
 }
 
 body {
-    margin-top: 77px;
-    border-top: #bebebe 1px solid ;
+    padding-top: 80px;
+    border-top: #bebebe 1px solid;
 }
 
 #nav-bar {
@@ -21,7 +21,9 @@ body {
     padding-bottom: 5px;
     display: flex;
     justify-content: center;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 #nav-fix {
@@ -79,4 +81,10 @@ body {
     color: #000000;
     text-decoration: underline;
     background-color: #308148;
+}
+
+.to-profile {
+    height: 30px;
+    width: 30px;
+    vertical-align: sub;
 }
