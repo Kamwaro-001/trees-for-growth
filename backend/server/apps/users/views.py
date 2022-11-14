@@ -76,17 +76,16 @@ class Home(APIView):
 def homepage(response):
     # template=loader.get_template('homepage.html')
     # return HttpResponse(template.render())
-    name = User.objects.get()
-    return render(response, 'homepage.html', { 'name':name.email}) 
+    return render(response, 'homepage.html', {}) 
     
 def communities(response):
     # template=loader.get_template('communities.html')
-    # return HttpResponse(template.render()) 
-    queryset = User.objects.all()
-    
-    
-    return render(response, 'communities.html', {'name': queryset })
+    # return HttpResponse(template.render())
+    return render(response, 'communities.html', {})
     
 def userDash(request):
     template=loader.get_template('userdashboard.html')
     return HttpResponse(template.render()) 
+
+def login(response):
+    return render(response, 'login.html', {})

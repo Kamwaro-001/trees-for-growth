@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js">
+        
+</script>
+    <div>
+        <h2>Login</h2>
+        <form id="form-login">
+            <input type="text" class="form-input" placeholder="username" name="username"/>
+            <input type="password" class="form-input" placeholder="password" name="password"/>
+            <button class="form-submit">Login</button>
+        </form>
+    </div>
+    <script>
+        let form = document.getElementById('form-login'); // selecting the form
+
+        form.addEventListener('submit', function(event) { // 1
+            event.preventDefault()
+            
+            let data = new FormData(); // 2
+            
+            data.append("username", document.getElementsByClassName('username').value)  
+            data.append("password", document.getElementsByClassName('password').value)
+            data.append("csrfmiddlewaretoken", '{{csrf_token}}')
+            
+            axios.post('/accounts/token/login', data) // 4
+            .then(alert("Form Submitted")) // 5
+            .catch(errors => console.log(errors)) // 6
+        
+
+        })
+    </script>
+{% endblock %}
