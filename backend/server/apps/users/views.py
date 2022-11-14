@@ -14,13 +14,8 @@ from .serializers import UserSerializer, TreeInfoSerializer, UserAddressSerializ
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.views.decorators.csrf import csrf_exempt
 
-from rest_framework.authtoken.models import Token
-from django.contrib.auth import get_user_model
-import django.contrib.auth as alls
-
-acc_user = get_user_model
-persona = alls.get_user
 
 class UserViewSet(viewsets.ModelViewSet):
     
@@ -87,5 +82,6 @@ def userDash(request):
     template=loader.get_template('userdashboard.html')
     return HttpResponse(template.render()) 
 
+@csrf_exempt
 def login(response):
     return render(response, 'login.html', {})

@@ -23,6 +23,9 @@
             </div>
             <div class="user-details">
                 <h2>Location information</h2>
+                <p class="detail">County: <span id="county"></span></p>
+                <p class="detail">Town: <span id="town"></span></p>
+                <p class="detail">Address: <span id="address"></span></p>
             </div>
 </div>
 <script>
@@ -49,6 +52,23 @@
         console.log(error);
     })
 
+    axios.get('/api/address/')
+    .then(function (response) {
+        response.data.forEach(e => {
+            console.log(e)
+            county = e.county
+            town = e.town
+            addr = e.full_address
+            var ids = ["county", "town", "address"]
+            function set_values(id,value) {
+                doc = document.getElementById(id).innerHTML=(value)
+            }
+            set_values(ids[0],county)
+            set_values(ids[1],town)
+            set_values(ids[2],addr)
+        })
+    }
+    )
 
 </script>
 
