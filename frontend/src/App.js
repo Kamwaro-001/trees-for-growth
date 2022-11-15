@@ -11,6 +11,7 @@ import Home from './components/home/Home';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import Dashboard from './components/dashboard/Dashboard';
+import BoardUser from './components/dashboard/BoardUser';
 // import Communities from './components/communities/Communities';
 // import Trees from './components/communities/Trees';
 import TreesList from './components/communities/TreesList';
@@ -31,6 +32,7 @@ function App(props) {
                <Route path='/dashboard' element={<Dashboard />} />
                <Route path='/communities' element={<TreesList />} />
                <Route path='/profile' element={<Profile />} />
+               <Route path='/boarduser' element={<BoardUser />} />
             </Routes>
             <Footer />
          </Router>

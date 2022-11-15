@@ -4,7 +4,7 @@ const API_URL = "http://localhost:8000/";
 
 const register = (username, email, password) => {
 //   return axios.post(API_URL + "signup", {
-  return axios.post(API_URL + "accounts/users", {
+  return axios.post(API_URL + "accounts/users/", {
     username,
     email,
     password,
@@ -14,12 +14,13 @@ const register = (username, email, password) => {
 const login = (username, password) => {
   return axios
     // .post(API_URL + "signin", {
-    .post(API_URL + "accounts/token/login", {
+    .post(API_URL + "accounts/token/login/", {
       username,
       password,
     })
     .then((response) => {
-      if (response.data.accessToken) {
+      // if (response.data.accessToken) {
+      if (response.data.auth_token) {
         localStorage.setItem("user", JSON.stringify(response.data));
       }
 
