@@ -8,7 +8,8 @@ const Profile = () => {
     if (!currentUser) {
         return <Navigate to="/login" />;
     }
-
+    // TODO fix this!!
+    console.log(currentUser)
     return (
         <div className="container">
             <header className="jumbotron">
@@ -18,9 +19,7 @@ const Profile = () => {
             </header>
             <p>
                 {/* TODO edit token here */}
-                {/* <strong>Token:</strong> {currentUser.accessToken.substring(0, 20)} ...{" "} */}
                 <strong>Token:</strong> {currentUser.auth_token.substring(0, 20)} ...{" "}
-                {/* {currentUser.accessToken.substr(currentUser.accessToken.length - 20)} */}
                 {currentUser.auth_token.substr(currentUser.auth_token.length - 20)}
             </p>
             <p>

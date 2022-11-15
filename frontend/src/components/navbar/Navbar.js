@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom'
 import "./Navbar.css";
 import user1 from "../images/user1.png";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 function Navbar(props) {
   
   return (
     <>
       <div>
-        <nav id="nav-bar">
+        <nav id="nav-bar" className="navbar navbar-expand">
           <div id="nav-fix">
             <Link id="nav-brand" to="/">
               TreesForGrowth
