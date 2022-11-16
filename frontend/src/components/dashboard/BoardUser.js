@@ -22,7 +22,7 @@ const BoardUser = () => {
       }
     );
   }, []);
-  
+
   let allcontent = {}
   
   allcontent = Object.assign({}, ...content);
@@ -33,7 +33,7 @@ const BoardUser = () => {
   return (
     <div className="container">
       <header className="jumbotron">
-        <h3>{allcontent.first_name}</h3>
+        <h3>{allcontent.tree_name}</h3>
       </header>
     </div>
   );

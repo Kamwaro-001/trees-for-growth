@@ -10,7 +10,7 @@ const getPublicContent = () => {
 
 const getUserBoard = () => {
   // return axios.get(API_URL + "accounts/users/me/", { headers: authHeader() });
-  return axios.get(API_URL + "api/users/", { headers: authHeader() });
+  return axios.get(API_URL + "api/trees/", { headers: authHeader() });
 };
 
 // const getModeratorBoard = () => {

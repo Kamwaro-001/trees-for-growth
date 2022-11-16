@@ -11,7 +11,12 @@ const Dashboard = () => {
         setContent(response.data);
       },
       (error) => {
-        const _content = error;
+        const _content =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
 
         setContent(_content);
       }
@@ -30,23 +35,7 @@ const Dashboard = () => {
     } else if (e === 5) goal = "next one is 5"
   });
 
-  function displayTable(trees) {
-    var table = document.getElementsByClassName('list-of-trees');
-    for (var i = 0; i < trees.length; ++i) { 
-      var tree = trees[i];
-      var row = document.createElement('tr');
-      var properties = ['tree_name', 'more_info'];
-
-      for (var j = 0; j < properties.length; ++j) {  
-        var cell = document.createElement('td');
-        cell.innerHTML = tree[properties[j]];
-        row.appendChild(cell);
-      }
-      table.appendChild(row);
-    }
-  }
-
-  console.log(goal)
+console.log(goal)
 
   return (
     <>
@@ -56,19 +45,20 @@ const Dashboard = () => {
           <p className="dash-tally">{l}</p>
           <h3>Next Goal</h3>
           <p>{goal}</p>
-          <button type="button" onClick={displayTable(content)}>hi</button>
+          {/* <button type="button" onClick={displayTable(content)}>hi</button> */}
         </div>
 
         <div className="list-trees">
-          <table className="list-of-trees">
+          {/* <table className="list-of-trees">
             <tbody>
-            <tr>
-              <th>Tree Name</th>
-              <th>Description</th>
-            </tr>
+              {content.map((tree) => {
+                <tr index={tree.id}>
+                  <td>{tree.tree_name}</td>
+                  <td>{tree.more_info}</td>
+                </tr>
+              })}
             </tbody>
-            
-          </table>
+          </table> */}
         </div>
       </div>
     </>
