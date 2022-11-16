@@ -1,11 +1,11 @@
 * {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
-    
+
 }
 
 body {
-    padding-top: 80px;
+    padding-top: 85px;
     border-top: #bebebe 1px solid;
 }
 
@@ -13,23 +13,28 @@ body {
     background-color: #ffffff;
     overflow: hidden;
     position: fixed;
-    width: 100%;
+    /* width: 100%; */
     border-top: #308148 solid 2px;
     border-bottom: #3da55c solid 1px;
     z-index: 5;
     padding-top: 5px;
     padding-bottom: 5px;
+    padding-right: 8vw;
+    padding-left: 8vw;
     display: flex;
     justify-content: center;
     top: 0;
     left: 0;
     right: 0;
+    /* height: 10vh; */
 }
 
 #nav-fix {
-    width: 80%;
+    width: 100%;
     padding-top: 8px;
     padding-bottom: 8px;
+    display: flex;
+    justify-content: center;
 }
 
 #nav-brand {
@@ -40,13 +45,13 @@ body {
     margin: 5px 5px;
     text-decoration: none;
     text-align: center;
-    border-radius: 4px;
     /* display: inline-block; */
 }
 
 .middle-nav {
-    /* display: inline-block; */
-    float: right;
+    display: flex;
+    justify-content: center;
+    margin: auto;
 }
 
 .middle-nav a {
@@ -61,20 +66,19 @@ body {
     color: #000000;
     text-align: center;
     padding: 13px 14px;
-    /* display: inline-block; */
 }
 
-.middle-nav a:hover {
+.middle-nav .nav-item:hover {
     text-decoration: underline;
 }
 
 #nav-login {
     border-radius: 4px;
     background-color: #389855;
-    /* margin-right: 50px; */
     color: #000000;
     text-decoration: none;
-    float: right;
+    display: inline-block;
+
 }
 
 #nav-login:hover {
@@ -83,24 +87,57 @@ body {
     background-color: #308148;
 }
 
-.to-profile {
-    height: 30px;
-    width: 30px;
-    vertical-align: sub;
+.nav-right {
+    width: 150px;
 }
+
+/* .nav-item .to-profile {
+    height: 40px;
+    width: 40px;
+    vertical-align:;
+    text-align: center;
+} */
 
 label {
     display: block;
     margin-top: 10px;
-  }
-  
-  .login-form,
-  .signup-form {
+}
+
+.auth-page {
+    background: linear-gradient(#48f97dab, #000000d2), url(../images/how-to-plant-tree.jpg);
+    height: 80vh;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	/* position: relative; */
+	width: 100%;
+}
+
+.login-form,
+.signup-form {
     max-width: 350px;
     margin: auto;
-  }
-  
-  .card {
+}
+
+.form-control {
+    margin-top: 10px;
+}
+
+.auth-group {
+    height: 230px;
+}
+
+.auth-btn {
+    width: 100%;
+    margin-top: 10px;
+    background-color: #3da55c;
+    color: #ffffff;
+    border: #ffffff;
+    /* border-radius: 0.3em; */
+    /* height: ; */
+}
+
+.card {
     background-color: #f7f7f7;
     padding: 20px 25px 30px;
     margin: 0 auto 25px;
@@ -111,9 +148,9 @@ label {
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  }
-  
-  .profile-img-card {
+}
+
+.profile-img-card {
     width: 96px;
     height: 96px;
     margin: 0 auto 10px;
@@ -121,4 +158,19 @@ label {
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-  }
+}
+
+@media screen and (max-width: 920px) {
+    #nav-fix, #nav-brand, .nav-item, #nav-login, .middle-nav, .nav-right {
+        display: block;
+        text-align: center;
+        width: 100%;
+        float: none;
+    }
+    #nav-bar {
+        height: 415px;
+    }
+    body {
+        padding-top: 410px;
+    }
+}
