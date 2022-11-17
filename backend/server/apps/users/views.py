@@ -28,7 +28,8 @@ class UserViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return self.queryset.filter(username=self.request.user)
 
-class TreeInfoViewSet(ListCreateAPIView):
+# class TreeInfoViewSet(ListCreateAPIView):
+class TreeInfoViewSet(viewsets.ModelViewSet):
     
     serializer_class = TreeInfoSerializer
     queryset = TreeInfo.objects.all()

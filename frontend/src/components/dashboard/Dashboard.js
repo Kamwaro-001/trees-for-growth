@@ -22,20 +22,12 @@ const Dashboard = () => {
       }
     );
   }, []);
-  let l = content.length;
+  let l = content.length+9;
 
   const goals = [5, 10, 15, 20, 30, 50, 100, 200]
-
-  var goal;
-
-  goals.forEach(e => {
-    let x = goals.indexOf(e)
-    if (l >= e) {
-      goal = "next one is " + goals[x + 1];
-    } else if (e === 5) goal = "next one is 5"
-  });
-
-console.log(goal)
+  let passed = goals.filter( g => g <= l )
+  let goal = "next goal is " + goals[passed.length];
+console.log(passed)
 
   return (
     <>
