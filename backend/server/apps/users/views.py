@@ -6,14 +6,15 @@ from django.template import loader
 from rest_framework import viewsets
 from rest_framework.generics import ListCreateAPIView
 
+from .utils import EnablePartialUpdateMixin
 from .models import User, TreeInfo, UserAddress
 
 from .serializers import UserSerializer, TreeInfoSerializer, UserAddressSerializer
 
-
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -28,7 +29,6 @@ class UserViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return self.queryset.filter(username=self.request.user)
 
-# class TreeInfoViewSet(ListCreateAPIView):
 class TreeInfoViewSet(viewsets.ModelViewSet):
     
     serializer_class = TreeInfoSerializer
@@ -40,7 +40,7 @@ class TreeInfoViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return self.queryset.filter(username=self.request.user)
 
-class UserAddressViewSet(ListCreateAPIView):
+class UserAddressViewSet(viewsets.ModelViewSet):
     
     serializer_class = UserAddressSerializer
     queryset = UserAddress.objects.all()

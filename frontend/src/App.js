@@ -12,9 +12,7 @@ import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import Dashboard from './components/dashboard/Dashboard';
 import BoardUser from './components/dashboard/BoardUser';
-// import Communities from './components/communities/Communities';
-// import Trees from './components/communities/Trees';
-import TreesList from './components/communities/TreesList';
+import Communities from './components/communities/Communities';
 
 import store from './store/store';
 
@@ -27,10 +25,10 @@ function App(props) {
             <Navbar />
             <Routes>
                <Route exact path='/' element={<Home />} />
-               <Route path='/login' element={<Login {...props} />} />
+               <Route path='/login' element={<Login />} />
                <Route path='/register' element={<Register />} />
                <Route path='/dashboard' element={<Dashboard />} />
-               <Route path='/communities' element={<TreesList />} />
+               <Route path='/communities' element={<Communities />} />
                <Route path='/profile' element={<Profile />} />
                <Route path='/boarduser' element={<BoardUser />} />
             </Routes>

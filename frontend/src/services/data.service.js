@@ -7,8 +7,14 @@ const getTrees = () => {
   return axios.get(API_URL + "api/trees/");
 };
 
+const updateTree = (id, data) => {
+  // TODO implement this on user profile -- board user
+  return axios.patch(API_URL + `api/trees/${id}`,data);
+}
+
 const dataService = {
-  getTrees
+  getTrees,
+  updateTree
 };
 
 export default dataService

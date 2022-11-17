@@ -26,7 +26,7 @@ class TreeInfoSerializer(serializers.ModelSerializer):
         model = TreeInfo
         read_only_fields = (
             'id',
-            'created_by',
+            'username',
         )
         fields = (
             'id',
@@ -41,10 +41,12 @@ class UserAddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserAddress
         read_only_fields = (
+            'id',
             'username',
         )
         
         fields = (
+            'id',
             'username',
             'county',
             'town',

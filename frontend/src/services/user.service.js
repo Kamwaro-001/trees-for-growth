@@ -15,7 +15,7 @@ const getUserBoard = () => {
 
 const updateUserInfo = (id, data) => {
   // TODO implement this on user profile -- board user
-  return axios.put(API_URL + `api/users/${id}`,data);
+  return axios.patch(API_URL + `api/users/${id}`,data);
 }
 
 // const getModeratorBoard = () => {
