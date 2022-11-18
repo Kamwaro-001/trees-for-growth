@@ -3,6 +3,10 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8000/";
 
+const getCommunities = () => {
+  return axios.get(API_URL + "api/communities/")
+}
+
 const getTrees = () => {
   return axios.get(API_URL + "api/trees/");
 };
@@ -13,6 +17,7 @@ const updateTree = (id, data) => {
 }
 
 const dataService = {
+  getCommunities,
   getTrees,
   updateTree
 };

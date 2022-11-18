@@ -13,6 +13,7 @@ class CommunitySerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'name',
+            'region',
             'created_by',
             'date_created',
             'verif_code',

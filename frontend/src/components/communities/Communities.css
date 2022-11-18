@@ -1,0 +1,35 @@
+.community-table {
+    /* border: 1px solid green; */
+    margin-top: 60px;
+    border-top: none;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    /* height: 400px; */
+    /* background-color: #c9f8c6; */
+}
+
+.community-table td {
+    /* border-left: 1px solid rgb(16, 212, 16); */
+    /* height: 40%; */
+    text-align: center;
+    height: 90px;
+}
+
+.community-table tr {
+    border-bottom: 1px solid #181918;
+}
+
+.community-table th {
+    height: 40%;
+    text-align: center;
+}
+
+.join-btn {
+    width: 70%;
+}
+
+.communities-heads {
+    text-align: center;
+    margin-top: 20px;
+}

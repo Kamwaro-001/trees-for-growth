@@ -14,7 +14,7 @@ function Navbar() {
   const logOut = useCallback(() => {
     dispatch(logout())
   }, [dispatch]);
-  // let elements
+
   return (
     <>
         <nav id="nav-bar" className="navBar">
@@ -33,7 +33,6 @@ function Navbar() {
               <Link to="#" className="nav-item">buy</Link>
 
             </div>
-            {/* TODO add auth check for this tag */}
             <div className='nav-right'>
               {currentUser !== null ?
               <>
