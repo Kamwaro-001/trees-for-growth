@@ -4,9 +4,7 @@ from django.http import HttpResponse
 from django.template import loader
 
 from rest_framework import viewsets
-from rest_framework.generics import ListCreateAPIView
 
-from .utils import EnablePartialUpdateMixin
 from .models import User, TreeInfo, UserAddress
 
 from .serializers import UserSerializer, TreeInfoSerializer, UserAddressSerializer
@@ -51,6 +49,8 @@ class UserAddressViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return self.queryset.filter(username=self.request.user) 
 
+
+# class MyCommunities()
 ############################################
 
 class Profile(APIView):

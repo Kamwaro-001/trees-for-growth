@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     'djoser',
     'apps.accounts',
     'apps.users',
+    'apps.communities',
+    
 ]
 
 MIDDLEWARE = [
