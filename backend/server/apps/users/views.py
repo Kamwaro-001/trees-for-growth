@@ -15,7 +15,6 @@ from rest_framework.views import APIView
 
 from django.views.decorators.csrf import csrf_exempt
 
-
 class UserViewSet(viewsets.ModelViewSet):
     
     serializer_class = UserSerializer
@@ -49,9 +48,8 @@ class UserAddressViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return self.queryset.filter(username=self.request.user) 
 
-
 # class MyCommunities()
-############################################
+###########################################
 
 class Profile(APIView):
     renderer_classes = [TemplateHTMLRenderer]
@@ -68,7 +66,7 @@ class Home(APIView):
     def get(self, request):
         queryset = User.objects.all()
         return Response({'users': queryset})
-    
+
 def homepage(response):
     # template=loader.get_template('homepage.html')
     # return HttpResponse(template.render())
