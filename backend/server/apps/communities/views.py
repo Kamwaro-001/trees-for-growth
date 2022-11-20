@@ -6,21 +6,19 @@ from .serializers import *
 
 # Create your views here.
 class CommunityView(viewsets.ModelViewSet):
+    authentication_classes = [] 
+    permission_classes = [] 
+    
     serializer_class = CommunitySerializer
     queryset = Community.objects.all()
-    
-# class MembersView(viewsets.ModelViewSet):
-#     serializer_class = CommMembersSerializer
-#     queryset = CommunityMembers.objects.all()
-    # TODO filter with community code
-    # def perform_create(self, serializer):
-    #     serializer.save()
     
 class MembersView(viewsets.ModelViewSet):
     serializer_class = CommMembersSerializer
     queryset = CommunityMembers.objects.all()
     
 class ActivitiesView(viewsets.ModelViewSet):
+    authentication_classes = [] 
+    permission_classes = [] 
     serializer_class = CommActivitiesSerializer
     queryset = CommunityActivities.objects.all()
 

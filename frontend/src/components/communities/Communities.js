@@ -28,12 +28,14 @@ const Communities = () => {
     if (content[i] !== undefined) {
       let cont = content[i]
       x.push(<><td>{cont.name}</td><td>{cont.region}</td><td>{cont.created_by}</td></>)
-      if (content.length === 0) {
-        console.log("no added communities")
-      }
+    } else {
+      
     }
   }
-
+  if(content[0] === undefined){
+    x.push(<td>No added Communities</td>)
+    // console.log("no added communities")
+  }
 
   return (
     <>
