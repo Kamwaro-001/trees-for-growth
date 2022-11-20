@@ -26,7 +26,6 @@ class CommMembersSerializer(serializers.ModelSerializer):
         model = CommunityMembers
         read_only_fields = (
             'id',
-            'member_to',
             'joining_date',
         )
         fields = (

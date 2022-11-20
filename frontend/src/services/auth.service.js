@@ -30,6 +30,7 @@ const login = (username, password) => {
 
 const logout = () => {
   localStorage.removeItem("user");
+  // axios.post("accounts/token/logout/")
 };
 
 const authService = {

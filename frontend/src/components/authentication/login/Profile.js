@@ -9,7 +9,7 @@ const Profile = () => {
         return <Navigate to="/login" />;
     }
     // TODO fix this!!
-    console.log(currentUser)
+    console.log(currentUser.user)
     return (
         <div className="container">
             <header className="jumbotron">

@@ -1,5 +1,5 @@
 import { GET_COMMUNITIES, ADD_COMMUNITY } from "./data.types";
-
+ 
 const initialState = {
     communities: []
 }

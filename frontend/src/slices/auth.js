@@ -1,9 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "./message";
+import axios from "axios";
 
 import AuthService from "../services/auth.service";
 
 const user = JSON.parse(localStorage.getItem("user"));
+const API_URL = "http://localhost:8000/";
 
 export const register = createAsyncThunk(
   "accounts/users/",
@@ -45,6 +47,7 @@ export const login = createAsyncThunk(
 );
 
 export const logout = createAsyncThunk("accounts/token/logout/", async () => {
+  axios.post(API_URL + "accounts/token/logout/", "logout")
   await AuthService.logout();
 });
 

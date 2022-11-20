@@ -8,24 +8,12 @@ const getCommunities = () => {
   return axios.get(API_URL + "api/communities/")
 }
 
-// const addCommunity = (data={}) => dispatch => {
-//   console.log("data sent")
-//   axios
-//     .post(API_URL + "api/communities/", data)
-//     .then(response => {
-//       console.log("the data sent is " + response.data)
-//       dispatch({
-//         type: ADD_COMMUNITY,
-//         payload: response.data
-//       });
-//     })
-//     .catch(error => {
-//       console.log(error)
-//     });
-// }
-
 const addCommunity = (data) => {
   return axios.post(API_URL + "api/communities/",data)
+}
+
+const joinCommunity = (data) => {
+  return axios.post(API_URL + "api/members/", data)
 }
 
 const getTrees = () => {
@@ -41,7 +29,8 @@ const dataService = {
   getCommunities,
   getTrees,
   updateTree,
-  addCommunity
+  addCommunity,
+  joinCommunity
 };
 
 export default dataService

@@ -3,7 +3,8 @@ import dataService from '../../services/data.service';
 import { Button, Modal, Form } from "react-bootstrap";
 import "./Communities.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useDispatch } from "react-redux";
+import { JoinButton } from "./CommunityComponents";
+// import joinShow from "./CommunityComponents";
 
 const Communities = (props) => {
   const [content, setContent] = useState("");
@@ -25,7 +26,6 @@ const Communities = (props) => {
     );
   }, []);
   const [show, setShow] = useState(false);
-  // const dispatch = useDispatch();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const initialState = {
@@ -48,7 +48,6 @@ const Communities = (props) => {
       created_by: community.created_by,
       verif_code: community.verif_code
     };
-
     dataService.addCommunity(data)
       .then(response => {
         setCommunity({
@@ -58,7 +57,6 @@ const Communities = (props) => {
           created_by: response.data.created_by,
           verif_code: response.data.verif_code
         });
-        console.log(response.data);
       })
       .catch(e => {
         console.log(e);
@@ -68,14 +66,12 @@ const Communities = (props) => {
   // const newCommunity = () => {
   //   setCommunity(initialState);
   // };
-
+  
   let x = [];
   for (let i = 0; i < content.length; i++) {
     if (content[i] !== undefined) {
       let cont = content[i]
       x.push(<><td>{cont.name}</td><td>{cont.region}</td><td>{cont.created_by}</td></>)
-    } else {
-
     }
   }
   if (content[0] === undefined) {
@@ -127,7 +123,8 @@ const Communities = (props) => {
                 <tr key={index}>
                   {community}
                   <td>
-                    <button type="button" className="join-btn btn btn-success btn-block">Join</button>
+                    {/* <button type="button" className="join-btn btn btn-success btn-block" onClick={JoinButton}>Join</button> */}
+                    <JoinButton />
                   </td>
                 </tr>
               ))
