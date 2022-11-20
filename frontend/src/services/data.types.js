@@ -1,0 +1,2 @@
+export const GET_COMMUNITIES = "GET_COMMUNITIES";
+export const ADD_COMMUNITY = "ADD_COMMUNITY";
