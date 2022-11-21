@@ -5,8 +5,17 @@ const API_URL = "http://localhost:8000/";
 
 const getPublicContent = () => {
   // return axios.get(API_URL + "accounts/users");
-  return axios.get(API_URL + "api/users/");
+  // return axios.get(API_URL + "api/users/");
+  return axios.get('api/users/');
 };
+
+const getUserAddress = () => {
+  return axios.get(API_URL + "api/address/");
+}
+
+const updateUserAddr = (id, data) => {
+  return axios.patch(API_URL + `api/address/${id}/`,data)
+}
 
 const getUserBoard = () => {
   // return axios.get(API_URL + "accounts/users/me/", { headers: authHeader() });
@@ -15,7 +24,7 @@ const getUserBoard = () => {
 
 const updateUserInfo = (id, data) => {
   // TODO implement this on user profile -- board user
-  return axios.patch(API_URL + `api/users/${id}`,data);
+  return axios.patch(API_URL + `api/users/${id}/`,data);
 }
 
 // const getModeratorBoard = () => {
@@ -29,6 +38,8 @@ const getAdminBoard = () => {
 const userService = {
   getPublicContent,
   getUserBoard,
+  getUserAddress,
+  updateUserAddr,
 //   getModeratorBoard,
   getAdminBoard,
   updateUserInfo,

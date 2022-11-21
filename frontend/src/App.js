@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import Profile from './components/authentication/login/Profile';
+// import Profile from './components/authentication/login/Profile';
 import Register from './components/authentication/register/Register';
 import Login from './components/authentication/login/Login';
 import Home from './components/home/Home';
@@ -13,6 +13,7 @@ import Footer from './components/footer/Footer';
 import Dashboard from './components/dashboard/Dashboard';
 import BoardUser from './components/dashboard/BoardUser';
 import Communities from './components/communities/Communities';
+import Profile from './components/user-profile/Profile';
 
 import store from './store/store';
 
