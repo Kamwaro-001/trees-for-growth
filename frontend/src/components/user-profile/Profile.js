@@ -151,7 +151,7 @@ const Profile = () => {
               <Modal.Body>
                 <Form onSubmit={editUsr}>
 
-                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                  <Form.Group className="mb-3" controlId="ControlInput1">
 
                     <Form.Label>First Name</Form.Label>
                     <Form.Control name="first_name" type="text" placeholder={map_usr.first_name} autoFocus value={usr.first_name} onChange={handleInputChange} />
@@ -200,7 +200,7 @@ const Profile = () => {
               <Modal.Body>
                 <Form onSubmit={editAddress}>
 
-                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                  <Form.Group className="mb-3" controlId="ControlInput2">
 
                     <Form.Label>County</Form.Label>
                     <Form.Control name="county" type="text" placeholder={map_addr.county} autoFocus value={address.county} onChange={handleAddrChange} />
