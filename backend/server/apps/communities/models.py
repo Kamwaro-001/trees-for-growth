@@ -1,7 +1,8 @@
 from django.db import models
 
 class Community(models.Model):
-    name = models.CharField("Community name", max_length=255)
+    # TODO remove the unique property and set it to check combination of name + region is unique
+    name = models.CharField("Community name", max_length=255, unique=True)
     region = models.CharField("Region", max_length=30, default = "Kenya")
     created_by = models.CharField("Created by", max_length=255)
     date_created = models.DateField(auto_now_add=True)
