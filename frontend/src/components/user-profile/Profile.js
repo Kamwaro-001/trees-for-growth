@@ -99,16 +99,16 @@ const Profile = () => {
                   <Form.Group className="mb-3" controlId="ControlInput1">
 
                     <Form.Label>First Name</Form.Label>
-                    <Form.Control name="first_name" type="text" placeholder={map_usr.first_name} autoFocus value={usr.first_name} onChange={handleInputChange} />
+                    <Form.Control name="first_name" type="text" placeholder={map_usr.first_name} autoFocus value={usr.first_name || ''} onChange={handleInputChange} />
 
                     <Form.Label>Last Name</Form.Label>
-                    <Form.Control name="last_name" type="text" placeholder={map_usr.last_name} autoFocus value={usr.last_name} onChange={handleInputChange} />
+                    <Form.Control name="last_name" type="text" placeholder={map_usr.last_name} autoFocus value={usr.last_name || ''} onChange={handleInputChange} />
 
                     <Form.Label>Email</Form.Label>
-                    <Form.Control name="email" type="email" placeholder={map_usr.email} autoFocus value={usr.email} onChange={handleInputChange} />
+                    <Form.Control name="email" type="email" placeholder={map_usr.email} autoFocus value={usr.email || ''} onChange={handleInputChange} />
 
                     <Form.Label>Phone Number</Form.Label>
-                    <Form.Control name="phonenumber" type="text" placeholder={map_usr.phonenumber} autoFocus value={usr.phonenumber} onChange={handleInputChange} />
+                    <Form.Control name="phonenumber" type="text" placeholder={map_usr.phonenumber} autoFocus value={usr.phonenumber || ''} onChange={handleInputChange} />
 
                   </Form.Group>
                 </Form>
@@ -124,9 +124,8 @@ const Profile = () => {
             </Modal>
           </div>
         ))
-
       }
-
+      <UserAddress/>
     </div>
   )
 }

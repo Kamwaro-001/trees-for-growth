@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Modal, Form } from "react-bootstrap";
 import userService from '../../services/user.service';
+import "./Profile.css";
 
 export const UsrInfo = (
   usrid, fname, lname, email, pnumber
@@ -171,13 +172,13 @@ export const UserAddress = () => {
                   <Form.Group className="mb-3" controlId="ControlInput2">
 
                     <Form.Label>County</Form.Label>
-                    <Form.Control name="county" type="text" placeholder={map_addr.county} autoFocus value={address.county} onChange={handleInputChange} />
+                    <Form.Control name="county" type="text" placeholder={map_addr.county} autoFocus value={address.county || ''} onChange={handleInputChange} />
 
                     <Form.Label>Town</Form.Label>
-                    <Form.Control name="town" type="text" placeholder={map_addr.town} autoFocus value={address.town} onChange={handleInputChange} />
+                    <Form.Control name="town" type="text" placeholder={map_addr.town} autoFocus value={address.town || ''} onChange={handleInputChange} />
 
                     <Form.Label>Address</Form.Label>
-                    <Form.Control name="full_address" type="text" placeholder={map_addr.full_address} autoFocus value={address.email} onChange={handleInputChange} />
+                    <Form.Control name="full_address" type="text" placeholder={map_addr.full_address} autoFocus value={address.full_address || ''} onChange={handleInputChange} />
 
                   </Form.Group>
                 </Form>
