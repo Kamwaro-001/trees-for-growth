@@ -12,10 +12,11 @@ router.register('address', UserAddressViewSet, basename="address")
 
 urlpatterns = [
     path('api/', include(router.urls)),
+    path('api/test/',views.currentUser),
     ####### TEMPLATES #######
     path('', views.homepage, name='homepage'), 
     path('communities/', views.communities, name='communities'), 
     path('userdashboard/', views.userDash, name='dashboard'),
     path('profile/', Profile.as_view()),
-    path('login/', views.login, name='login'),
+    path('login/', views.login, name='login')
 ]

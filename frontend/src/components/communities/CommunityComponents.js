@@ -8,6 +8,7 @@ export const JoinButton = () => {
   const joinShow = () => setShow(true);
 
   const initialState = {
+    id: null,
     user: 'job',
     member_to: '',
   }
@@ -19,18 +20,19 @@ export const JoinButton = () => {
     setComm({ ...comm, [name]: value });
   };
 
-  const joinCommunity = () => {
+  const joinComm = () => {
     var data = {
       user: comm.user,
       member_to: comm.member_to
     };
     dataService.joinCommunity(data)
       .then(response => {
-        joinCommunity({
-          // id: response.data.id,
+        joinComm({
+          id: response.data.id,
           user: response.data.user,
           member_to: response.data.member_to
         })
+        console.log(response.data)
       })
       .catch(e => {
         console.log(e);
@@ -47,7 +49,7 @@ export const JoinButton = () => {
           <Modal.Title>Join a Community</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={joinCommunity}>
+          <Form onSubmit={joinComm}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Community Code</Form.Label>
               <Form.Control name="member_to" type="text" placeholder="verification code" autoFocus value={comm.member_to} onChange={handleInputChange} />
@@ -58,13 +60,12 @@ export const JoinButton = () => {
           <Button variant="secondary" onClick={joinClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={joinCommunity} type="submit">
+          <Button variant="primary" onClick={joinComm} type="submit">
             <span onClick={joinClose}>Join Community</span>
           </Button>
         </Modal.Footer>
       </Modal>
     </>
-
   )
 
 }

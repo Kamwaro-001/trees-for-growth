@@ -15,6 +15,9 @@ import BoardUser from './components/dashboard/BoardUser';
 import Communities from './components/communities/Communities';
 import Profile from './components/user-profile/Profile';
 
+//////////////////////////////
+
+
 import store from './store/store';
 
 function App(props) {

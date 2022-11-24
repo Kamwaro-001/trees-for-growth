@@ -19,24 +19,36 @@ const login = (username, password) => {
       password,
     })
     .then((response) => {
-      // if (response.data.accessToken) {
       if (response.data.auth_token) {
         localStorage.setItem("user", JSON.stringify(response.data));
+        loggedUser();
+      }
+      if (response.data.username) {
+        localStorage.setItem("userName", JSON.stringify(response.data));
       }
 
       return response.data;
     });
 };
+// TODO fix here 🥲
+const loggedUser = () => {
+  return axios
+  .get(API_URL + "accounts/users/me/")
+  .then(resp => {
+    localStorage.setItem("userName", JSON.stringify(resp.data.username))
+  })
+}
 
 const logout = () => {
   localStorage.removeItem("user");
-  // axios.post("accounts/token/logout/")
+  localStorage.removeItem("userName");
 };
 
 const authService = {
   register,
   login,
   logout,
+  loggedUser
 };
 
 export default authService;

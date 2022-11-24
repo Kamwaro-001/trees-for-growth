@@ -1,5 +1,4 @@
 import axios from "axios";
-import { ADD_COMMUNITY, GET_COMMUNITIES } from "./data.types";
 // import authHeader from "./auth-header";
 
 const API_URL = "http://localhost:8000/";
@@ -20,6 +19,10 @@ const getTrees = () => {
   return axios.get(API_URL + "api/trees/");
 };
 
+const findByTreeName = name => {
+  return axios.get(`api/trees?name=${name}`)
+}
+
 const updateTree = (id, data) => {
   // TODO implement this on user profile -- board user
   return axios.patch(API_URL + `api/trees/${id}`, data);
@@ -33,4 +36,4 @@ const dataService = {
   joinCommunity
 };
 
-export default dataService
+export default dataService;

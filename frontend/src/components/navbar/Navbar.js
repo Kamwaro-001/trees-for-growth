@@ -14,6 +14,7 @@ function Navbar() {
   const logOut = useCallback(() => {
     dispatch(logout())
   }, [dispatch]);
+  console.log(currentUser)
 
   return (
     <>
@@ -39,7 +40,6 @@ function Navbar() {
                 <Link to="profile/" className="nav-item">
                   <img src={user1} alt="my profile" className='to-profile' />
                 </Link>
-
                 <Link to="/login" id='nav-login' onClick={logOut}>Logout</Link>
               </>
               :
