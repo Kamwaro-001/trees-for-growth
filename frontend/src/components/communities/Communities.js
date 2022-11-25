@@ -4,7 +4,7 @@ import { Button, Modal, Form } from "react-bootstrap";
 import "./Communities.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { JoinButton } from "./Community.Modals";
-// import joinShow from "./CommunityComponents";
+import communityService from "../../services/community.service";
 
 const Communities = (props) => {
   const [content, setContent] = useState("");
@@ -31,7 +31,7 @@ const Communities = (props) => {
   const initialState = {
     name: '',
     region: '',
-    created_by: 2,
+    created_by: communityService.IdUser,
     verif_code: 'xyz'
   }
   const [community, setCommunity] = useState(initialState);

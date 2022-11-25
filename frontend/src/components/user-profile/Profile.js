@@ -20,7 +20,6 @@ const Profile = () => {
     userService.getUserBoard()
       .then(response => {
         setUserInfo(response.data);
-        // console.log(response.data);
       })
       .catch(e => {
         console.log(e)
