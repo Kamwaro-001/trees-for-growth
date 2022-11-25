@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import dataService from "../../services/data.service";
+import authService from "../../services/auth.service";
 
 const Dashboard = () => {
   const [content, setContent] = useState("");
@@ -22,12 +23,11 @@ const Dashboard = () => {
       }
     );
   }, []);
-  let l = content.length+9;
+  let l = content.length;
 
   const goals = [5, 10, 15, 20, 30, 50, 100, 200]
   let passed = goals.filter( g => g <= l )
   let goal = "next goal is " + goals[passed.length];
-console.log(passed)
 
   return (
     <>
@@ -37,6 +37,7 @@ console.log(passed)
           <p className="dash-tally">{l}</p>
           <h3>Next Goal</h3>
           <p>{goal}</p>
+          <p>Name:</p>
           {/* <button type="button" onClick={displayTable(content)}>hi</button> */}
         </div>
 

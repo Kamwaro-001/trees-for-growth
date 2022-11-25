@@ -21,7 +21,6 @@ const login = (username, password) => {
     .then((response) => {
       if (response.data.auth_token) {
         localStorage.setItem("user", JSON.stringify(response.data));
-        loggedUser();
       }
       if (response.data.username) {
         localStorage.setItem("userName", JSON.stringify(response.data));
@@ -35,7 +34,7 @@ const loggedUser = () => {
   return axios
   .get(API_URL + "accounts/users/me/")
   .then(resp => {
-    localStorage.setItem("userName", JSON.stringify(resp.data.username))
+    return resp.data.username
   })
 }
 
