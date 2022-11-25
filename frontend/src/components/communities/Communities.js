@@ -3,7 +3,7 @@ import dataService from '../../services/data.service';
 import { Button, Modal, Form } from "react-bootstrap";
 import "./Communities.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { JoinButton } from "./CommunityComponents";
+import { JoinButton } from "./Community.Modals";
 // import joinShow from "./CommunityComponents";
 
 const Communities = (props) => {
@@ -31,7 +31,7 @@ const Communities = (props) => {
   const initialState = {
     name: '',
     region: '',
-    created_by: 'jobk',
+    created_by: 2,
     verif_code: 'xyz'
   }
   const [community, setCommunity] = useState(initialState);
@@ -57,6 +57,7 @@ const Communities = (props) => {
           created_by: response.data.created_by,
           verif_code: response.data.verif_code
         });
+        console.log(response.data);
       })
       .catch(e => {
         console.log(e);
