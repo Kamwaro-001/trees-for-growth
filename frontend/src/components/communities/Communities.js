@@ -5,6 +5,7 @@ import "./Communities.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { JoinButton } from "./Community.Modals";
 import communityService from "../../services/community.service";
+// import authService from "../../services/auth.service";
 
 const Communities = (props) => {
   const [content, setContent] = useState("");
@@ -28,10 +29,11 @@ const Communities = (props) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+    
   const initialState = {
     name: '',
     region: '',
-    created_by: communityService.IdUser,
+    created_by: communityService.IdUser(),
     verif_code: 'xyz'
   }
   const [community, setCommunity] = useState(initialState);
@@ -48,6 +50,7 @@ const Communities = (props) => {
       created_by: community.created_by,
       verif_code: community.verif_code
     };
+    console.log(data)
     dataService.addCommunity(data)
       .then(response => {
         setCommunity({
@@ -83,6 +86,7 @@ const Communities = (props) => {
     <>
       <div id='communities-board'>
         <h2 className='communities-heads'>Communities</h2>
+        {/* {authService.loggedUser()} */}
         <div className="comm-create">
           <Button variant="primary" onClick={handleShow}>
             Create a Community

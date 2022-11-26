@@ -10,33 +10,30 @@ const register = (username, email, password) => {
     password,
   });
 };
+// TODO fix here 🥲
+function loggedUser (){
+  return axios
+  .get(API_URL + "accounts/users/me/")
+  .then(resp => {
+    localStorage.setItem("userName", JSON.stringify(resp.data.username)) 
+  })
+}
 
-const login = (username, password) => {
+const login = (email, password) => {
   return axios
     // signin
     .post(API_URL + "accounts/token/login/", {
-      username,
+      email,
       password,
     })
     .then((response) => {
       if (response.data.auth_token) {
         localStorage.setItem("user", JSON.stringify(response.data));
+        loggedUser();
       }
-      if (response.data.username) {
-        localStorage.setItem("userName", JSON.stringify(response.data));
-      }
-
       return response.data;
     });
 };
-// TODO fix here 🥲
-const loggedUser = () => {
-  return axios
-  .get(API_URL + "accounts/users/me/")
-  .then(resp => {
-    return resp.data.username
-  })
-}
 
 const logout = () => {
   localStorage.removeItem("user");

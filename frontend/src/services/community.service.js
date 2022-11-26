@@ -1,10 +1,10 @@
-import axios from "axios";
+// import axios from "axios";
 import { useEffect, useState } from "react";
 import userService from "./user.service";
 
-const API_URL = "http://localhost:8000/";
+// const API_URL = "http://localhost:8000/";
 
-const IdUser = () => {
+function IdUser() {
   const [userinfo, setUserInfo] = useState([]);
 
   useEffect(() => {
@@ -22,9 +22,9 @@ const IdUser = () => {
 
   let id;
   userinfo.map((getid) => (
-    id = getid.id
+      id = getid.id
   ))
-
+  console.log("id is " + id)
   return id
 }
 

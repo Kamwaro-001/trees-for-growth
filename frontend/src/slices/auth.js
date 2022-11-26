@@ -5,6 +5,7 @@ import axios from "axios";
 import AuthService from "../services/auth.service";
 
 const user = JSON.parse(localStorage.getItem("user"));
+
 const API_URL = "http://localhost:8000/";
 
 export const register = createAsyncThunk(
@@ -29,9 +30,9 @@ export const register = createAsyncThunk(
 
 export const login = createAsyncThunk(
   "accounts/token/login/",
-  async ({ username, password }, thunkAPI) => {
+  async ({ email, password }, thunkAPI) => {
     try {
-      const data = await AuthService.login(username, password);
+      const data = await AuthService.login(email, password);
       return { user: data };
     } catch (error) {
       const message =
