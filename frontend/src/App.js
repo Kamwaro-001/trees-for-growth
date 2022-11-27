@@ -1,7 +1,10 @@
 // the routes
 import React from 'react';
+import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+
+import { ToastContainer } from "react-toastify";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 // import Profile from './components/authentication/login/Profile';
@@ -18,9 +21,9 @@ import Communities from './components/communities/Communities';
 import Profile from './components/user-profile/Profile.Rename';
 
 //////////////////////////////
-
-
 import store from './store/store';
+
+axios.defaults.baseURL = "http://127:0.0.1:8000"
 
 function App() {
 
@@ -41,6 +44,7 @@ function App() {
             <Footer />
          </Router>
          </div>
+         <ToastContainer hideProgressBar={true} newestOnTop={true} />
       </Provider>
       
    );
