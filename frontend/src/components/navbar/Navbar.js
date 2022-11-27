@@ -40,10 +40,10 @@ function Navbar() {
                 <Link to="profile/" className="nav-item">
                   <img src={user1} alt="my profile" className='to-profile' />
                 </Link>
-                <Link to="/login" id='nav-login' onClick={logOut}>Logout</Link>
+                <Link to="/login" id='nav-login' className="nav-item" onClick={logOut}>Logout</Link>
               </>
               :
-              <Link to="/login/" id="nav-login">Sign in</Link>
+              <Link to="/login/" id="nav-login" className="nav-item">Sign in</Link>
             }
             </div>
             

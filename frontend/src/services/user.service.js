@@ -2,6 +2,14 @@ import axios from "axios";
 import authHeader from "./auth-header";
 
 const API_URL = "http://localhost:8000/";
+// let API_URL = "http://localhost:8000/";
+
+// if (window.location.origin === "http://localhost:3000") {
+//   API_URL = "http://127.0.0.1:8000";
+// } else {
+//   API_URL = window.location.origin;
+// }
+
 
 const getPublicContent = () => {
   // return axios.get(API_URL + "accounts/users");

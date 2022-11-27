@@ -1,4 +1,7 @@
-#footer-bar {
-    height: 70px;
-    background-color: rgb(215, 241, 217)
+.b-example-divider {
+    height: 1.5rem;
+    background-color: #0000001a;
+    border: solid #00000026;
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em #0000001a, inset 0 .125em .5em #00000026;
 }

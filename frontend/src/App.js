@@ -8,19 +8,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Register from './components/authentication/register/Register';
 import Login from './components/authentication/login/Login';
 import Home from './components/home/Home';
-import Navbar from './components/navbar/Navbar';
+// import Navbar from './components/navbar/Navbar';
+import Navbar from './components/navbar/Navbar.Remake';
 import Footer from './components/footer/Footer';
 import Dashboard from './components/dashboard/Dashboard';
 import BoardUser from './components/dashboard/BoardUser';
 import Communities from './components/communities/Communities';
-import Profile from './components/user-profile/Profile';
+// import Profile from './components/user-profile/Profile';
+import Profile from './components/user-profile/Profile.Rename';
 
 //////////////////////////////
 
 
 import store from './store/store';
 
-function App(props) {
+function App() {
 
    return (
       <Provider store={store}>

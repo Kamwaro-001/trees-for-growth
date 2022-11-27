@@ -1,91 +1,66 @@
-/* * {
+* {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
 
 }
 
 body {
-    padding-top: 85px;
-    border-top: #bebebe 1px solid;
+    padding-top: 77px;
 }
 
 #nav-bar {
-    background-color: #ffffff;
-    overflow: hidden;
-    position: fixed;
-    border-top: #308148 solid 2px;
-    border-bottom: #3da55c solid 1px;
+    /* position: sticky; */
+    /* width: 100%; */
     z-index: 5;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-right: 8vw;
-    padding-left: 8vw;
-    display: flex;
-    justify-content: center;
-    top: 0;
-    left: 0;
-    right: 0;
 }
 
+
+
 #nav-fix {
-    width: 100%;
+    width: 90%;
     padding-top: 8px;
     padding-bottom: 8px;
     display: flex;
     justify-content: center;
+    /* background-color: green; */
+}
+#nav-fix {
+    /* padding-top: 8px;
+    padding-bottom: 8px; */
+}
+
+.mid-nav {
+    /* width: 50%; */
+    /* display: flex;
+    justify-content: center; */
+    text-align: center;
 }
 
 #nav-brand {
-    color: #000000;
+    /* color: #000000; */
     font-size: 26px;
-    float: left;
-    padding: 5px;
-    margin: 5px 5px;
-    text-decoration: none;
-    text-align: center;
+    /* float: left; */
+    /* padding: 5px;
+    margin: 5px 5px; */
 }
 
-.middle-nav {
-    display: flex;
-    justify-content: center;
-    margin: auto;
-}
-
-.middle-nav a {
-    display: inline-block;
-}
-
-#nav-login,
-.middle-nav a {
-    text-transform: capitalize;
-    font-size: 16px;
-    text-decoration: none;
-    color: #000000;
-    text-align: center;
-    padding: 13px 14px;
-}
-
-.middle-nav .nav-item:hover {
-    text-decoration: underline;
+.nav-right {
+    /* width: 150px; */
+    /* float: right; */
+    /* background-color: #308148; */
 }
 
 #nav-login {
     border-radius: 4px;
-    background-color: #389855;
+    /* background-color: #389855; */
     color: #000000;
     text-decoration: none;
-    display: inline-block;
-
 }
 
 #nav-login:hover {
     color: #000000;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     background-color: #308148;
-}
-
-.nav-right {
-    width: 150px;
 }
 
 label {
@@ -122,6 +97,8 @@ label {
     background-color: #3da55c;
     color: #ffffff;
     border: #ffffff;
+    /* border-radius: 0.3em; */
+    /* height: ; */
 }
 
 .card {
@@ -146,18 +123,3 @@ label {
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }
-
-@media screen and (max-width: 920px) {
-    #nav-fix, #nav-brand, .nav-item, #nav-login, .middle-nav, .nav-right {
-        display: block;
-        text-align: center;
-        width: 100%;
-        float: none;
-    }
-    #nav-bar {
-        height: 415px;
-    }
-    body {
-        padding-top: 410px;
-    }
-} */

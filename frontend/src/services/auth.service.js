@@ -1,6 +1,13 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8000/";
+let API_URL = "http://localhost:8000/";
+
+// if (window.location.origin === "http://localhost:3000") {
+//   API_URL = "http://127.0.0.1:8000";
+// } else {
+//   API_URL = window.location.origin;
+// }
+
 
 const register = (username, email, password) => {
 // signup
