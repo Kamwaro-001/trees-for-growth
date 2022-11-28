@@ -16,8 +16,7 @@ import Navbar from './components/navbar/Navbar.Remake';
 import Footer from './components/footer/Footer';
 import Dashboard from './components/dashboard/Dashboard';
 import BoardUser from './components/dashboard/BoardUser';
-// import Communities from './components/communities/Communities';
-import CommunityTest from './slices/communityTest';
+import Communities from './components/communities/Communities';
 // import Profile from './components/user-profile/Profile';
 import Profile from './components/user-profile/Profile.Rename';
 
@@ -38,8 +37,7 @@ function App() {
                <Route path='/login' element={<Login />} />
                <Route path='/register' element={<Register />} />
                <Route path='/dashboard' element={<Dashboard />} />
-               {/* <Route path='/communities' element={<Communities />} /> */}
-               <Route path='/communities' element={<CommunityTest />} />
+               <Route path='/communities' element={<Communities />} />
                <Route path='/profile' element={<Profile />} />
                <Route path='/boarduser' element={<BoardUser />} />
             </Routes>

@@ -1,71 +1,57 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form } from "react-bootstrap";
-import dataService from '../../services/data.service';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { addMemberAsync } from '../../slices/Members.slice';
 
-export const JoinButton = () => {
+export const JoinCommunity = () => {
   const [show, setShow] = useState(false);
-  const joinClose = () => setShow(false);
-  const joinShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-  const initialState = {
-    id: null,
+  const dispatch = useDispatch();
+
+  const [newMember, setMember] = useState({
     user: 'job',
-    member_to: '',
-  }
-
-  const [comm, setComm] = useState(initialState);
+    member_to: ''
+  })
 
   const handleInputChange = event => {
     const { name, value } = event.target;
-    setComm({ ...comm, [name]: value });
+    setMember({ ...newMember, [name]: value });
   };
 
-  const joinComm = () => {
-    var data = {
-      user: comm.user,
-      member_to: comm.member_to
-    };
-    dataService.joinCommunity(data)
-      .then(response => {
-        joinComm({
-          id: response.data.id,
-          user: response.data.user,
-          member_to: response.data.member_to
-        })
-        console.log(response.data)
-      })
-      .catch(e => {
-        console.log(e);
-      });
+  const joinCommunity = () => {
+    dispatch(addMemberAsync(newMember))
+    toast.success("You have joined successfully!")
   }
 
   return (
     <>
-      <Button variant="primary" onClick={joinShow}>
+      <Button variant="primary" onClick={handleShow}>
         Join
       </Button>
-      <Modal show={show} onHide={joinClose} centered>
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Join a Community</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={joinComm}>
+          <Form onSubmit={joinCommunity}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Community Code</Form.Label>
-              <Form.Control name="member_to" type="text" placeholder="verification code" autoFocus value={comm.member_to} onChange={handleInputChange} />
+              <Form.Control name="member_to" type="text" placeholder="verification code" autoFocus value={newMember.member_to} onChange={handleInputChange} />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={joinClose}>
+          <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={joinComm} type="submit">
-            <span onClick={joinClose}>Join Community</span>
+          <Button variant="primary" onClick={joinCommunity} type="submit">
+            <span onClick={handleClose}>Join Community</span>
           </Button>
         </Modal.Footer>
       </Modal>
     </>
   )
-
 }

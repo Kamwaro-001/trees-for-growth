@@ -2,13 +2,15 @@ import { configureStore } from '@reduxjs/toolkit'
 import authReducer from "../slices/auth";
 import messageReducer from "../slices/message";
 import communitySlice from '../slices/Communities.slice';
+import memberSlice from '../slices/Members.slice';
 // import { commReducer } from '../services/data.reducer';
 
 const reducer = {
   auth: authReducer,
   message: messageReducer,
   // communities: commReducer
-  communities: communitySlice
+  communities: communitySlice,
+  members: memberSlice
 }
 
 const store = configureStore({

@@ -31,7 +31,7 @@ export const getCommunityAsync = () => async (dispatch) => {
 
 export const addCommunityAsync = (data) => async (dispatch) => {
   try {
-    const response = await axios.post("api/communities/", data);
+    const response = await axios.post("/api/communities/", data);
     dispatch(addCommunity(response.data));
   } catch (err) {
     toastOnError(err);
@@ -40,7 +40,7 @@ export const addCommunityAsync = (data) => async (dispatch) => {
 
 export const patchCommunity = (id, data) => async (dispatch) => {
   try {
-    const response = await axios.patch(`api/communities/${id}/`, data);
+    const response = await axios.patch(`/api/communities/${id}/`, data);
     dispatch(updateCommunity(response.data))
   } catch (err) {
     toastOnError(err);
