@@ -6,9 +6,8 @@ Person = get_user_model()
 class Community(models.Model):
     # TODO remove the unique property and set it to check combination of name + region is unique
     name = models.CharField("Community name", max_length=255)
-    region = models.CharField("Region", max_length=30, default = "Kenya")
-    # created_by = models.CharField("Created by", max_length=255)
-    created_by = models.ForeignKey(Person, on_delete=models.CASCADE)
+    region = models.CharField("Region", max_length=30)
+    created_by = models.CharField("Created by", max_length=20)
     date_created = models.DateField(auto_now_add=True)
     community_id = models.CharField("Community ID", max_length=100, unique=True)
     verif_code = models.CharField("Verification code", max_length=255)

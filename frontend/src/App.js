@@ -16,14 +16,15 @@ import Navbar from './components/navbar/Navbar.Remake';
 import Footer from './components/footer/Footer';
 import Dashboard from './components/dashboard/Dashboard';
 import BoardUser from './components/dashboard/BoardUser';
-import Communities from './components/communities/Communities';
+// import Communities from './components/communities/Communities';
+import CommunityTest from './slices/communityTest';
 // import Profile from './components/user-profile/Profile';
 import Profile from './components/user-profile/Profile.Rename';
 
 //////////////////////////////
 import store from './store/store';
 
-axios.defaults.baseURL = "http://127:0.0.1:8000"
+axios.defaults.baseURL = "http://127.0.0.1:8000";
 
 function App() {
 
@@ -37,7 +38,8 @@ function App() {
                <Route path='/login' element={<Login />} />
                <Route path='/register' element={<Register />} />
                <Route path='/dashboard' element={<Dashboard />} />
-               <Route path='/communities' element={<Communities />} />
+               {/* <Route path='/communities' element={<Communities />} /> */}
+               <Route path='/communities' element={<CommunityTest />} />
                <Route path='/profile' element={<Profile />} />
                <Route path='/boarduser' element={<BoardUser />} />
             </Routes>

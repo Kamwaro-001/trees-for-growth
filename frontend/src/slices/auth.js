@@ -3,17 +3,12 @@ import { setMessage } from "./message";
 import axios from "axios";
 
 import AuthService from "../services/auth.service";
+import { toastOnError } from "../redux/utils/Utils";
+import { toast } from "react-toastify";
 
 const user = JSON.parse(localStorage.getItem("user"));
 
 const API_URL = "http://localhost:8000/";
-// let API_URL = "http://localhost:8000/";
-
-// if (window.location.origin === "http://localhost:3000") {
-//   API_URL = "http://127.0.0.1:8000";
-// } else {
-//   API_URL = window.location.origin;
-// }
 
 
 export const register = createAsyncThunk(
@@ -31,6 +26,7 @@ export const register = createAsyncThunk(
         error.message ||
         error.toString();
       thunkAPI.dispatch(setMessage(message));
+      toastOnError(error);
       return thunkAPI.rejectWithValue();
     }
   }
@@ -41,6 +37,7 @@ export const login = createAsyncThunk(
   async ({ email, password }, thunkAPI) => {
     try {
       const data = await AuthService.login(email, password);
+      toast.success("Login successful");
       return { user: data };
     } catch (error) {
       const message =

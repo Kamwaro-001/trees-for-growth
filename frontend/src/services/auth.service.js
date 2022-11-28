@@ -1,57 +1,41 @@
 import axios from "axios";
+import { toast } from "react-toastify";
+import { setAxiosAuthToken, toastOnError } from "../redux/utils/Utils";
 
-let API_URL = "http://localhost:8000/";
-
-// if (window.location.origin === "http://localhost:3000") {
-//   API_URL = "http://127.0.0.1:8000";
-// } else {
-//   API_URL = window.location.origin;
-// }
-
-
+const API_URL = "http://localhost:8000/";
 const register = (username, email, password) => {
-// signup
-  return axios.post(API_URL + "accounts/users/", {
+  return axios.post(API_URL + "api/accounts/users/", {
     username,
     email,
     password,
   });
 };
-// TODO fix here 🥲
-function loggedUser (){
-  return axios
-  .get(API_URL + "accounts/users/me/")
-  .then(resp => {
-    localStorage.setItem("userName", JSON.stringify(resp.data.username)) 
-  })
-}
 
 const login = (email, password) => {
   return axios
-    // signin
-    .post(API_URL + "accounts/token/login/", {
+    .post(API_URL + "api/accounts/token/login/", {
       email,
       password,
     })
     .then((response) => {
       if (response.data.auth_token) {
         localStorage.setItem("user", JSON.stringify(response.data));
-        loggedUser();
+        setAxiosAuthToken(response.data);
       }
       return response.data;
-    });
+    })
 };
 
 const logout = () => {
+  setAxiosAuthToken("");
   localStorage.removeItem("user");
-  localStorage.removeItem("userName");
+  toast.success("logout successful")
 };
 
 const authService = {
   register,
   login,
-  logout,
-  loggedUser
+  logout
 };
 
 export default authService;
