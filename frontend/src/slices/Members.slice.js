@@ -20,7 +20,7 @@ export const memberSlice = createSlice({
 export const getMemberAsync = () => async(dispatch) => {
   try {
     const response = await axios.get("/api/members/");
-    dispatch(addMember(response.data))
+    dispatch(getMembers(response.data))
   } catch (err) {
     toastOnError(err)
   }

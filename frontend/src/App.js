@@ -22,6 +22,7 @@ import Profile from './components/user-profile/Profile.Rename';
 
 //////////////////////////////
 import store from './store/store';
+import Trees from './components/planting/Trees';
 
 axios.defaults.baseURL = "http://127.0.0.1:8000";
 
@@ -38,6 +39,7 @@ function App() {
                <Route path='/register' element={<Register />} />
                <Route path='/dashboard' element={<Dashboard />} />
                <Route path='/communities' element={<Communities />} />
+               <Route path='/trees' element={<Trees />} />
                <Route path='/profile' element={<Profile />} />
                <Route path='/boarduser' element={<BoardUser />} />
             </Routes>

@@ -2,28 +2,39 @@ import React, { useState, useEffect } from "react";
 
 import dataService from "../../services/data.service";
 import authService from "../../services/auth.service";
+import { useDispatch } from "react-redux";
+import { getTreeAsync, showTree } from "../../slices/Trees.slice";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
-  const [content, setContent] = useState("");
+  // const [content, setContent] = useState("");
+  const dispatch = useDispatch();
+  const tree = useSelector((state) => state.trees);
 
   useEffect(() => {
-    dataService.getTrees().then(
-      (response) => {
-        setContent(response.data);
-      },
-      (error) => {
-        const _content =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
+    dispatch(getTreeAsync())
+  }, [dispatch])
+  // useEffect(() => {
+  //   dataService.getTrees().then(
+  //     (response) => {
+  //       setContent(response.data);
+  //     },
+  //     (error) => {
+  //       const _content =
+  //         (error.response &&
+  //           error.response.data &&
+  //           error.response.data.message) ||
+  //         error.message ||
+  //         error.toString();
 
-        setContent(_content);
-      }
-    );
-  }, []);
-  let l = content.length;
+  //       setContent(_content);
+  //     }
+  //   );
+  // }, []);
+  let l;
+
+  
+  console.log(tree)
 
   const goals = [5, 10, 15, 20, 30, 50, 100, 200]
   let passed = goals.filter( g => g <= l )

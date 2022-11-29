@@ -44,8 +44,8 @@ const Communities = () => {
 						<th>Created By</th>
 					</tr>
 					{
-						community.map((c, i) => (
-							c.map(item => (
+						community.map((c) => (
+							c.map((item, i) => (
 								<tr key={i}>
 									<td>{item.name}</td>
 									<td>{item.region}</td>
