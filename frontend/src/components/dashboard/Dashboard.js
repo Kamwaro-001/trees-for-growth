@@ -1,43 +1,29 @@
-import React, { useState, useEffect } from "react";
-
-import dataService from "../../services/data.service";
-import authService from "../../services/auth.service";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getTreeAsync, showTree } from "../../slices/Trees.slice";
 import { useSelector } from "react-redux";
 
 const Dashboard = () => {
-  // const [content, setContent] = useState("");
   const dispatch = useDispatch();
-  const tree = useSelector((state) => state.trees);
+  // const tree = useSelector((state) => state.trees);
+  const tree = useSelector(showTree)
 
   useEffect(() => {
     dispatch(getTreeAsync())
   }, [dispatch])
-  // useEffect(() => {
-  //   dataService.getTrees().then(
-  //     (response) => {
-  //       setContent(response.data);
-  //     },
-  //     (error) => {
-  //       const _content =
-  //         (error.response &&
-  //           error.response.data &&
-  //           error.response.data.message) ||
-  //         error.message ||
-  //         error.toString();
-
-  //       setContent(_content);
-  //     }
-  //   );
-  // }, []);
   let l;
+  let lists = []
 
-  
-  console.log(tree)
+  tree.forEach(element => {
+    element.forEach(e => {
+      lists.push(e)
+    })
+  });
 
   const goals = [5, 10, 15, 20, 30, 50, 100, 200]
-  let passed = goals.filter( g => g <= l )
+  l = lists.length;
+  // console.log(lists);
+  let passed = goals.filter(g => g <= l)
   let goal = "next goal is " + goals[passed.length];
 
   return (
@@ -48,21 +34,9 @@ const Dashboard = () => {
           <p className="dash-tally">{l}</p>
           <h3>Next Goal</h3>
           <p>{goal}</p>
-          <p>Name:</p>
-          {/* <button type="button" onClick={displayTable(content)}>hi</button> */}
         </div>
 
         <div className="list-trees">
-          {/* <table className="list-of-trees">
-            <tbody>
-              {content.map((tree) => {
-                <tr index={tree.id}>
-                  <td>{tree.tree_name}</td>
-                  <td>{tree.more_info}</td>
-                </tr>
-              })}
-            </tbody>
-          </table> */}
         </div>
       </div>
     </>
