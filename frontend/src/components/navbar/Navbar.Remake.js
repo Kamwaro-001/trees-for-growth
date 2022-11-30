@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../slices/auth";
 import "./Navbar.css";
-import user1 from "../images/user1.png";
+// import user1 from "../images/user1.png";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -30,30 +30,35 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to="/">Home</Link>
               </li>
-              {currentUser !== null ?
-                <li className="nav-item">
-                  <Link to="/dashboard/" className="nav-link active">Dashboard</Link> </li> : null}
-              <li className="nav-item dropdown">
-                <Link className="nav-link dropdown-toggle active" to="/communities" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Planting
-                </Link>
-                <ul className="dropdown-menu">
-                  <li><Link className="dropdown-item" to="/trees">plant</Link></li>
-                  <li><Link className="dropdown-item" to="#">list</Link></li>
-                  <li><hr className="dropdown-divider" /></li>
-                  <li><Link className="dropdown-item" to="#">Buy</Link></li>
-                </ul>
-              </li>
-              <li className="nav-item">
-
-              </li>
+              {currentUser !== null ? <>
+                  <li className="nav-item">
+                    <Link to="/dashboard/" className="nav-link active">Dashboard</Link> </li>
+                  <li className="nav-item dropdown">
+                    <Link className="nav-link dropdown-toggle active" to="/trees" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Planting </Link>
+                    <ul className="dropdown-menu">
+                      <li><Link className="dropdown-item" to="/trees">plant</Link></li>
+                      <li><hr className="dropdown-divider" /></li>
+                      <li><Link className="dropdown-item" to="#">Buy</Link></li>
+                    </ul>
+                  </li>
+              </> : null}
+                  <li className="nav-item dropdown">
+                    <Link className="nav-link dropdown-toggle active" to="/communities" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Communities </Link>
+                    <ul className="dropdown-menu">
+                      <li><Link className="dropdown-item" to="/communities">List</Link></li>
+                      <li><hr className="dropdown-divider" /></li>
+                      <li><Link className="dropdown-item" to="#">Create</Link></li>
+                    </ul>
+                  </li>
               <div className='nav-right'>
                 {currentUser !== null ?
                   <>
                     <li><Link to="profile/" className="nav-item">settings
                     </Link></li>
                     <li>
-                      <Link to="/login" id='nav-login' className='nav-item' onClick={logOut}>Logout</Link>
+                      <Link to="/login" id='nav-login' className='nav-item' onClick={logOut}>Sign out</Link>
                     </li>
                   </>
                   :
@@ -62,7 +67,7 @@ const Navbar = () => {
               </div>
             </ul>
           </div>
-            {/* <form className="d-flex" role="search">
+          {/* <form className="d-flex" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
               <button className="btn btn-outline-success" type="submit">Search</button>
             </form> */}

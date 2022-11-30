@@ -2,15 +2,18 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getTreeAsync, showTree } from "../../slices/Trees.slice";
 import { useSelector } from "react-redux";
+import { getPersonAsync, showPerson } from "../../slices/other.Slice";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   // const tree = useSelector((state) => state.trees);
   const tree = useSelector(showTree)
+  const persona = useSelector(showPerson)
 
   useEffect(() => {
-    dispatch(getTreeAsync())
-  }, [dispatch])
+    dispatch(getTreeAsync());
+    dispatch(getPersonAsync())
+  }, [])
   let l;
   let lists = []
 
@@ -19,8 +22,8 @@ const Dashboard = () => {
       lists.push(e)
     })
   });
-
-  const goals = [5, 10, 15, 20, 30, 50, 100, 200]
+  console.log(persona);
+  const goals = [5, 10, 15, 20, 30, 50, 100, 200];
   l = lists.length;
   // console.log(lists);
   let passed = goals.filter(g => g <= l)

@@ -1,18 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Modal, Form } from "react-bootstrap";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { addMemberAsync } from '../../slices/Members.slice';
+import { getPersonAsync, showPerson } from "../../slices/other.Slice";
 
 export const JoinCommunity = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const persona = useSelector(showPerson);
+
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getPersonAsync())
+  // }, [])
 
   const [newMember, setMember] = useState({
     user: 'job',
+    // user: persona[0].username,
     member_to: ''
   })
 
@@ -23,6 +31,7 @@ export const JoinCommunity = () => {
 
   const joinCommunity = () => {
     dispatch(addMemberAsync(newMember))
+    dispatch(getPersonAsync())
     toast.success("You have joined successfully!")
   }
 
