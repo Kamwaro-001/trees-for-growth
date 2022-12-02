@@ -11,21 +11,21 @@ export const JoinCommunity = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // const persona = useSelector(showPerson);
-  let [persona, setPersona] = useState(['']);
-  const data = useSelector(showPerson);
+  const persona = useSelector(showPerson);
   const dispatch = useDispatch();
 
   useEffect(() => {
       dispatch(getPersonAsync())
-      // let mage = 
-      setPersona(data)
-  }, [dispatch])
-  console.log(persona[0])
+  }, [])
+
+  // let allcontent = {}
   
+  // allcontent = Object.assign({}, ...persona);
+
+  // console.log(allcontent.username)
+
   const [newMember, setMember] = useState({
     user: 'job',
-    // user: name[0] !== undefined? name[0] : null,
     member_to: ''
   })
   const handleInputChange = event => {

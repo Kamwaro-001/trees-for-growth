@@ -9,7 +9,7 @@ class Community(models.Model):
     region = models.CharField("Region", max_length=30)
     created_by = models.CharField("Created by", max_length=20)
     date_created = models.DateField(auto_now_add=True)
-    community_id = models.CharField("Community ID", max_length=100, unique=True)
+    # community_id = models.CharField("Community ID", max_length=100, unique=True)
     verif_code = models.CharField("Verification code", max_length=255)
     
     class Meta:

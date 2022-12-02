@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Modal, Form } from "react-bootstrap";
 import { addCommunityAsync, getCommunityAsync, showCommunity } from "../../slices/Communities.slice";
 import { JoinCommunity } from "./Community.Modals";
+import phoneNumberToken from "generate-sms-verification-code";
 
 const Communities = () => {
 	const [show, setShow] = useState(false);
@@ -11,25 +12,34 @@ const Communities = () => {
 
 	const community = useSelector(showCommunity)
 	const dispatch = useDispatch();
+
+	const letter = () => {
+		const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+		return alphabet[Math.floor(Math.random() * alphabet.length)]
+	}
+	let generatedToken = phoneNumberToken(8, { type: 'number' });
+	const verificationCode = letter() + generatedToken;
+
 	const [newComm, setNewComm] = useState({
 		name: '',
 		region: '',
 		created_by: 'job',
-		verif_code: 'd46'
+		verif_code: verificationCode
 	})
-
 	useEffect(() => {
 		dispatch(getCommunityAsync())
 		// eslint-disable-next-line
 	}, [])
 
 	const handleInputChange = event => {
-	  const { name, value } = event.target;
-	  setNewComm({ ...newComm, [name]: value });
+		const { name, value } = event.target;
+		setNewComm({ ...newComm, [name]: value });
 	};
 
 	const addNewCommunity = () => {
 		dispatch(addCommunityAsync(newComm))
+		window.location.reload();
 	}
 
 	return (

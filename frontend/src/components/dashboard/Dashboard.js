@@ -8,7 +8,7 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   // const tree = useSelector((state) => state.trees);
   const tree = useSelector(showTree)
-  const persona = useSelector(showPerson)
+  // const persona = useSelector(showPerson)
 
   useEffect(() => {
     dispatch(getTreeAsync());
@@ -22,7 +22,7 @@ const Dashboard = () => {
       lists.push(e)
     })
   });
-  console.log(persona);
+  // console.log(persona);
   const goals = [5, 10, 15, 20, 30, 50, 100, 200];
   l = lists.length;
   // console.log(lists);
