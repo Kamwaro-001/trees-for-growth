@@ -28,3 +28,20 @@
     text-align: center;
     margin-top: 20px;
 }
+
+/* .get-communities {
+    height: 150px;
+} */
+
+.my-communities {
+    list-style-type: none;
+    /* display: block; */
+    background-color: #d6d6d6;
+    border-radius: 1em;
+    padding: 20px;
+}
+
+.my-communities li {
+    display: inline-block;
+    padding: 10px;
+}

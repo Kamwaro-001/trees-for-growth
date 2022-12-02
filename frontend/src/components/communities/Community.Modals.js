@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Modal, Form } from "react-bootstrap";
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { addMemberAsync } from '../../slices/Members.slice';
+import { getCommunityAsync, showCommunity } from '../../slices/Communities.slice';
+import { addMemberAsync, getMemberAsync, showMember } from '../../slices/Members.slice';
 
-export const JoinCommunity = () => {
+export const JoinCommunity = (props) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -22,8 +24,13 @@ export const JoinCommunity = () => {
     setMember({ ...newMember, [name]: value });
   };
   const joinCommunity = () => {
-    dispatch(addMemberAsync(newMember))
-    toast.success("You have joined successfully!")
+    if (newMember.member_to === props.check) {
+      dispatch(addMemberAsync(newMember)) && window.location.reload();
+      // toast.success("You have joined successfully!")
+      // window.location.reload();
+    } else {
+      toast.warn("Wrong Verification Code!")
+    }
   }
 
   return (
@@ -52,6 +59,40 @@ export const JoinCommunity = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+    </>
+  )
+}
+
+export const CommunitiesList = () => {
+  const dispatch = useDispatch();
+  const membership = useSelector(showMember);
+  const community = useSelector(showCommunity);
+  const person = JSON.parse(localStorage.getItem("person"));
+
+  useEffect(() => {
+    dispatch(getMemberAsync());
+    dispatch(getCommunityAsync());
+  }, [dispatch])
+
+  return (
+    <>
+      {
+        membership.map((member) => (
+          member.map((m, index) => (
+            community.map((comm) => (
+              comm.map((c, commIndex) => (
+                m.user === person.username && m.member_to === c.verif_code ?
+                  <ul key={commIndex} className='my-communities'>
+                    <li>{c.name}</li>
+                    <li>{c.region}</li>
+                    <li>{c.date_created}</li>
+                  </ul>
+                  : null
+              ))
+            ))
+          ))
+        ))
+      }
     </>
   )
 }

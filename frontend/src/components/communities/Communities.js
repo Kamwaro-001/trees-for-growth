@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Modal, Form } from "react-bootstrap";
 import { addCommunityAsync, getCommunityAsync, showCommunity } from "../../slices/Communities.slice";
-import { JoinCommunity } from "./Community.Modals";
+import { JoinCommunity, CommunitiesList } from "./Community.Modals";
 import phoneNumberToken from "generate-sms-verification-code";
+import "./Communities.css";
 
 
 const Communities = () => {
@@ -64,7 +65,7 @@ const Communities = () => {
 									<td>{item.name}</td>
 									<td>{item.region}</td>
 									<td>{item.created_by}</td>
-									<td><JoinCommunity /></td>
+									<td><JoinCommunity check={item.verif_code}/></td>
 								</tr>
 							))
 						))
@@ -98,6 +99,28 @@ const Communities = () => {
 						</Button>
 					</Modal.Footer>
 				</Modal>
+			</div>
+			<div className="my-communities">
+				<h3>My communities</h3>
+				<div className="get-communities">
+				{
+						community.map((c) => (
+							c.map((item, i) => (
+								item.created_by === user.username ?
+									<ul key={i} className = 'my-communities'>
+										<li>{item.name}</li>
+										<li>{item.region}</li>
+										<li>{item.date_created}</li>
+									</ul>
+								: null
+							))
+						))
+					}
+				</div>
+			</div>
+			<div>
+				<h3>Communities I am a member of</h3>
+				<CommunitiesList />
 			</div>
 		</div>
 	)

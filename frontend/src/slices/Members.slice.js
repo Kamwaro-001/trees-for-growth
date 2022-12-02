@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toastOnError } from "../redux/utils/Utils";
+import { toast } from "react-toastify";
 
 export const memberSlice = createSlice({
   name: "members",
@@ -31,7 +32,12 @@ export const addMemberAsync = (data) => async(dispatch) => {
     const response = await axios.post("/api/members/", data);
     dispatch(addMember(response.data))
   } catch (err) {
-    toastOnError(err)
+    if(err.response.data.non_field_errors[0] === 'The fields user, member_to must make a unique set.'){
+      toast.warn("You are already a member")
+    } else{
+      // console.log(err.response.data.non_field_errors[0])
+      toastOnError(err)
+    }
   }
 }
 
