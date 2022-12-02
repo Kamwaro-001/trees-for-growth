@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import "./Navbar.Remake.css";
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
@@ -7,10 +7,16 @@ import "./Navbar.css";
 // import user1 from "../images/user1.png";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import { getPersonAsync } from '../../slices/other.Slice';
 
 const Navbar = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+		dispatch(getPersonAsync())
+  }, [dispatch])
+
   const logOut = useCallback(() => {
     dispatch(logout())
   }, [dispatch]);

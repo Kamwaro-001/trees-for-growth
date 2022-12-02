@@ -5,6 +5,7 @@ import { addCommunityAsync, getCommunityAsync, showCommunity } from "../../slice
 import { JoinCommunity } from "./Community.Modals";
 import phoneNumberToken from "generate-sms-verification-code";
 
+
 const Communities = () => {
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
@@ -13,25 +14,28 @@ const Communities = () => {
 	const community = useSelector(showCommunity)
 	const dispatch = useDispatch();
 
-	const letter = () => {
-		const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-		return alphabet[Math.floor(Math.random() * alphabet.length)]
-	}
-	let generatedToken = phoneNumberToken(8, { type: 'number' });
-	const verificationCode = letter() + generatedToken;
-
-	const [newComm, setNewComm] = useState({
-		name: '',
-		region: '',
-		created_by: 'job',
-		verif_code: verificationCode
-	})
 	useEffect(() => {
-		dispatch(getCommunityAsync())
+		dispatch(getCommunityAsync());
 		// eslint-disable-next-line
 	}, [])
 
+	const letter = () => {
+		const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		return alphabet[Math.floor(Math.random() * alphabet.length)]
+	}
+	const user = JSON.parse(localStorage.getItem("person"));
+	// console.log(user.username) 
+
+	let generatedToken = phoneNumberToken(8, { type: 'number' });
+	
+	const verificationCode = letter() + generatedToken;
+	const [newComm, setNewComm] = useState({
+		name: '',
+		region: '',
+		created_by: user.username,
+		verif_code: verificationCode
+	})
+	
 	const handleInputChange = event => {
 		const { name, value } = event.target;
 		setNewComm({ ...newComm, [name]: value });

@@ -6,7 +6,7 @@ export const personSlice = createSlice({
   name: "person",
   initialState: {
     data: []
-  }, 
+  },
   reducers: {
     getPerson: (state, action) => {
       state.data = [action.payload];
@@ -14,10 +14,11 @@ export const personSlice = createSlice({
   }
 })
 
-export const getPersonAsync = () => async(dispatch) => {
+export const getPersonAsync = () => async (dispatch) => {
   try {
     const response = await axios.get("/api/accounts/users/me/");
-    dispatch(getPerson(response.data))
+    dispatch(getPerson(response.data.username))
+    localStorage.setItem("person", JSON.stringify(response.data));
   } catch (err) {
     toastOnError(err)
   }

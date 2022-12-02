@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getTreeAsync, showTree } from "../../slices/Trees.slice";
 import { useSelector } from "react-redux";
-import { getPersonAsync, showPerson } from "../../slices/other.Slice";
+import { getPersonAsync } from "../../slices/other.Slice";
 
 const Dashboard = () => {
   const dispatch = useDispatch();

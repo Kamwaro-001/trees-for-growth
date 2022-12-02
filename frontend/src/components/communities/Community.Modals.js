@@ -1,43 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Modal, Form } from "react-bootstrap";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { toastOnError } from '../../redux/utils/Utils';
 import { addMemberAsync } from '../../slices/Members.slice';
-import { getPersonAsync, showPerson } from "../../slices/other.Slice";
 
 export const JoinCommunity = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const persona = useSelector(showPerson);
+  // const persona = useSelector(showPerson);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-      dispatch(getPersonAsync())
-  }, [])
-
-  // let allcontent = {}
-  
-  // allcontent = Object.assign({}, ...persona);
-
-  // console.log(allcontent.username)
+  const persona = JSON.parse(localStorage.getItem("person"));
 
   const [newMember, setMember] = useState({
-    user: 'job',
+    user: persona.username,
     member_to: ''
   })
   const handleInputChange = event => {
     const { name, value } = event.target;
     setMember({ ...newMember, [name]: value });
   };
-
   const joinCommunity = () => {
     dispatch(addMemberAsync(newMember))
-    // dispatch(getPersonAsync())
     toast.success("You have joined successfully!")
   }
+
   return (
     <>
       <Button variant="primary" onClick={handleShow}>

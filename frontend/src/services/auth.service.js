@@ -1,10 +1,10 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { setAxiosAuthToken, toastOnError } from "../redux/utils/Utils";
+import { setAxiosAuthToken } from "../redux/utils/Utils";
 
-const API_URL = "http://localhost:8000/";
+// const API_URL = "http://localhost:8000/";
 const register = (username, email, password) => {
-  return axios.post(API_URL + "api/accounts/users/", {
+  return axios.post("/api/accounts/users/", {
     username,
     email,
     password,
@@ -13,7 +13,7 @@ const register = (username, email, password) => {
 
 const login = (email, password) => {
   return axios
-    .post(API_URL + "api/accounts/token/login/", {
+    .post("/api/accounts/token/login/", {
       email,
       password,
     })
@@ -29,6 +29,7 @@ const login = (email, password) => {
 const logout = () => {
   setAxiosAuthToken("");
   localStorage.removeItem("user");
+  localStorage.removeItem("person");
   toast.success("logout successful")
 };
 
