@@ -9,57 +9,47 @@ body {
 }
 
 #nav-bar {
-    /* position: sticky; */
-    /* width: 100%; */
     z-index: 5;
 }
 
-
+.nav-item:hover {
+    text-decoration: underline;
+}
 
 #nav-fix {
     width: 90%;
     padding-top: 8px;
     padding-bottom: 8px;
-    display: flex;
-    justify-content: center;
-    /* background-color: green; */
-}
-#nav-fix {
-    /* padding-top: 8px;
-    padding-bottom: 8px; */
-}
-
-.mid-nav {
-    /* width: 50%; */
-    /* display: flex;
-    justify-content: center; */
-    text-align: center;
 }
 
 #nav-brand {
-    /* color: #000000; */
     font-size: 26px;
-    /* float: left; */
-    /* padding: 5px;
-    margin: 5px 5px; */
 }
 
-.nav-right {
-    /* width: 150px; */
-    /* float: right; */
-    /* background-color: #308148; */
+#nav-right-side {
+    text-align: center;
+    margin-right: 3em;
+}
+
+#drop-menu3 {
+    background-color: #e3dfdf;
+}
+
+#drop-menu3 li {
+    text-align: center;
 }
 
 #nav-login {
     border-radius: 4px;
-    /* background-color: #389855; */
     color: #000000;
     text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    background-color: #3da55c;
 }
 
 #nav-login:hover {
     color: #000000;
-    /* text-decoration: underline; */
     background-color: #308148;
 }
 
@@ -71,10 +61,10 @@ label {
 .auth-page {
     background: linear-gradient(#48f97dab, #000000d2), url(../images/vecteezy_avatar-premium-icon-sign-symbol_6732102.jpg);
     height: 80vh;
-	-webkit-background-size: cover;
-	background-size: cover;
-	background-position: center center;
-	width: 100%;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
 }
 
 .login-form,
@@ -97,8 +87,6 @@ label {
     background-color: #3da55c;
     color: #ffffff;
     border: #ffffff;
-    /* border-radius: 0.3em; */
-    /* height: ; */
 }
 
 .card {
