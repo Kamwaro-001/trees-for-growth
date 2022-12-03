@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { clearMessage } from "../../../slices/message";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -27,16 +27,6 @@ const Login = () => {
     // username: "",
     email: "",
     password: "",
-  };
-
-  const [logins, setLogin] = useState({
-    email: "",
-    password: "",
-  })
-
-  const handleInputChange = event => {
-    const { name, value } = event.target;
-    setLogin({ ...logins, [name]: value });
   };
 
   const handleLogin = (formValue) => {
@@ -82,27 +72,23 @@ const Login = () => {
                   validationSchema={validationSchema}
                   onSubmit={handleLogin}
                 >
-                  {/* <form onSubmit={handleLogin}> */}
                   <Form>
 
-                    <h3 className="fw-normal mb-3 pb-3">Log in</h3>
+                    <h3 className="fw-normal mb-3 pb-3">Sign in</h3>
 
                     <div className="form-outline mb-4">
-                      {/* <input type="email" id="form2Example18" className="form-control form-control-lg" value={logins.email} onChange={handleInputChange} name="email" placeholder="Email" required /> */}
-
                       <Field name="email" type="text" className="form-control" placeholder="Email" />
                       <ErrorMessage name="email" component="div" className="alert alert-danger" />
 
                     </div>
 
                     <div className="form-outline mb-4">
-                      {/* <input type="password" name="password" id="form2Example28" className="form-control form-control-lg" placeholder="Password" value={logins.password} onChange={handleInputChange} required /> */}
                       <Field name="password" type="password" className="form-control" placeholder="Password" />
                       <ErrorMessage name="password" component="div" className="alert alert-danger" />
                     </div>
 
                     <div className="pt-1 mb-4">
-                      <button type="submit" className="btn btn-info btn-lg btn-block" disabled={loading}>
+                      <button type="submit" className="auth-btn btn-info btn-lg btn-block" disabled={loading}>
                         {loading && (
                           <span className="spinner-border spinner-border-sm"></span>
                         )}
@@ -110,10 +96,9 @@ const Login = () => {
                       </button>
                     </div>
 
-                    <p className="small mb-5 pb-lg-2"><a className="text-muted" href="#!">Forgot password?</a></p>
-                    <p>Don't have an account? <a href="#!" className="link-info">Register here</a></p>
+                    <p className="small mb-5 pb-lg-2"><Link className="text-muted" to="#!">Forgot password?</Link></p>
+                    <p>Don't have an account? <Link to="/register" className="link-info">Register here</Link></p>
 
-                    {/* </form> */}
                   </Form>
                 </Formik>
               </div>

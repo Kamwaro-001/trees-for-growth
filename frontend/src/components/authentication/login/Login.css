@@ -25,3 +25,9 @@ img {
 .authpage {
   background-color: #657263;
 }
+
+.alert-danger {
+  background-color: #98c878bf;
+  border: none;
+  color: black;
+}
