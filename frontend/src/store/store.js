@@ -5,6 +5,7 @@ import communitySlice from '../slices/Communities.slice';
 import memberSlice from '../slices/Members.slice';
 import treeSlice from '../slices/Trees.slice';
 import personSlice from '../slices/other.Slice';
+import userSlice from '../slices/Users.slice';
 
 const reducer = {
   auth: authReducer,
@@ -12,7 +13,8 @@ const reducer = {
   communities: communitySlice,
   members: memberSlice,
   trees: treeSlice,
-  person: personSlice
+  person: personSlice,
+  userinfo: userSlice
 }
 
 const store = configureStore({

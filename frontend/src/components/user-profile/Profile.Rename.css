@@ -43,3 +43,8 @@
 .progress-bar5 {
     width: 66%;
 }
+
+.mb-3 div{
+    margin-top: auto;
+    margin-bottom: auto;
+}

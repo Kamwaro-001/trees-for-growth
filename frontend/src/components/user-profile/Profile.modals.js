@@ -101,21 +101,21 @@ export const UserAddress = () => {
 
   let countyad;
   let townad;
-  let fullad;
+  // let fullad;
   let addrId;
 
   useraddr.map((getid) => (
     addrId = getid.id,
     countyad = getid.county,
-    townad = getid.town,
-    fullad = getid.full_address
+    townad = getid.town
+    // fullad = getid.full_address
   ))
 
   const initialState = {
     id: null,
     county: countyad,
-    town: townad,
-    full_address: fullad
+    town: townad
+    // full_address: fullad
   }
   const getUserAddr = () => {
     userService.getUserAddress()
@@ -137,8 +137,8 @@ export const UserAddress = () => {
   const editAddress = () => {
     var data = {
       county: address.county,
-      town: address.town,
-      full_address: address.full_address
+      town: address.town
+      // full_address: address.full_address
     };
     userService.updateUserAddr(addrId, data)
       .then(response => {
@@ -156,7 +156,7 @@ export const UserAddress = () => {
             <h2>More Information</h2>
             <p>County: {map_addr.county}</p>
             <p>Town: {map_addr.town}</p>
-            <p>Address: {map_addr.full_address}</p>
+            {/* <p>Address: {map_addr.full_address}</p> */}
 
             <Button variant="primary" onClick={addrModalShow}>
               Edit
@@ -177,8 +177,8 @@ export const UserAddress = () => {
                     <Form.Label>Town</Form.Label>
                     <Form.Control name="town" type="text" placeholder={map_addr.town} autoFocus value={address.town || ''} onChange={handleInputChange} />
 
-                    <Form.Label>Address</Form.Label>
-                    <Form.Control name="full_address" type="text" placeholder={map_addr.full_address} autoFocus value={address.full_address || ''} onChange={handleInputChange} />
+                    {/* <Form.Label>Address</Form.Label>
+                    <Form.Control name="full_address" type="text" placeholder={map_addr.full_address} autoFocus value={address.full_address || ''} onChange={handleInputChange} /> */}
 
                   </Form.Group>
                 </Form>

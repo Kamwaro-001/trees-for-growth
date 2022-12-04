@@ -9,7 +9,6 @@ const Profile = () => {
   const modalClose = () => setShow(false);
   const modalShow = () => setShow(true);
 
-
   const [userinfo, setUserInfo] = useState([]);
 
   useEffect(() => {

@@ -11,9 +11,9 @@ from requests import request
 
 from rest_framework import viewsets
 
-from .models import User, TreeInfo, UserAddress
+from .models import User, TreeInfo
 
-from .serializers import UserSerializer, TreeInfoSerializer, UserAddressSerializer
+from .serializers import UserSerializer, TreeInfoSerializer
 
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
@@ -46,16 +46,16 @@ class TreeInfoViewSet(viewsets.ModelViewSet):
         return self.queryset.filter(username=self.request.user)
 
 
-class UserAddressViewSet(viewsets.ModelViewSet):
+# class UserAddressViewSet(viewsets.ModelViewSet):
 
-    serializer_class = UserAddressSerializer
-    queryset = UserAddress.objects.all()
+#     serializer_class = UserAddressSerializer
+#     queryset = UserAddress.objects.all()
 
-    def perform_create(self, serializer):
-        serializer.save(username=self.request.user)
+#     def perform_create(self, serializer):
+#         serializer.save(username=self.request.user)
 
-    def get_queryset(self):
-        return self.queryset.filter(username=self.request.user)
+#     def get_queryset(self):
+#         return self.queryset.filter(username=self.request.user)
 
 # def get_user_by_token(token):
 #  user_id = Token.objects.get(key=request.auth.key).user_id

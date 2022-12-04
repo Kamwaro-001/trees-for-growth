@@ -2,14 +2,15 @@ import axios from "axios";
 import { createSlice } from "@reduxjs/toolkit";
 import { toastOnError } from "../redux/utils/Utils";
 
-const initialState = {
-  data: []
-}
-
-const userSlice = createSlice({
-  name: "user",
-  initialState,
+export const userSlice = createSlice({
+  name: "userinfo",
+  initialState: {
+    data: []
+  },
   reducers: {
+    addUser: (state, action) => {
+      state.data.push(action.payload);
+    },
     getUser: (state, action) => {
       state.data = [action.payload]
     },
@@ -28,7 +29,16 @@ export const getUsersAsync = () => async (dispatch) => {
   }
 };
 
-export const updateUserAsync = (id, data) => async(dispatch) => {
+export const addUserAsync = (data) => async (dispatch) => {
+  try {
+    const response = await axios.post("api/users/", data);
+    dispatch(addUser(response.data))
+  } catch (error) {
+    toastOnError(error);
+  }
+}
+
+export const updateUserAsync = (id, data) => async (dispatch) => {
   try {
     const response = await axios.patch(`/api/users/${id}`, data)
     dispatch(updateUser(response.data))
@@ -37,4 +47,6 @@ export const updateUserAsync = (id, data) => async(dispatch) => {
   }
 }
 
-export const { getUser, updateUser } = userSlice.actions;
+export const { addUser, getUser, updateUser } = userSlice.actions;
+export const showUser = (state) => state.userinfo.data
+export default userSlice.reducer;
