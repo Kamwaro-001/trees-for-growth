@@ -1,33 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { getUsersAsync, showUser } from '../../slices/Users.slice';
+import { toast } from 'react-toastify';
+import { getUsersAsync, showUser, updateUserAsync } from '../../slices/Users.slice';
+import { Details } from './Profile.Components';
 import "./Profile.Rename.css";
 
 const Profile = () => {
 
   const userinfo = useSelector(showUser)
   const dispatch = useDispatch();
-  const [editinfo, setInfo] = useState({
-    first_name: '',
-    last_name: '',
-    email: '',
-    phonenumber: '',
-    county: '',
-    town: ''
-  })
+  // const [editinfo, setInfo] = useState({
+  //   first_name: '',
+  //   last_name: '',
+  //   email: '',
+  //   phonenumber: '',
+  //   county: '',
+  //   town: ''
+  // })
 
   useEffect(() => {
     dispatch(getUsersAsync())
   }, [])
 
-	const handleInputChange = e => {
-		const { name, value } = e.target;
-		setInfo({ ...editinfo, [name]: value });
-	}
+	// const handleInputChange = e => {
+	// 	const { name, value } = e.target;
+	// 	setInfo({ ...editinfo, [name]: value });
+	// }
 
 console.log(userinfo)
-console.log(editinfo)
+// console.log(editinfo)
+
+  // const updateUser = () => {
+  //   dispatch(updateUserAsync(editinfo))
+	// 	// window.location.reload();
+  // }
 
   return (
     <div className="container">
@@ -75,7 +82,13 @@ console.log(editinfo)
               </div>
             </div>
           </div>
-          <div className="col-lg-8">
+          
+          {userinfo.map((user) => (
+            user.map((info, i)=>(
+              <Details key={i} id={info.id} fname={info.first_name} lname={info.last_name} email={info.email} pnumber={info.phonenumber} area={info.county} place={info.town} />
+            ))
+          ))}
+          {/* <div className="col-lg-8">
             {userinfo.map((p) => (
               p.map((usr, index) => (
                 <div className="card" key={usr.id}>
@@ -85,7 +98,7 @@ console.log(editinfo)
                       <h6 className="mb-0">First Name</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      <input type="text" name="first_name" className="form-control" defaultValue={usr.first_name} value={editinfo.first_name} onChange={handleInputChange} />
+                      <input type="text" name="first_name" className="form-control" defaultValue={usr.first_name} onChange={handleInputChange} />
                     </div>
                   </div>
                   <div className="row mb-3">
@@ -131,13 +144,13 @@ console.log(editinfo)
                   <div className="row">
                     <div className="col-sm-3"></div>
                     <div className="col-sm-9 text-secondary">
-                      <input type="button" className="btn btn-primary px-4" defaultValue="Save Changes" />
+                      <input type="button" className="btn btn-primary px-4" defaultValue="Save Changes" onClick={updateUser}/>
                     </div>
                   </div>
                 </div>
               </div>
               ))
-            ))}
+            ))} */}
             {/* <div className="row">
               <div className="col-sm-12">
                 <div className="card">
@@ -167,7 +180,7 @@ console.log(editinfo)
                 </div>
               </div>
             </div> */}
-          </div>
+          {/* </div> */}
         </div>
       </div>
     </div>

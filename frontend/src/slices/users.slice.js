@@ -40,7 +40,7 @@ export const addUserAsync = (data) => async (dispatch) => {
 
 export const updateUserAsync = (id, data) => async (dispatch) => {
   try {
-    const response = await axios.patch(`/api/users/${id}`, data)
+    const response = await axios.patch(`/api/users/${id}/`, data)
     dispatch(updateUser(response.data))
   } catch (err) {
     toastOnError(err)

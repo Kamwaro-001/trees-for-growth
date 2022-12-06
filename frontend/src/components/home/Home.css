@@ -1,6 +1,7 @@
 .home-page {
 	background: linear-gradient(#25d2593f, rgba(0, 0, 0, 0.182)), url(../images/nature.jpg);
 	height: 100vh;
+	/* height: 800px; */
 	-webkit-background-size: cover;
 	background-size: cover;
 	background-position: center center;
@@ -49,3 +50,139 @@
 	background: #fff;
 	color: #333;
 }
+
+
+#hero {
+  width: 100%;
+  height: 75vh;
+  background: url("../images/nature.jpg") center center;
+  background-size: cover;
+  position: relative;
+  padding: 0;
+}
+
+.home-btn Link {
+	color: white;
+}
+
+#hero:before {
+  content: "";
+  background: linear-gradient(#25d2593f, rgba(0, 0, 0, 0.182));
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#hero .container {
+  z-index: 2;
+}
+
+#hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #fff;
+}
+
+#hero h1 span {
+  border-bottom: 4px solid #a2d5a4;
+}
+
+#hero h2 {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+#hero .btn-get-started {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 2px;
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 4px;
+  transition: ease-in-out 0.3s;
+  color: #fff;
+	border: solid 1px;
+  background: none;
+  text-transform: uppercase;
+	text-decoration: none;
+}
+
+#hero .btn-get-started:hover {
+  background: #a2d5a4;
+	color: #000000;
+}
+
+@media (max-width: 992px) {
+  #hero {
+    height: calc(100vh - 70px);
+  }
+}
+
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  #hero h2 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+/* section {
+  padding: 60px 0;
+}
+
+.section-bg {
+  background-color: #f7fbfe;
+}
+
+.section-title {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.section-title h2::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: #ddd;
+  bottom: 1px;
+  left: calc(50% - 60px);
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #3498db;
+  bottom: 0;
+  left: calc(50% - 20px);
+}
+
+.section-title p {
+  margin-bottom: 0;
+} */

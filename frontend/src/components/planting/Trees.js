@@ -38,13 +38,16 @@ const Trees = () => {
 	return (
 		<div>
 			<h1>My Trees</h1>
-			<table>
-				<tbody>
+			<div className='table-responsive'>
+			<table className='table table-striped table-sm'>
+				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Information</th>
-						<th>Files</th>
+						<th scope="col">Name</th>
+						<th scope="col">Information</th>
+						<th scope="col">Files</th>
 					</tr>
+				</thead>
+				<tbody>
 					{
 						tree.map((t) => (
 							t.map((item, i) => (
@@ -58,6 +61,9 @@ const Trees = () => {
 					}
 				</tbody>
 			</table>
+				
+			</div>
+      
 			<div className="comm-create">
 				<Button variant="success" onClick={handleShow}>
 					Planted another?
