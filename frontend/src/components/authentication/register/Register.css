@@ -1,0 +1,12 @@
+.form-signin .for-usrname{
+  padding-top: 0;
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin .for-rmail {
+  padding-top: 0;
+  margin-bottom: -1px;
+  border-radius: 0;
+}
