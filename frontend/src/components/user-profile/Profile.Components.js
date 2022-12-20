@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateUserAsync } from "../../slices/Users.slice";
+import { updateUserAsync } from "../../slices/users.slice";
 
 export const Details = (props) => {
 

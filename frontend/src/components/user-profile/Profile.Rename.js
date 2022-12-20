@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { getUsersAsync, showUser, updateUserAsync } from '../../slices/Users.slice';
+import { getUsersAsync, showUser, updateUserAsync } from '../../slices/users.slice';
 import { Details } from './Profile.Components';
 import "./Profile.Rename.css";
 
