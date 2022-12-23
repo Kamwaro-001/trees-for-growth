@@ -8,7 +8,8 @@ import * as Yup from "yup";
 
 import { login } from "../../../slices/auth";
 import "./Login.css";
-import tree_bark from "../../images/tree_bark.jpg";
+import logo from "../../images/bw_logo.svg";
+
 
 const Login = () => {
   let navigate = useNavigate();
@@ -56,71 +57,50 @@ const Login = () => {
   }
 
   return (
-    <div className='authpage'>
-      <section className="auth vh-100">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-sm-6 text-black">
+    <div className="auth-body text-center">
+      <div className="form-signin m-auto">
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleLogin}>
+          <Form className="auth-form">
+            <img className="mb-4" src={logo} alt="" width="72" height="57" />
+            <h1 className="h3 mb-3 fw-normal">Sign in</h1>
 
-              <div className="px-5 ms-xl-4">
-                <i className="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" ></i>
-                <span className="h1 fw-bold mb-0">Logo</span>
-              </div>
+            <div className="form-floating">
+              <Field name='email' type="email" className="for-mail form-control" id="floatingInput" placeholder="name@example.com" required />
+              <label htmlFor="floatingInput">Email address</label>
+              <ErrorMessage name="email" component="div" className="alert alert-danger" />
+            </div>
+            <div className="form-floating">
+              <Field name='password' type="password" className="for-pass form-control" id="floatingPassword" placeholder="Password" required />
+              <label htmlFor="floatingPassword">Password</label>
+              <ErrorMessage name="password" component="div" className="alert alert-danger" />
+            </div>
 
-              <div className="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-                <Formik
-                  initialValues={initialValues}
-                  validationSchema={validationSchema}
-                  onSubmit={handleLogin}
-                >
-                  <Form>
+            <div className="checkbox mb-3">
+              <label>
+                <input type="checkbox" value="remember-me" /> Remember me
+              </label>
+            </div>
+            <button className="w-100 btn btn-lg btn-success" type="submit" disabled={loading}>{loading && (
+              <span className="spinner-border spinner-border-sm"></span>
+            )}
+              <span>Sign in</span></button>
 
-                    <h3 className="fw-normal mb-3 pb-3">Sign in</h3>
-
-                    <div className="form-outline mb-4">
-                      <Field name="email" type="text" className="form-control" placeholder="Email" />
-                      <ErrorMessage name="email" component="div" className="alert alert-danger" />
-
-                    </div>
-
-                    <div className="form-outline mb-4">
-                      <Field name="password" type="password" className="form-control" placeholder="Password" />
-                      <ErrorMessage name="password" component="div" className="alert alert-danger" />
-                    </div>
-
-                    <div className="pt-1 mb-4">
-                      <button type="submit" className="auth-btn btn-info btn-lg btn-block" disabled={loading}>
-                        {loading && (
-                          <span className="spinner-border spinner-border-sm"></span>
-                        )}
-                        <span>Login</span>
-                      </button>
-                    </div>
-
-                    <p className="small mb-5 pb-lg-2"><Link className="text-muted" to="#!">Forgot password?</Link></p>
-                    <p>Don't have an account? <Link to="/register" className="link-info">Register here</Link></p>
-
-                  </Form>
-                </Formik>
-              </div>
-              {message && (
-                <div className="form-group">
-                  <div className="alert alert-danger" role="alert">
-                    {message}
-                  </div>
+            {message && (
+              <div className="form-group">
+                <div className="alert alert-danger" role="alert">
+                  {message}
                 </div>
-              )}
-
+              </div>
+            )}
+            <div className="auth-extras">
+              <p className=""> <Link className="text-muted small" to="#!">Forgot password?</Link> <br /> Don't have an account? <Link to="/register" className="link-to">Register here</Link></p>
             </div>
-            <div className="col-sm-6 px-0 d-none d-sm-block">
-              <img src={tree_bark}
-                alt="Login" className="w-100 vh-100" />
-            </div>
-          </div>
-        </div>
-      </section>
+          </Form>
+        </Formik>
+      </div>
     </div>
   )
+
 }
 
 export default Login

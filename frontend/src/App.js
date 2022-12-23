@@ -7,7 +7,8 @@ import { ToastContainer } from "react-toastify";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from './components/authentication/register/Register';
-import Login from './components/authentication/login/Old';
+import Login from './components/authentication/login/Login';
+// import Test from './components/authentication/login/Login';
 import Home from './components/home/Home';
 import Navbar from './components/navbar/Navbar.Remake';
 import Footer from './components/footer/Footer';
@@ -36,6 +37,7 @@ function App() {
                <Routes>
                   <Route exact path='/' element={<Home />} />
                   <Route path='/login' element={<Login />} />
+                  {/* <Route path='/test' element={<Test />} /> */}
                   <Route path='/register' element={<Register />} />
                   <Route path='/dashboard' element={<Dashboard />} />
                   <Route path='/communities' element={<Communities />} />
