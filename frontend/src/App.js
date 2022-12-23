@@ -20,6 +20,7 @@ import Profile from './components/user-profile/Profile.Rename';
 //////////////////////////////
 import store from './store/store';
 import Trees from './components/planting/Trees';
+// import Test from './components/authentication/register/Test';
 
 if (window.location.origin === "http://localhost:3000") {
    axios.defaults.baseURL = "http://127.0.0.1:8000";

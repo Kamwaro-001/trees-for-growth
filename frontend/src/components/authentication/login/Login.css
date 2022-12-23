@@ -18,15 +18,15 @@
   z-index: 2;
 }
 
+.form-signin .auth-form {
+  max-width: 90%;
+  margin: auto;
+}
+
 .form-signin .for-mail {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-}
-
-.form-signin .auth-form {
-  max-width: 90%;
-  margin: auto;
 }
 
 .form-signin .for-pass {
@@ -50,6 +50,6 @@
   padding-top: 5px;
 }
 
-.form-signin .auth-extras .link-to{
+.form-signin .auth-extras .link-to {
   color: green;
 }
