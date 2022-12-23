@@ -18,7 +18,7 @@ export const memberSlice = createSlice({
   }
 })
 
-export const getMemberAsync = () => async(dispatch) => {
+export const getMemberAsync = () => async (dispatch) => {
   try {
     const response = await axios.get("/api/members/");
     dispatch(getMembers(response.data))
@@ -27,16 +27,15 @@ export const getMemberAsync = () => async(dispatch) => {
   }
 }
 
-export const addMemberAsync = (data) => async(dispatch) => {
+export const addMemberAsync = (data) => async (dispatch) => {
   try {
     const response = await axios.post("/api/members/", data);
     dispatch(addMember(response.data))
   } catch (err) {
-    if(err.response.data.non_field_errors[0] === 'The fields user, member_to must make a unique set.'){
+    if (err.response.data.non_field_errors[0] === 'The fields user, member_to must make a unique set.') {
       toast.warn("You are already a member")
-    } else{
-      // console.log(err.response.data.non_field_errors[0])
-      toastOnError(err)
+    } else {
+      console.log(err)
     }
   }
 }

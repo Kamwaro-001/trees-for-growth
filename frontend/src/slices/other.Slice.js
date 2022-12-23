@@ -10,6 +10,9 @@ export const personSlice = createSlice({
   reducers: {
     getPerson: (state, action) => {
       state.data = [action.payload];
+    },
+    editPerson: (state, action) => {
+      state.data.push(action.payload);
     }
   }
 })
@@ -24,6 +27,15 @@ export const getPersonAsync = () => async (dispatch) => {
   }
 }
 
-export const { getPerson } = personSlice.actions
+export const editPersonAsync = (data) => async (dispatch) => {
+  try {
+    const response = await axios.patch("api/accounts/users/me/", data);
+    dispatch(editPerson(response.data))
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+export const { getPerson, editPerson } = personSlice.actions
 export const showPerson = (state) => state.person.data;
 export default personSlice.reducer;

@@ -17,8 +17,7 @@ const Communities = () => {
 
 	useEffect(() => {
 		dispatch(getCommunityAsync());
-		// eslint-disable-next-line
-	}, [])
+	}, [dispatch])
 
 	const letter = () => {
 		const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

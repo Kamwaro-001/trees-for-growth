@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from './components/authentication/register/Register';
-import Login from './components/authentication/login/Login';
+import Login from './components/authentication/login/Old';
 import Home from './components/home/Home';
 import Navbar from './components/navbar/Navbar.Remake';
 import Footer from './components/footer/Footer';
@@ -20,7 +20,6 @@ import Profile from './components/user-profile/Profile.Rename';
 import store from './store/store';
 import Trees from './components/planting/Trees';
 
-// axios.defaults.baseURL = "http://127.0.0.1:8000";
 if (window.location.origin === "http://localhost:3000") {
    axios.defaults.baseURL = "http://127.0.0.1:8000";
 } else {

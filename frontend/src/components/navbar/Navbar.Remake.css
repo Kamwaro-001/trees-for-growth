@@ -58,7 +58,7 @@ label {
 }
 
 .auth-page {
-    background: linear-gradient(#48f97dab, #000000d2), url(../images/vecteezy_avatar-premium-icon-sign-symbol_6732102.jpg);
+    /* background: linear-gradient(#48f97dab, #000000d2), url(../images/vecteezy_avatar-premium-icon-sign-symbol_6732102.jpg); */
     height: 80vh;
     -webkit-background-size: cover;
     background-size: cover;

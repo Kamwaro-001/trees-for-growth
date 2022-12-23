@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../slices/auth";
 import "./Navbar.css";
-import user1 from "../images/user1.png";
+// import user1 from "../images/user1.png";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -38,7 +38,7 @@ function Navbar() {
               {currentUser !== null ?
               <>
                 <Link to="profile/" className="nav-item">
-                  <img src={user1} alt="my profile" className='to-profile' />
+                  {/* <img src={user1} alt="my profile" className='to-profile' /> */}
                 </Link>
                 <Link to="/login" id='nav-login' className="nav-item" onClick={logOut}>Logout</Link>
               </>

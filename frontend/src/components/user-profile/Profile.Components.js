@@ -85,35 +85,6 @@ export const Details = (props) => {
           </div>
         </div>
       </div>
-      {/* <div className="row">
-              <div className="col-sm-12">
-                <div className="card">
-                  <div className="card-body">
-                    <h5 className="d-flex align-items-center mb-3">Project Status</h5>
-                    <p>Web Design</p>
-                    <div className="progress mb-3">
-                      <div className="progress-bar bg-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <p>Website Markup</p>
-                    <div className="progress mb-3">
-                      <div className="progress-bar2 progress-bar bg-danger" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <p>One Page</p>
-                    <div className="progress mb-3">
-                      <div className="progress-bar progress-bar3 bg-success" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <p>Mobile Template</p>
-                    <div className="progress mb-3">
-                      <div className="progress-bar4 progress-bar bg-warning" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <p>Backend API</p>
-                    <div className="progress" >
-                      <div className="progress-bar5 progress-bar bg-info" role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
     </div>
   )
 }
