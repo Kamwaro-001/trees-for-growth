@@ -140,8 +140,8 @@
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
-/* section {
-  padding: 60px 0;
+section {
+  padding: 40px 0;
 }
 
 .section-bg {
@@ -178,11 +178,11 @@
   display: block;
   width: 40px;
   height: 3px;
-  background: #3498db;
+  background: #006400;
   bottom: 0;
   left: calc(50% - 20px);
 }
 
 .section-title p {
   margin-bottom: 0;
-} */
+} 

@@ -5,7 +5,7 @@ import * as Yup from "yup";
 
 import { register } from "../../../slices/auth";
 import { clearMessage } from "../../../slices/message";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import logo from '../../images/bw_logo.svg';
 import './Register.css';
 
@@ -24,8 +24,9 @@ const Register = () => {
     email: "",
     password: "",
   };
-
+  const { isLoggedIn } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
     username: Yup.string()
@@ -53,18 +54,24 @@ const Register = () => {
       .required("This field is required!"),
   });
 
+  if (isLoggedIn) {
+    return <Navigate to="/Dashboard" />;
+  }
+
+
   const handleRegister = (formValue) => {
     const { username, email, password } = formValue;
-
+    setLoading(true)
     setSuccessful(false);
 
     dispatch(register({ username, email, password }))
       .unwrap()
       .then(() => {
         setSuccessful(true);
+        navigate('/login');
       })
       .catch(() => {
-        setSuccessful(false);
+        setLoading(false) && setSuccessful(false);
       });
   };
   return (

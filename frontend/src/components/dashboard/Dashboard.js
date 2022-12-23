@@ -4,17 +4,17 @@ import { getTreeAsync, showTree } from "../../slices/Trees.slice";
 import { useSelector } from "react-redux";
 import { getPersonAsync } from "../../slices/other.Slice";
 import "./Dashboard.css"
+import { Link } from "react-router-dom";
+import * as Icons from 'react-bootstrap-icons';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  // const tree = useSelector((state) => state.trees);
   const tree = useSelector(showTree)
-  // const persona = useSelector(showPerson)
 
   useEffect(() => {
     dispatch(getTreeAsync());
     dispatch(getPersonAsync())
-  }, [])
+  }, [dispatch])
   let l;
   let lists = []
 
@@ -25,51 +25,56 @@ const Dashboard = () => {
   });
   // console.log(persona);
   const goals = [5, 10, 15, 20, 30, 50, 100, 200];
-  l = lists.length;
+  l = lists.length + 11;
   // console.log(lists);
   let passed = goals.filter(g => g <= l)
-  let goal = "next goal is " + goals[passed.length];
+  let goal = (goals[passed.length]);
+  let doneGoals = passed.length
 
   return (
     <>
       <div id="dashboard">
-        <div className="dash-top">
-          <h3>Current Trees Planted</h3>
-          <p className="dash-tally">{l}</p>
-          <h3>Next Goal</h3>
-          <p>{goal}</p>
-        </div>
-        <div className="list-trees">
-        </div>
-      <div className="row">
-              <div className="col-sm-12">
-                <div className="card">
-                  <div className="card-body">
-                    <h5 className="d-flex align-items-center mb-3">Project Status</h5>
-                    <p>Web Design</p>
-                    <div className="progress mb-3">
-                      <div className="progress-bar bg-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <p>Website Markup</p>
-                    <div className="progress mb-3">
-                      <div className="progress-bar2 progress-bar bg-danger" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <p>One Page</p>
-                    <div className="progress mb-3">
-                      <div className="progress-bar progress-bar3 bg-success" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <p>Mobile Template</p>
-                    <div className="progress mb-3">
-                      <div className="progress-bar4 progress-bar bg-warning" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <p>Backend API</p>
-                    <div className="progress" >
-                      <div className="progress-bar5 progress-bar bg-info" role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
+        
+        <section id="what-we-do" className="what-we-do">
+          <div className="container">
+
+            <div className="section-title">
+              <h2>Dashboard</h2>
+              <p>Here is most of your progress</p>
+            </div>
+
+            <div className="row">
+              <div className="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <div className="icon-box">
+                  <div className="icon"><i className="bx bxl-dribbble"><Icons.Tree /></i></div>
+                  <h4><Link to="/trees">{l}</Link></h4>
+                  <p className="dash-p">Number of Trees Planted</p>
+                  <p>You can also join a community for motivation!</p>
                 </div>
               </div>
+
+              <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                <div className="icon-box">
+                  <div className="icon"><i className="bx bx-file"><Icons.Bullseye /></i></div>
+                  <h4><Link to="/trees">{goal}</Link></h4>
+                  <p className="dash-p">My Next Goal</p>
+                  <p>Plant {goal - l} more trees to reach your next goal!</p>
+                </div>
+              </div>
+
+              <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                <div className="icon-box">
+                  <div className="icon"><i className="bx bx-tachometer"><Icons.Box /></i></div>
+                  <h4><Link to="/trees">{doneGoals}</Link></h4>
+                  <p className="dash-p">Passed Goals</p>
+                  <p>Not Satisfied? You know what to do!</p>
+                </div>
+              </div>
+
             </div>
+
+          </div>
+        </section>
       </div>
     </>
   )

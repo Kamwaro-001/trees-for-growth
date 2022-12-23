@@ -1,46 +1,60 @@
-.card {
-  position: relative;
+.what-we-do .icon-box {
+  text-align: center;
+  padding: 30px 20px;
+  transition: all ease-in-out 0.3s;
+  background: #fff;
+}
+
+.what-we-do .icon-box .icon {
+  margin: 0 auto;
+  width: 64px;
+  height: 64px;
+  background: #eaf4fb;
+  border-radius: 50px;
   display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 0 solid transparent;
-  border-radius: .25rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: ease-in-out 0.3s;
 }
 
-.me-2 {
-  margin-right: .5rem !important;
+.what-we-do .icon-box .icon i {
+  color: #3da55c;
+  font-size: 28px;
 }
 
-.progress {
-  height: 5px;
+.what-we-do .icon-box h4 {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 24px;
 }
 
-.progress-bar {
-  width: 80%;
+.what-we-do .icon-box h4 a {
+  color: #384046;
+  transition: ease-in-out 0.3s;
+  text-decoration: none;
+  font-size: 40px;
+  font-weight: bold;
 }
 
-.progress-bar2 {
-  width: 72%;
+.what-we-do .icon-box p {
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
 }
 
-.progress-bar3 {
-  width: 89%;
+.what-we-do .icon-box .dash-p {
+  font-weight: bold;
+  font-size: 20px;
+  color: green;
 }
 
-.progress-bar4 {
-  width: 55%;
+.what-we-do .icon-box:hover {
+  border-color: #fff;
+  box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
 }
 
-.progress-bar5 {
-  width: 66%;
-}
-
-.mb-3 div{
-  margin-top: auto;
-  margin-bottom: auto;
+.what-we-do .icon-box:hover h4 a,
+.what-we-do .icon-box:hover .icon i {
+  color: #3da55c;
 }

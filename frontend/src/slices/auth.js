@@ -14,6 +14,7 @@ export const register = createAsyncThunk(
     try {
       const response = await AuthService.register(username, email, password);
       thunkAPI.dispatch(setMessage(response.data.message));
+      toast.success("Account created successfully please login")
       return response.data;
     } catch (error) {
       const message =
