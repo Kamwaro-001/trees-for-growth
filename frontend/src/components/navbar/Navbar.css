@@ -1,163 +1,60 @@
-/* * {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+* {
+    font-family: 'Lato', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
-
 }
 
 body {
-    padding-top: 85px;
-    border-top: #bebebe 1px solid;
+    padding-top: 77px;
+    background: url(../images/asset3.svg);
+    background-repeat: no-repeat;
 }
 
 #nav-bar {
-    background-color: #ffffff;
-    overflow: hidden;
-    position: fixed;
-    border-top: #308148 solid 2px;
-    border-bottom: #3da55c solid 1px;
     z-index: 5;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-right: 8vw;
-    padding-left: 8vw;
-    display: flex;
-    justify-content: center;
-    top: 0;
-    left: 0;
-    right: 0;
+    text-transform: capitalize;
+}
+
+.nav-item:hover {
+    text-decoration: underline;
 }
 
 #nav-fix {
-    width: 100%;
+    width: 90%;
     padding-top: 8px;
     padding-bottom: 8px;
-    display: flex;
-    justify-content: center;
 }
 
-#nav-brand {
-    color: #000000;
-    font-size: 26px;
-    float: left;
-    padding: 5px;
-    margin: 5px 5px;
-    text-decoration: none;
-    text-align: center;
-}
-
-.middle-nav {
-    display: flex;
-    justify-content: center;
+.navbar .mid-nav{
     margin: auto;
 }
 
-.middle-nav a {
-    display: inline-block;
+#nav-brand {
+    font-size: 26px;
 }
 
-#nav-login,
-.middle-nav a {
-    text-transform: capitalize;
-    font-size: 16px;
-    text-decoration: none;
-    color: #000000;
+#nav-right-side {
     text-align: center;
-    padding: 13px 14px;
+    margin-right: 3em;
 }
 
-.middle-nav .nav-item:hover {
-    text-decoration: underline;
+#drop-menu3 {
+    background-color: #e3dfdf;
+}
+
+#drop-menu3 li {
+    text-align: center;
 }
 
 #nav-login {
     border-radius: 4px;
-    background-color: #389855;
     color: #000000;
     text-decoration: none;
     display: inline-block;
-
+    padding: 10px;
+    background-color: #3da55c;
 }
 
 #nav-login:hover {
     color: #000000;
-    text-decoration: underline;
     background-color: #308148;
 }
-
-.nav-right {
-    width: 150px;
-}
-
-label {
-    display: block;
-    margin-top: 10px;
-}
-
-.auth-page {
-    background: linear-gradient(#48f97dab, #000000d2), url(../images/how-to-plant-tree.jpg);
-    height: 80vh;
-	-webkit-background-size: cover;
-	background-size: cover;
-	background-position: center center;
-	width: 100%;
-}
-
-.login-form,
-.signup-form {
-    max-width: 350px;
-    margin: auto;
-}
-
-.form-control {
-    margin-top: 10px;
-}
-
-.auth-group {
-    height: 230px;
-}
-
-.auth-btn {
-    width: 100%;
-    margin-top: 10px;
-    background-color: #3da55c;
-    color: #ffffff;
-    border: #ffffff;
-}
-
-.card {
-    background-color: #f7f7f7;
-    padding: 20px 25px 30px;
-    margin: 0 auto 25px;
-    margin-top: 50px;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-}
-
-.profile-img-card {
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 10px;
-    display: block;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-}
-
-@media screen and (max-width: 920px) {
-    #nav-fix, #nav-brand, .nav-item, #nav-login, .middle-nav, .nav-right {
-        display: block;
-        text-align: center;
-        width: 100%;
-        float: none;
-    }
-    #nav-bar {
-        height: 415px;
-    }
-    body {
-        padding-top: 410px;
-    }
-} */

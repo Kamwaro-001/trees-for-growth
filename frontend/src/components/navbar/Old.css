@@ -1,4 +1,4 @@
-* {
+/* * {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
 
@@ -13,7 +13,6 @@ body {
     background-color: #ffffff;
     overflow: hidden;
     position: fixed;
-    /* width: 100%; */
     border-top: #308148 solid 2px;
     border-bottom: #3da55c solid 1px;
     z-index: 5;
@@ -26,7 +25,6 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    /* height: 10vh; */
 }
 
 #nav-fix {
@@ -45,7 +43,6 @@ body {
     margin: 5px 5px;
     text-decoration: none;
     text-align: center;
-    /* display: inline-block; */
 }
 
 .middle-nav {
@@ -91,13 +88,6 @@ body {
     width: 150px;
 }
 
-/* .nav-item .to-profile {
-    height: 40px;
-    width: 40px;
-    vertical-align:;
-    text-align: center;
-} */
-
 label {
     display: block;
     margin-top: 10px;
@@ -109,7 +99,6 @@ label {
 	-webkit-background-size: cover;
 	background-size: cover;
 	background-position: center center;
-	/* position: relative; */
 	width: 100%;
 }
 
@@ -133,8 +122,6 @@ label {
     background-color: #3da55c;
     color: #ffffff;
     border: #ffffff;
-    /* border-radius: 0.3em; */
-    /* height: ; */
 }
 
 .card {
@@ -173,4 +160,4 @@ label {
     body {
         padding-top: 410px;
     }
-}
+} */

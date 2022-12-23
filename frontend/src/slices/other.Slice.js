@@ -14,7 +14,7 @@ export const personSlice = createSlice({
     editPerson: (state, action) => {
       state.data.push(action.payload);
     }
-  }
+  } 
 })
 
 export const getPersonAsync = () => async (dispatch) => {
