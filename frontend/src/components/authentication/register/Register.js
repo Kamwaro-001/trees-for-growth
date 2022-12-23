@@ -7,7 +7,7 @@ import { register } from "../../../slices/auth";
 import { clearMessage } from "../../../slices/message";
 import { Link } from "react-router-dom";
 import logo from '../../images/bw_logo.svg';
-import './Register.css'
+import './Register.css';
 
 const Register = () => {
   const [successful, setSuccessful] = useState(false);
