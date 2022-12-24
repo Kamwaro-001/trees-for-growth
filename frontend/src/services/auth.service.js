@@ -1,6 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 import { setAxiosAuthToken } from "../redux/utils/Utils";
+import { getCurrentUser, setmyToken, setToken, unsetCurrentUser } from "../slices/auth";
 
 
 const register = (username, email, password) => {
@@ -11,36 +12,30 @@ const register = (username, email, password) => {
   });
 };
 
-const login = (email, password) => {
+const login = (email, password, redirectTo) => {
   return axios
-    .post("/api/accounts/token/login/", {
-      email,
-      password,
-    })
+    .post("/api/accounts/token/login/", { email, password })
     .then((response) => {
-      // localStorage.setItem("userinfo", JSON.stringify(response.data));
-      // axios.get("/api/accounts/users/me/")
-      if (response.data.auth_token) {
-        localStorage.setItem("user", JSON.stringify(response.data));
-        setAxiosAuthToken(response.data.auth_token);
-      }
-      return response.data;
+
+      return response.data
     })
+
 };
 
-const logout = () => {
-  setAxiosAuthToken("");
-  // TODO check to make sure localStorage is being cleared
-  localStorage.removeItem("user");
-  localStorage.removeItem("userinfo");
-  localStorage.removeItem("person");
-  toast.success("logout successful")
-};
+// const logout = () => {
+//   setAxiosAuthToken("");
+//   // TODO check to make sure localStorage is being cleared
+//   localStorage.removeItem("user");
+//   localStorage.removeItem("userinfo");
+//   localStorage.removeItem("person");
+//   localStorage.clear();
+//   toast.success("logout successful")
+// };
 
 const authService = {
   register,
   login,
-  logout
+  // logout
 };
 
 export default authService;

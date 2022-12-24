@@ -7,20 +7,23 @@ import "./Navbar.css";
 import logo from '../images/bw_logo.svg';
 
 const Navbar = () => {
-  const { user: currentUser } = useSelector((state) => state.auth);
+  const { token: authentication } = useSelector((state) => state.auth);
 
   // const { user: person } = useSelector((state) => state.auth);
-  
+  const currentUser = authentication.isAuthenticated
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getPersonAsync())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(getPersonAsync())
+  // }, [dispatch])
 
   const logOut = useCallback(() => {
     dispatch(logout())
+    window.location.reload()
   }, [dispatch]);
   console.log(currentUser)
+  
+
   return (
     <nav className="navbar navbar-expand-lg bg-light fixed-top" id='nav-bar'>
       <div className="container-fluid " id='nav-fix'>

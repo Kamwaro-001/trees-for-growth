@@ -6,6 +6,8 @@ import memberSlice from '../slices/Members.slice';
 import treeSlice from '../slices/Trees.slice';
 import personSlice from '../slices/other.Slice';
 import userSlice from '../slices/users.slice';
+// import ThunkMiddleware from 'redux-thunk';
+
 
 const reducer = {
   auth: authReducer,

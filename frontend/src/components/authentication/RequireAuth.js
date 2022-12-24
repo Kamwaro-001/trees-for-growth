@@ -1,52 +1,17 @@
 import React from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function requireAuth(Component) {
-  class AuthenticatedComponent extends React.Component {
-    constructor(props) {
-      super(props);
-      this.checkAuth();
-    }
+export default function RequireAuth(props) {
+  const { user: loggedIn } = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
 
-    componentDidUpdate(prevProps, prevState) {
-      this.checkAuth();
-    }
-
-    checkAuth() {
-      if (!this.props.isAuthenticated) {
-        const redirectAfterLogin = this.props.location.pathname;
-        this.props.dispatch(window.location.replace(`/login?next=${redirectAfterLogin}`));
-      }
-    }
-
-    render() {
-      return (
-        <div>
-          {this.props.isAuthenticated === true ? (
-            <Component {...this.props} />
-          ) : null}
-        </div>
-      );
-    }
+  if (!loggedIn) {
+    const redirectAfterLogin = window.location.pathname;
+    console.log('login first')
+    dispatch(window.location.replace(`/login?next=${redirectAfterLogin}`));
+  } else {
+    return <props.component />
   }
-  AuthenticatedComponent.propTypes = {
-    isAuthenticated: PropTypes.bool.isRequired,
-    location: PropTypes.shape({
-      pathname: PropTypes.string.isRequired
-    }).isRequired,
-    dispatch: PropTypes.func.isRequired
-  };
 
-  const mapStateToProps = state => {
-    return {
-      // isAuthenticated: state.auth.isAuthenticated,
-      // token: state.auth.token
-      // isAuthenticated: state.auth.isAuthenticated,
-      // token: state.auth.token
-      isAuthenticated: state.auth.user
-    };
-  };
-
-  return connect(mapStateToProps)(AuthenticatedComponent);
 }
+

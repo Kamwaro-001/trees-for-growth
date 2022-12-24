@@ -18,7 +18,8 @@ import Profile from './components/user-profile/Profile.Rename';
 import Buy from './components/buy/Buy';
 import store from './store/store';
 import Trees from './components/planting/Trees';
-// import requireAuth from './components/authentication/RequireAuth';
+import About from './components/about/About';
+import RequireAuth from './components/authentication/RequireAuth';
 
 if (window.location.origin === "http://localhost:3000") {
    axios.defaults.baseURL = "http://127.0.0.1:8000";
@@ -42,7 +43,9 @@ function App() {
                   <Route path='/trees' element={<Trees />} />
                   <Route path='/store' element={<Buy />} />
                   <Route path='/profile' element={<Profile />} />
-                  <Route path='/boarduser' element={<BoardUser />} />
+                  <Route path='/about' element={<About />} />
+                  {/* <Route path='/boarduser' element={<BoardUser />} /> */}
+                  <Route path='/boarduser' element={<RequireAuth component={BoardUser} />} />
                </Routes>
                <Footer />
             </Router>

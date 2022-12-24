@@ -21,7 +21,7 @@ export const getPersonAsync = () => async (dispatch) => {
   try {
     const response = await axios.get("/api/accounts/users/me/");
     dispatch(getPerson(response.data.username))
-    localStorage.setItem("person", JSON.stringify(response.data));
+    // localStorage.setItem("person", JSON.stringify(response.data));
   } catch (err) {
     toastOnError(err)
   }

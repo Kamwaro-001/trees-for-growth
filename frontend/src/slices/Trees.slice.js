@@ -17,7 +17,7 @@ export const treeSlice = createSlice({
   }
 })
 
-export const getTreeAsync = () => async(dispatch) => {
+export const getTreeAsync = () => async (dispatch) => {
   try {
     const response = await axios.get("/api/trees/");
     dispatch(getTrees(response.data))
@@ -26,7 +26,7 @@ export const getTreeAsync = () => async(dispatch) => {
   }
 }
 
-export const addTreeAsync = (data) => async(dispatch) => {
+export const addTreeAsync = (data) => async (dispatch) => {
   try {
     const response = await axios.post("/api/trees/", data);
     dispatch(addTree(response.data));

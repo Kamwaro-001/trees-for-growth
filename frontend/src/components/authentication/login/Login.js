@@ -14,7 +14,7 @@ import logo from "../../images/bw_logo.svg";
 const Login = () => {
   let navigate = useNavigate();
 
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   const { isLoggedIn } = useSelector((state) => state.auth);
   const { message } = useSelector((state) => state.message);
@@ -33,17 +33,21 @@ const Login = () => {
 
   const handleLogin = (formValue) => {
     const { email, password } = formValue;
-    setLoading(true);
+    const redirectTo = '/dashboard'
+    // setLoading(true);
 
-    dispatch(login({ email, password }))
-      .unwrap()
-      .then(() => {
-        navigate("/dashboard");
-        // window.location.reload();
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+    // dispatch(login({ email, password }))
+    dispatch(login({ formValue, redirectTo }))
+      // console.log(formValue)
+      // .unwrap()
+    // .then(() => {
+    //   navigate("/dashboard");
+    //   // window.location.reload();
+    // })
+    .catch((e) => {
+      // setLoading(false);
+      console.log(e)
+    });
   };
 
   const validationSchema = Yup.object().shape({
@@ -80,10 +84,12 @@ const Login = () => {
                 <input type="checkbox" value="remember-me" /> Remember me
               </label>
             </div>
-            <button className="w-100 btn btn-lg btn-success" type="submit" disabled={loading}>{loading && (
+            {/* <button className="w-100 btn btn-lg btn-success" type="submit" disabled={loading}>{loading && (
               <span className="spinner-border spinner-border-sm"></span>
             )}
-              <span>Sign in</span></button>
+              <span>Sign in</span></button> */}
+            <button className="w-100 btn btn-lg btn-success" type="submit">
+              Sign in</button>
 
             {message && (
               <div className="form-group">

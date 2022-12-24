@@ -86,7 +86,7 @@ const Register = () => {
                   <h1 className="h3 mb-3 fw-normal">Register</h1>
 
                   <div className="form-floating">
-                    <Field name='username' type="text" className="for-mail form-control" id="floatingInput" placeholder="username" required />
+                    <Field name='username' type="text" className="for-mail form-control" id="floatingUser" placeholder="username" required />
                     <label htmlFor="floatingInput">Username</label>
                     <ErrorMessage name="username" component="div" className="alert alert-danger" />
                   </div>
