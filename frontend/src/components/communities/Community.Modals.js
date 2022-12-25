@@ -3,6 +3,7 @@ import { Button, Modal, Form } from "react-bootstrap";
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { showAccount } from '../../slices/Account.Slice';
 import { getCommunityAsync, showCommunity } from '../../slices/Communities.slice';
 import { addMemberAsync, getMemberAsync, showMember } from '../../slices/Members.slice';
 
@@ -11,12 +12,11 @@ export const JoinCommunity = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // const persona = useSelector(showPerson);
+  const user = useSelector(showAccount)
   const dispatch = useDispatch();
-  const persona = JSON.parse(localStorage.getItem("person"));
 
   const [newMember, setMember] = useState({
-    user: persona.username,
+    user: user.username,
     member_to: ''
   })
   const handleInputChange = event => {
@@ -67,7 +67,8 @@ export const CommunitiesList = () => {
   const dispatch = useDispatch();
   const membership = useSelector(showMember);
   const community = useSelector(showCommunity);
-  const person = JSON.parse(localStorage.getItem("person"));
+
+  const user = useSelector(showAccount)
 
   useEffect(() => {
     dispatch(getMemberAsync());
@@ -81,7 +82,7 @@ export const CommunitiesList = () => {
           member.map((m, index) => (
             community.map((comm) => (
               comm.map((c, commIndex) => (
-                m.user === person.username && m.member_to === c.verif_code ?
+                m.user === user.username && m.member_to === c.verif_code ?
                   <ul key={commIndex} className='my-communities'>
                     <li>{c.name}</li>
                     <li>{c.region}</li>

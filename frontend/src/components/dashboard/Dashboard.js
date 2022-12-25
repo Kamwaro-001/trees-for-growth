@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getTreeAsync, showTree } from "../../slices/Trees.slice";
 import { useSelector } from "react-redux";
-import { getPersonAsync } from "../../slices/other.Slice";
 import "./Dashboard.css"
 import { Link } from "react-router-dom";
 import * as Icons from 'react-bootstrap-icons';
@@ -13,7 +12,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(getTreeAsync());
-    dispatch(getPersonAsync())
   }, [dispatch])
   let l;
   let lists = []

@@ -21,8 +21,7 @@ const Trees = () => {
 
 	useEffect(() => {
 		dispatch(getTreeAsync())
-		// eslint-disable-next-line
-	}, [])
+	}, [dispatch])
 
 	const handleInputChange = e => {
 		const { name, value } = e.target;
@@ -39,31 +38,31 @@ const Trees = () => {
 		<div>
 			<h1>My Trees</h1>
 			<div className='table-responsive'>
-			<table className='table table-striped table-sm'>
-				<thead>
-					<tr>
-						<th scope="col">Name</th>
-						<th scope="col">Information</th>
-						<th scope="col">Files</th>
-					</tr>
-				</thead>
-				<tbody>
-					{
-						tree.map((t) => (
-							t.map((item, i) => (
-								<tr key={i}>
-									<td>{item.tree_name}</td>
-									<td>{item.more_info}</td>
-									<td>{item.files}</td>
-								</tr>
+				<table className='table table-striped table-sm'>
+					<thead>
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col">Information</th>
+							<th scope="col">Files</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							tree.map((t) => (
+								t.map((item, i) => (
+									<tr key={i}>
+										<td>{item.tree_name}</td>
+										<td>{item.more_info}</td>
+										<td>{item.files}</td>
+									</tr>
+								))
 							))
-						))
-					}
-				</tbody>
-			</table>
-				
+						}
+					</tbody>
+				</table>
+
 			</div>
-      
+
 			<div className="comm-create">
 				<Button variant="success" onClick={handleShow}>
 					Planted another?

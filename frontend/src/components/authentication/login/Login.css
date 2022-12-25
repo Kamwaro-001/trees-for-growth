@@ -36,6 +36,9 @@
 }
 
 .form-signin .alert {
+  background-color: #82cc80;
+  color: #000;
+  border: none;
   text-align: left;
   margin-top: 5px;
 }

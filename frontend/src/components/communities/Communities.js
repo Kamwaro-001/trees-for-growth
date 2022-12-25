@@ -5,6 +5,7 @@ import { addCommunityAsync, getCommunityAsync, showCommunity } from "../../slice
 import { JoinCommunity, CommunitiesList } from "./Community.Modals";
 import phoneNumberToken from "generate-sms-verification-code";
 import "./Communities.css";
+import { showAccount } from "../../slices/Account.Slice";
 
 
 const Communities = () => {
@@ -23,11 +24,11 @@ const Communities = () => {
 		const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		return alphabet[Math.floor(Math.random() * alphabet.length)]
 	}
-	const user = JSON.parse(localStorage.getItem("person"));
-	// console.log(user.username) 
+	const user = useSelector(showAccount);
+
 
 	let generatedToken = phoneNumberToken(8, { type: 'number' });
-	
+
 	const verificationCode = letter() + generatedToken;
 	const [newComm, setNewComm] = useState({
 		name: '',
@@ -35,7 +36,7 @@ const Communities = () => {
 		created_by: user.username,
 		verif_code: verificationCode
 	})
-	
+
 	const handleInputChange = event => {
 		const { name, value } = event.target;
 		setNewComm({ ...newComm, [name]: value });
@@ -64,7 +65,7 @@ const Communities = () => {
 									<td>{item.name}</td>
 									<td>{item.region}</td>
 									<td>{item.created_by}</td>
-									<td><JoinCommunity check={item.verif_code}/></td>
+									<td><JoinCommunity check={item.verif_code} /></td>
 								</tr>
 							))
 						))
@@ -102,16 +103,16 @@ const Communities = () => {
 			<div className="my-communities">
 				<h3>My communities</h3>
 				<div className="get-communities">
-				{
+					{
 						community.map((c) => (
 							c.map((item, i) => (
 								item.created_by === user.username ?
-									<ul key={i} className = 'my-communities'>
+									<ul key={i} className='my-communities'>
 										<li>{item.name}</li>
 										<li>{item.region}</li>
 										<li>{item.date_created}</li>
 									</ul>
-								: null
+									: null
 							))
 						))
 					}

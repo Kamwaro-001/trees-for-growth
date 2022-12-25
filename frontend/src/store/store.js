@@ -1,21 +1,22 @@
 import { configureStore } from '@reduxjs/toolkit'
 import authReducer from "../slices/auth";
+import testReducer from "../slices/Account.Slice";
 import messageReducer from "../slices/message";
 import communitySlice from '../slices/Communities.slice';
 import memberSlice from '../slices/Members.slice';
 import treeSlice from '../slices/Trees.slice';
-import personSlice from '../slices/other.Slice';
+import accountSlice from '../slices/Account.Slice';
 import userSlice from '../slices/users.slice';
-// import ThunkMiddleware from 'redux-thunk';
 
 
 const reducer = {
   auth: authReducer,
+  test: testReducer,
   message: messageReducer,
   communities: communitySlice,
   members: memberSlice,
   trees: treeSlice,
-  person: personSlice,
+  account: accountSlice,
   userinfo: userSlice
 }
 

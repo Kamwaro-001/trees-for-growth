@@ -38,11 +38,11 @@ function App() {
                   <Route exact path='/' element={<Home />} />
                   <Route path='/login' element={<Login />} />
                   <Route path='/register' element={<Register />} />
-                  <Route path='/dashboard' element={<Dashboard />} />
+                  <Route path='/dashboard' element={<RequireAuth component={Dashboard} />} />
                   <Route path='/communities' element={<Communities />} />
-                  <Route path='/trees' element={<Trees />} />
-                  <Route path='/store' element={<Buy />} />
-                  <Route path='/profile' element={<Profile />} />
+                  <Route path='/trees' element={<RequireAuth component={Trees} />} />
+                  <Route path='/store' element={<RequireAuth component={Buy} />} />
+                  <Route path='/profile' element={<RequireAuth component={Profile} />} />
                   <Route path='/about' element={<About />} />
                   {/* <Route path='/boarduser' element={<BoardUser />} /> */}
                   <Route path='/boarduser' element={<RequireAuth component={BoardUser} />} />

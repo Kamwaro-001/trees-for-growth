@@ -9,3 +9,4 @@ User._meta.get_field('email').null = False
 
 User._meta.get_field('username').null = True
 User._meta.get_field('username').blank = True
+

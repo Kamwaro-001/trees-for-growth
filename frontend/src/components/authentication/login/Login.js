@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { clearMessage } from "../../../slices/message";
 
 import { Formik, Field, Form, ErrorMessage } from "formik";
@@ -12,9 +12,8 @@ import logo from "../../images/bw_logo.svg";
 
 
 const Login = () => {
-  let navigate = useNavigate();
 
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { isLoggedIn } = useSelector((state) => state.auth);
   const { message } = useSelector((state) => state.message);
@@ -26,32 +25,20 @@ const Login = () => {
   }, [dispatch]);
 
   const initialValues = {
-    // username: "",
     email: "",
     password: "",
   };
 
   const handleLogin = (formValue) => {
-    const { email, password } = formValue;
     const redirectTo = '/dashboard'
-    // setLoading(true);
-
-    // dispatch(login({ email, password }))
     dispatch(login({ formValue, redirectTo }))
-      // console.log(formValue)
-      // .unwrap()
-    // .then(() => {
-    //   navigate("/dashboard");
-    //   // window.location.reload();
-    // })
-    .catch((e) => {
-      // setLoading(false);
-      console.log(e)
-    });
+      .catch((e) => {
+        setLoading(false);
+        console.log(e)
+      });
   };
 
   const validationSchema = Yup.object().shape({
-    // username: Yup.string().required("This field is required!"),
     email: Yup.string().required("This field is required!"),
     password: Yup.string().required("This field is required!"),
   });
@@ -84,12 +71,10 @@ const Login = () => {
                 <input type="checkbox" value="remember-me" /> Remember me
               </label>
             </div>
-            {/* <button className="w-100 btn btn-lg btn-success" type="submit" disabled={loading}>{loading && (
+            <button className="w-100 btn btn-lg btn-success" type="submit" disabled={loading}>{loading && (
               <span className="spinner-border spinner-border-sm"></span>
             )}
-              <span>Sign in</span></button> */}
-            <button className="w-100 btn btn-lg btn-success" type="submit">
-              Sign in</button>
+              <span>Sign in</span></button>
 
             {message && (
               <div className="form-group">

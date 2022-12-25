@@ -1,28 +1,27 @@
 import React, { useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
-import { getPersonAsync } from '../../slices/other.Slice';
 import { logout } from "../../slices/auth";
 import "./Navbar.css";
 import logo from '../images/bw_logo.svg';
+import { getAccountUserAsync } from '../../slices/Account.Slice';
 
 const Navbar = () => {
-  const { token: authentication } = useSelector((state) => state.auth);
-
-  // const { user: person } = useSelector((state) => state.auth);
-  const currentUser = authentication.isAuthenticated
+  const { isLoggedIn: currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getPersonAsync())
-  // }, [dispatch])
+  useEffect(() => {
+    if (currentUser) {
+      dispatch(getAccountUserAsync())
+    }
+  }, [dispatch, currentUser])
 
   const logOut = useCallback(() => {
     dispatch(logout())
     window.location.reload()
   }, [dispatch]);
   console.log(currentUser)
-  
+
 
   return (
     <nav className="navbar navbar-expand-lg bg-light fixed-top" id='nav-bar'>

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+# from django.contrib.auth.models import User
 
 from rest_framework import viewsets
 
@@ -31,16 +32,18 @@ class TreeInfoViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return self.queryset.filter(username=self.request.user)
 
+
 class ContactViewSet(viewsets.ModelViewSet):
     authentication_classes = []
-    permission_classes = [] 
+    permission_classes = []
     serializer_class = ContactSerializer
     queryset = Contact.objects.all()
+
 
 def currentUser(request):
     current_user = request.user
     if request.user.is_authenticated:
-        return HttpResponse("user: " + str(current_user))
+        return HttpResponse("userid: " + str(current_user.id) + " username: " + str(current_user))
     else:
         return HttpResponse("Not logged in")
         
