@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { addUserAsync } from "../../../slices/Users.slice";
+import { addUserAsync } from "../../../slices/users.slice";
 
 export const PDetails = (props) => {
   const [show, setShow] = useState(false);
@@ -59,8 +59,7 @@ export const PDetails = (props) => {
                 <input type="text" className="form-control" id="inputCounty" required name="county" value={newUser.county} onChange={handleInputChange} />
               </div>
             </div>
-            <div className="text-center ">
-              <button type="button" onClick={handleClose} className="btn btn-secondary m-lg-2 col-md-3">later</button>
+            <div className="d-flex justify-content-end">
               <button type="submit" className="btn btn-success m-lg-2 col-md-3">submit</button>
             </div>
           </form>

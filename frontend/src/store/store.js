@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
 import authReducer from "../slices/auth";
-import testReducer from "../slices/Account.Slice";
 import messageReducer from "../slices/message";
 import communitySlice from '../slices/Communities.slice';
 import memberSlice from '../slices/Members.slice';
@@ -11,7 +10,6 @@ import userSlice from '../slices/users.slice';
 
 const reducer = {
   auth: authReducer,
-  test: testReducer,
   message: messageReducer,
   communities: communitySlice,
   members: memberSlice,

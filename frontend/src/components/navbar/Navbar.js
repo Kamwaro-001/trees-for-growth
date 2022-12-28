@@ -1,20 +1,13 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../slices/auth";
 import "./Navbar.css";
 import logo from '../images/color_logo.svg';
-import { getAccountUserAsync } from '../../slices/Account.Slice';
 
 const Navbar = () => {
   const { isLoggedIn: currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (currentUser) {
-      dispatch(getAccountUserAsync())
-    }
-  }, [dispatch, currentUser])
 
   const logOut = useCallback(() => {
     dispatch(logout())
