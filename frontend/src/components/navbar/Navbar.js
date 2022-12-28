@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../slices/auth";
 import "./Navbar.css";
-import logo from '../images/bw_logo.svg';
+import logo from '../images/color_logo.svg';
 import { getAccountUserAsync } from '../../slices/Account.Slice';
 
 const Navbar = () => {
@@ -21,7 +21,6 @@ const Navbar = () => {
     window.location.reload()
   }, [dispatch]);
   console.log(currentUser)
-
 
   return (
     <nav className="navbar navbar-expand-lg bg-light fixed-top" id='nav-bar'>
