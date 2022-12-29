@@ -6,14 +6,16 @@ import "./Navbar.css";
 import logo from '../images/color_logo.svg';
 
 const Navbar = () => {
-  const { isLoggedIn: currentUser } = useSelector((state) => state.auth);
+  const { user: currentUser } = useSelector((state) => state.auth);
+  const { isLoggedIn } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const logOut = useCallback(() => {
     dispatch(logout())
-    window.location.reload()
+    // window.location.reload()
   }, [dispatch]);
   console.log(currentUser)
+  console.log('logged in: ' + isLoggedIn)
 
   return (
     <nav className="navbar navbar-expand-lg bg-light fixed-top" id='nav-bar'>

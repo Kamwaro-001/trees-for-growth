@@ -1,13 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "./message";
-import axios from "axios";
 
 import authService from "../services/auth.service";
 import { setAxiosAuthToken } from "../redux/utils/Utils";
 import { toast } from "react-toastify";
 import { getAccountUserAsync } from "./Account.Slice";
 
-// const auth_token = JSON.parse(localStorage.getItem("token"));
 const user = JSON.parse(localStorage.getItem("token"));
 
 export const register = createAsyncThunk(
@@ -26,21 +24,21 @@ export const register = createAsyncThunk(
   }
 );
 
-export const login = ({ formValue, redirectTo }) => async (dispatch) => {
+export const login = createAsyncThunk('auth/login', async ({ formValue, redirectTo }, thunkAPI) => {
   try {
     let email = formValue.email
     let password = formValue.password
 
-    const response = await axios.post("/api/accounts/token/login/", { email, password })
-    setAxiosAuthToken(response.data.auth_token)
-    dispatch(setToken(response.data.auth_token))
-    dispatch(getAccountUserAsync())
-    dispatch(setCurrentUser(redirectTo))
+    const data = await authService.login(email, password)
+    // thunkAPI.dispatch(getAccountUserAsync())
+    thunkAPI.dispatch(setCurrentUser(redirectTo))
+
+    return { user: data }
   } catch (error) {
     const message = "wrong username or password"
-    dispatch(setMessage(message));
+    thunkAPI.dispatch(setMessage(message));
   }
-}
+})
 
 export const setCurrentUser = (redirectTo) => dispatch => {
   console.log('set user' + redirectTo);
@@ -49,7 +47,7 @@ export const setCurrentUser = (redirectTo) => dispatch => {
   }
 }
 
-export const setToken = token => dispatch => {
+export const setToken = (token) => {
   setAxiosAuthToken(token);
   localStorage.setItem('token', JSON.stringify(token));
 }
@@ -57,53 +55,44 @@ export const setToken = token => dispatch => {
 export const unsetCurrentUser = () => {
   setAxiosAuthToken("");
   localStorage.clear();
+  window.location.replace('/login');
 };
 
-export const logout = () => dispatch => {
-  axios.post('/api/accounts/token/logout/')
-    .then(response => {
-      dispatch(unsetCurrentUser());
-      toast.success("Logout Successful")
-      dispatch(window.location.replace('/login'))
-    })
-    .catch((error) => {
-      dispatch(unsetCurrentUser());
-      console.log(error)
-    })
-}
+export const logout = createAsyncThunk("auth/logout", async () => {
+  try {
+    await authService.logout();
+  } catch (error) {
+    localStorage.setItem('e', JSON.stringify(error))
+  }
+});
 
-const initialState = user
-  ? { isLoggedIn: true, user, isAuthenticated: true }
-  : { isLoggedIn: false, user: null, isAuthenticated: false };
+const initialState = (user !== null)
+  ? { isLoggedIn: true, user }
+  : { isLoggedIn: false, user: null };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  // user: auth_token ? { isLoggedIn: true, auth_token } : { isLoggedIn: false, user: null },
-  // token: auth_token ? { isAuthenticated: true, auth_token } : { isAuthenticated: false, auth_token: null },
-  extraReducers: {
-    [register.fulfilled]: (state, action) => {
+  extraReducers: builder => {
+    builder.addCase(register.fulfilled, (state) => {
       state.isLoggedIn = false;
-    },
-    [register.rejected]: (state, action) => {
+    })
+    builder.addCase(register.rejected, (state) => {
       state.isLoggedIn = false;
-    },
-    [login.fulfilled]: (state, action) => {
+    })
+    builder.addCase(login.fulfilled, (state, action) => {
       state.isLoggedIn = true;
       state.user = action.payload.user;
-      state.persona = action.payload.persona;
-    },
-    [login.rejected]: (state, action) => {
+    })
+    builder.addCase(login.rejected, (state) => {
       state.isLoggedIn = false;
       state.user = null;
-      state.isAuthenticated = false;
-    },
-    [logout.fulfilled]: (state, action) => {
+    })
+    builder.addCase(logout.fulfilled, (state) => {
       state.isLoggedIn = false;
-      state.isAuthenticated = false;
       state.user = null;
-    },
-  },
+    })
+  }
 });
 
 const { reducer } = authSlice;

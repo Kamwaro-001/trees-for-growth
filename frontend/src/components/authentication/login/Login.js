@@ -32,6 +32,7 @@ const Login = () => {
   const handleLogin = (formValue) => {
     const redirectTo = '/dashboard'
     dispatch(login({ formValue, redirectTo }))
+      .unwrap()
       .catch((e) => {
         setLoading(false);
         console.log(e)
