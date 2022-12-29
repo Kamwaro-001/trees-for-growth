@@ -6,8 +6,13 @@ const getCurrentUserInfo = async () => {
   return response.data;
 }
 
+const editCurrentUser = (data) => {
+  return axios.patch('/api/accounts/users/me/', data)
+}
+
 const accountService = {
   getCurrentUserInfo,
+  editCurrentUser
 }
 
 export default accountService;

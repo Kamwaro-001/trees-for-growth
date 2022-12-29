@@ -4,7 +4,6 @@ import { setMessage } from "./message";
 import authService from "../services/auth.service";
 import { setAxiosAuthToken } from "../redux/utils/Utils";
 import { toast } from "react-toastify";
-import { getAccountUserAsync } from "./Account.Slice";
 
 const user = JSON.parse(localStorage.getItem("token"));
 
@@ -30,7 +29,6 @@ export const login = createAsyncThunk('auth/login', async ({ formValue, redirect
     let password = formValue.password
 
     const data = await authService.login(email, password)
-    // thunkAPI.dispatch(getAccountUserAsync())
     thunkAPI.dispatch(setCurrentUser(redirectTo))
 
     return { user: data }

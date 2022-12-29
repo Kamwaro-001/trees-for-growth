@@ -25,7 +25,7 @@ const Communities = () => {
 		return alphabet[Math.floor(Math.random() * alphabet.length)]
 	}
 	const user = useSelector(showAccount);
-
+	console.log(user)
 
 	let generatedToken = phoneNumberToken(8, { type: 'number' });
 

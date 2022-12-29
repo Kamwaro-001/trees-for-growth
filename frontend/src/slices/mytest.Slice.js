@@ -35,6 +35,3 @@ const userSlice = createSlice({
 const { reducer } = userSlice
 export const showTestSlice = (state) => state.user
 export default reducer
-
-// module.exports = userSlice.reducer
-// module.exports.fetchUsers = fetchUsers

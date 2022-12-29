@@ -29,7 +29,7 @@ const Profile = () => {
     ))
   ))
 
-  // sensitiveMail = sensitiveInfo.email
+  sensitiveMail = sensitiveInfo.email
 
   console.log(sensitiveInfo)
 

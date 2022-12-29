@@ -1,66 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit"
-import axios from "axios";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { toast } from "react-toastify";
-import { toastOnError } from "../redux/utils/Utils";
 import accountService from "../services/account.service";
 
-// get user info, edit user info, 
-const user = JSON.parse(localStorage.getItem("user"));
+const user = JSON.parse(localStorage.getItem('user'))
 
-export const getAccountUserAsync = () => async (dispatch) => {
-  try {
-    const data = await accountService.getCurrentUserInfo();
-    dispatch(getUser(data))
-    toast.warn(data)
-  } catch (err) {
-    
-  }
-}
+const initialState = (user !== null) ? { isSet: true, user } : { isSet: false, user: [] }
 
-const getUser = (data) => dispatch => {
-  try {
-    dispatch(getAccount(data))
-    localStorage.setItem('user', JSON.stringify(data))
-  } catch (error) {
-  }
-}
+export const getAccountUserAsync = createAsyncThunk('user/getuser', async () => {
+  const data = await accountService.getCurrentUserInfo()
+  return data
+})
 
-export const editAccountAsync = (data) => async (dispatch) => {
-  try {
-    const response = await axios.patch("api/accounts/users/me/", data);
-    dispatch(editAccount(response.data))
-  } catch (err) {
-  }
-}
-
-// export const getAccountUserAsyncT = () => async (dispatch) => {
-//   try {
-//     const response = await axios.get("/api/accounts/users/me/");
-//     dispatch(getUser(response.data))
-//     localStorage.setItem('user', JSON.stringify(response.data))
-
-//   } catch (err) {
-//   }
-// }
+export const editAccountAsync = createAsyncThunk('user/edituser', async (data, thunkAPI) => {
+  const response = await accountService.editCurrentUser(data)
+  thunkAPI.dispatch(toast.success('Account Changes Successful! Use new details for your next login!'))
+  return response.data
+})
 
 const accountSlice = createSlice({
-  name: "account",
-  initialState: {
-    data: [],
-    userinfo: JSON.parse(localStorage.getItem("user"))
-  },
-  reducers: {
-    getAccount: (state, action) => {
-      state.data = [action.payload];
-    },
-    editAccount: (state, action) => {
-      state.data.push(action.payload);
-    }
+  name: 'account',
+  initialState,
+  extraReducers: builder => {
+    builder.addCase(getAccountUserAsync.fulfilled, (state, action) => {
+      state.isSet = true
+      state.user = action.payload
+    })
+    builder.addCase(getAccountUserAsync.rejected, (state, action) => {
+      state.isSet = false
+      state.user = []
+    })
   }
 })
 
-
-
-export const { getAccount, editAccount } = accountSlice.actions
-export const showAccount = (state) => state.account.userinfo;
-export default accountSlice.reducer;
+const { reducer } = accountSlice;
+export const showAccount = (state) => state.account.user;
+export default reducer;
