@@ -1,0 +1,39 @@
+.list-trees .icon-box {
+  padding: 10px;
+  border-radius: 6px;
+  background: url('../images/asset3.svg');
+  transition: ease-in-out 0.3s;
+  background-color: #fff;
+  box-shadow: 0px 2px 20px #00000042;
+  text-align: center;
+}
+
+.list-trees .icon-box h4 {
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  background-color: #fff;
+  font-size: 17px;
+}
+
+.list-trees .icon-box h4 .a {
+  color: #384046;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.list-trees .icon-box p {
+  display: inline-block;
+  text-align: center;
+  line-height: 24px;
+  font-size: 14px;
+  background-color: #e6fde690;
+  border-radius: 0.5em;
+}
+
+.list-trees .add-part {
+  height: 200px;
+}
+.list-trees .test {
+  margin-top: 10%;
+
+}

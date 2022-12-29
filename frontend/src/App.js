@@ -14,7 +14,7 @@ import Footer from './components/footer/Footer';
 import Dashboard from './components/dashboard/Dashboard';
 import BoardUser from './components/dashboard/BoardUser';
 import Communities from './components/communities/Communities';
-import Profile from './components/user-profile/Profile.Rename';
+import Profile from './components/user-profile/Profile';
 import Buy from './components/buy/Buy';
 import store from './store/store';
 import Trees from './components/planting/Trees';

@@ -1,17 +1,50 @@
-.my-info, .more-info {
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #c7eacc;
-    border-radius: 0.5em;
-    margin-top: 20px;
-    padding: 30px;
+/* body{
+    background: #f7f7ff;
+    margin-top:20px;
+} */
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid transparent;
+    border-radius: .25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
 }
 
-.my-info h2, .more-info h2 {
-    text-align: center;
+.me-2 {
+    margin-right: .5rem !important;
 }
 
-.more-info {
-    margin-bottom: 20px;
+.progress {
+    height: 5px;
+}
+
+.progress-bar {
+    width: 80%;
+}
+
+.progress-bar2 {
+    width: 72%;
+}
+
+.progress-bar3 {
+    width: 89%;
+}
+
+.progress-bar4 {
+    width: 55%;
+}
+
+.progress-bar5 {
+    width: 66%;
+}
+
+.mb-3 div{
+    margin-top: auto;
+    margin-bottom: auto;
 }

@@ -25,7 +25,7 @@ const accountSlice = createSlice({
       state.isSet = true
       state.user = action.payload
     })
-    builder.addCase(getAccountUserAsync.rejected, (state, action) => {
+    builder.addCase(getAccountUserAsync.rejected, (state) => {
       state.isSet = false
       state.user = []
     })

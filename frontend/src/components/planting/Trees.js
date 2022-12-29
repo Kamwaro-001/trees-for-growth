@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { addTreeAsync, getTreeAsync, showTree } from '../../slices/Trees.slice';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
+import './Trees.css'
 
 
 const Trees = () => {
@@ -34,39 +36,48 @@ const Trees = () => {
 		toast.success("Tree added. Verification should not take too long.");
 	}
 
+	let checkTrees = 0;
+
 	return (
 		<div>
-			<h1>My Trees</h1>
-			<div className='table-responsive'>
-				<table className='table table-striped table-sm'>
-					<thead>
-						<tr>
-							<th scope="col">Name</th>
-							<th scope="col">Information</th>
-							<th scope="col">Files</th>
-						</tr>
-					</thead>
-					<tbody>
-						{
-							tree.map((t) => (
-								t.map((item, i) => (
-									<tr key={i}>
-										<td>{item.tree_name}</td>
-										<td>{item.more_info}</td>
-										<td>{item.files}</td>
-									</tr>
-								))
-							))
-						}
-					</tbody>
-				</table>
-
+			<div className="section-title pt-5">
+				<h2>My Tree Planting information</h2>
 			</div>
+			<section id="list-trees" className="list-trees section-bg">
+				<div className="container">
+					<div className="row">
+						<div className="col-lg-3 add-part mb-5">
+							<div className="card h-100">
+								<div className="card-body h-100 test1">
+									<div className="d-flex flex-column align-items-center  test">
+										<p>Ready to add a tree?</p>
+										<button className="btn btn-success px-4" onClick={handleShow}>Add</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div className='col-lg-8'>
+							<div className='row'>
+								{
+									tree.map((t) => (
+										t.map((item, i) => (
+											<div className="col-md-4 pb-5 tree-map" key={i}>
+												<div className="icon-box">
+													<span hidden>{checkTrees += 1}</span>
+													<h4><Link to="#" className="a">{item.tree_name}</Link></h4>
+													<p className="p1">{item.more_info}</p>
+												</div>
+											</div>
+										))
+									))
+								}
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
 			<div className="comm-create">
-				<Button variant="success" onClick={handleShow}>
-					Planted another?
-				</Button>
 				<Modal show={show} onHide={handleClose} centered>
 					<Modal.Header closeButton>
 						<Modal.Title>Tree Details</Modal.Title>
