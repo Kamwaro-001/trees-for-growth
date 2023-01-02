@@ -1,10 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import "./App.css"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-
-import { ToastContainer } from "react-toastify";
-
+import { Flip, ToastContainer } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from './components/authentication/register/Register';
 import Login from './components/authentication/login/Login';
@@ -20,6 +19,7 @@ import store from './store/store';
 import Trees from './components/planting/Trees';
 import About from './components/about/About';
 import RequireAuth from './components/authentication/RequireAuth';
+
 
 if (window.location.origin === "http://localhost:3000") {
    axios.defaults.baseURL = "http://127.0.0.1:8000";
@@ -45,16 +45,14 @@ function App() {
                      <Route path='/store' element={<RequireAuth component={Buy} />} />
                      <Route path='/profile' element={<RequireAuth component={Profile} />} />
                      <Route path='/about' element={<About />} />
-                     {/* <Route path='/boarduser' element={<BoardUser />} /> */}
                      <Route path='/boarduser' element={<RequireAuth component={BoardUser} />} />
                   </Routes>
                </div>
                <Footer />
             </Router>
          </div>
-         <ToastContainer hideProgressBar={true} newestOnTop={true} />
+         <ToastContainer hideProgressBar={true} newestOnTop={true} bodyClassName={'toastBody'} transition={Flip} style={{ marginTop: "78px" }} />
       </Provider>
-
    );
 }
 

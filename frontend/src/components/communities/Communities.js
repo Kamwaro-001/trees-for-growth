@@ -5,7 +5,7 @@ import { addCommunityAsync, getCommunityAsync, showCommunity } from "../../slice
 import { JoinCommunity, CommunitiesList } from "./Community.Modals";
 import phoneNumberToken from "generate-sms-verification-code";
 import "./Communities.css";
-import { showAccount } from "../../slices/Account.Slice";
+import { getAccountUserAsync, showAccount } from "../../slices/Account.Slice";
 import { Link } from "react-router-dom";
 import * as Icons from 'react-bootstrap-icons'
 
@@ -21,6 +21,7 @@ const Communities = () => {
 
 	useEffect(() => {
 		dispatch(getCommunityAsync());
+		dispatch(getAccountUserAsync());
 	}, [dispatch])
 
 	const letter = () => {
@@ -28,7 +29,7 @@ const Communities = () => {
 		return alphabet[Math.floor(Math.random() * alphabet.length)]
 	}
 	const user = useSelector(showAccount);
-	// console.log(user)
+	console.log(user)
 
 	let generatedToken = phoneNumberToken(8, { type: 'number' });
 

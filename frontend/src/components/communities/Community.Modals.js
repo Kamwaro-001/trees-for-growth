@@ -7,12 +7,14 @@ import { toast } from 'react-toastify';
 import { showAccount } from '../../slices/Account.Slice';
 import { getCommunityAsync, showCommunity } from '../../slices/Communities.slice';
 import { addMemberAsync, getMemberAsync, showMember } from '../../slices/Members.slice';
-import * as Icons from 'react-bootstrap-icons';
+import * as Icons from 'react-bootstrap-icons'
 
 export const JoinCommunity = (props) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const { isLoggedIn } = useSelector((state) => state.auth)
 
   const user = useSelector(showAccount)
   const dispatch = useDispatch();
@@ -35,9 +37,17 @@ export const JoinCommunity = (props) => {
     }
   }
 
+  const checkLogin = () => {
+    if (isLoggedIn) {
+      return handleShow()
+    } else {
+      toast.warn('Please login to join a community', { icon: <Icons.ShieldExclamation /> })
+    }
+  }
+
   return (
     <>
-      <Button variant="success" onClick={handleShow} className='modal-join-btn'>
+      <Button variant="success" onClick={checkLogin} className='modal-join-btn'>
         Join
       </Button>
       <Modal show={show} onHide={handleClose} centered>

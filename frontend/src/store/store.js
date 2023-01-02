@@ -5,7 +5,8 @@ import communitySlice from '../slices/Communities.slice';
 import memberSlice from '../slices/Members.slice';
 import treeSlice from '../slices/Trees.slice';
 import userSlice from '../slices/users.slice';
-import accountReducer from "../slices/Account.Slice"
+import accountReducer from "../slices/Account.Slice";
+import contactSlice from '../slices/Contact.Slice';
 
 
 const reducer = {
@@ -15,7 +16,8 @@ const reducer = {
   members: memberSlice,
   trees: treeSlice,
   userinfo: userSlice,
-  account: accountReducer
+  account: accountReducer,
+  contact: contactSlice
 }
 
 const store = configureStore({

@@ -23,5 +23,4 @@ export const ContactAsync = (data) => async (dispatch) => {
 }
 
 export const { sendMessage } = contactSlice.actions
-export const showContact = (state) => state.contact.data;
 export default contactSlice.reducer;

@@ -30,7 +30,8 @@ REST_FRAMEWORK = {
 
 DJOSER = {
     "USER_ID_FIELD": "username",
-    "LOGIN_FIELD": "email"
+    "LOGIN_FIELD": "email",
+    "PASSWORD_RESET_CONFIRM_URL": "reset_password/{uid}/{token}",
 }
 
 SITE_ID = 1
