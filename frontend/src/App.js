@@ -51,7 +51,7 @@ function App() {
                <Footer />
             </Router>
          </div>
-         <ToastContainer hideProgressBar={true} newestOnTop={true} bodyClassName={'toastBody'} transition={Flip} style={{ marginTop: "78px" }} />
+         <ToastContainer hideProgressBar={true} newestOnTop={true} bodyClassName={'toastBody'} transition={Flip} style={{ marginTop: "70px" }} />
       </Provider>
    );
 }

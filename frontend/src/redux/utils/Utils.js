@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import * as Icons from "react-bootstrap-icons";
 
 export const setAxiosAuthToken = token => {
   if (typeof token !== "undefined" && token) {
@@ -18,6 +19,19 @@ export const toastOnError = error => {
     toast.error(JSON.stringify(error));
   }
 };
+
+export const toastOnSuccess = success => {
+  toast.success(success, { icon: <Icons.EmojiSmile /> })
+}
+
+export const toastOnWarn = warn => {
+  toast.warn(warn, { icon: <Icons.ShieldExclamation /> })
+}
+
+export const toastAnError = err => {
+  toast.error(err, { icon: <Icons.ExclamationCircle /> })
+}
+
 
 export const isEmpty = value =>
   value === undefined ||

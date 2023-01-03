@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit';
 import authReducer from "../slices/auth";
 import messageReducer from "../slices/message";
 import communitySlice from '../slices/Communities.slice';
@@ -6,7 +6,7 @@ import memberSlice from '../slices/Members.slice';
 import treeSlice from '../slices/Trees.slice';
 import userSlice from '../slices/users.slice';
 import accountReducer from "../slices/Account.Slice";
-import contactSlice from '../slices/Contact.Slice';
+import contactReducer from "../slices/Contact.Slice"
 
 
 const reducer = {
@@ -17,7 +17,7 @@ const reducer = {
   trees: treeSlice,
   userinfo: userSlice,
   account: accountReducer,
-  contact: contactSlice
+  contact: contactReducer
 }
 
 const store = configureStore({

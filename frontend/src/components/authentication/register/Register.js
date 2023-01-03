@@ -58,7 +58,6 @@ const Register = () => {
     return <Navigate to="/Dashboard" />;
   }
 
-
   const handleRegister = (formValue) => {
     const { username, email, password } = formValue;
     setLoading(true)
@@ -74,6 +73,7 @@ const Register = () => {
         setLoading(false) && setSuccessful(false);
       });
   };
+  
   return (
     <div>
       <div className="auth-body text-center">

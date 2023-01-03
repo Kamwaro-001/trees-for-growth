@@ -87,11 +87,9 @@
 
 .home .eg1,
 .eg2 {
-  width: 80%;
+  width: 75%;
   margin: auto;
 }
-
-
 
 /*--------------------------------------------------------------
 # Sections General
@@ -144,63 +142,57 @@ section {
 }
 
 /*--------------------------------------------------------------
-# About
+# Developer
 --------------------------------------------------------------*/
-.developer-info {
-  padding: 10px 0;
+.developer-info .member {
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  background: #fff;
 }
 
-.developer-info .img-fluid {
+.developer-info .member img {
+  max-width: 60%;
   border-radius: 50%;
+  margin-bottom: 20px;
 }
 
-.developer-info h3 {
-  font-weight: 600;
-  font-size: 32px;
-}
-
-.developer-info ul {
-  list-style: none;
-  padding: 0;
-  font-size: 15px;
-}
-
-.developer-info ul li+li {
-  margin-top: 10px;
-}
-
-.developer-info ul li {
-  position: relative;
-  padding-left: 26px;
-}
-
-.developer-info ul i {
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-size: 22px;
-  color: #3498db;
-}
-
-.developer-info .icon-boxes {
-  padding-top: 10px;
-}
-
-.developer-info .icon-boxes h4 {
-  font-size: 20px;
+.developer-info .member h4 {
   font-weight: 700;
-  margin-top: 5px;
+  margin-bottom: 2px;
 }
 
-.developer-info .icon-boxes i {
-  font-size: 48px;
-  color: #3498db;
+.developer-info .member span {
+  font-style: italic;
+  display: block;
+  font-size: 13px;
 }
 
-.developer-info .icon-boxes p {
-  font-size: 15px;
-  color: #848484;
+.developer-info .member p {
+  padding-top: 10px;
+  color: #084a08;
 }
+
+.developer-info .member .social {
+  margin-top: 15px;
+}
+
+.developer-info .member .social a {
+  color: #084a08;
+  transition: 0.3s;
+  margin-left: 5px;
+}
+
+.developer-info .member .social a:hover {
+  color: #3da55c;
+}
+
+.developer-info .member .social i {
+  font-size: 18px;
+  margin: 0 2px;
+}
+
 
 
 /*--------------------------------------------------------------
@@ -246,84 +238,39 @@ section {
   color: #fff;
 }
 
-.contact .php-email-form {
+.contact .contact-form {
   width: 100%;
   padding: 30px;
   background: #fff;
   border-radius: 4px;
 }
 
-.contact .php-email-form .form-group {
+.contact .contact-form .form-group {
   padding-bottom: 8px;
 }
 
-.contact .php-email-form .validate {
-  display: none;
-  color: red;
-  margin: 0 0 15px 0;
-  font-weight: 400;
-  font-size: 13px;
-}
-
-.contact .php-email-form .error-message {
-  display: none;
-  color: #fff;
-  background: #ed3c0d;
-  text-align: left;
-  padding: 15px;
-  font-weight: 600;
-}
-
-.contact .php-email-form .error-message br+br {
-  margin-top: 25px;
-}
-
-.contact .php-email-form .sent-message {
-  display: none;
-  color: #fff;
-  background: #18d26e;
-  text-align: center;
-  padding: 15px;
-  font-weight: 600;
-}
-
-.contact .php-email-form .loading {
-  display: none;
-  background: #fff;
-  text-align: center;
-  padding: 15px;
-}
-
-.contact .php-email-form .loading:before {
-  content: "";
-  display: inline-block;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px -6px 0;
-  border: 3px solid #18d26e;
-  border-top-color: #eee;
-  -webkit-animation: animate-loading 1s linear infinite;
-  animation: animate-loading 1s linear infinite;
-}
-
-.contact .php-email-form input,
-.contact .php-email-form textarea {
+.contact .contact-form .contact-input,
+.contact .contact-form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
 }
 
-.contact .php-email-form input {
+.contact .contact-form .contact-input:focus,
+.contact .contact-form textarea:focus {
+  border-color: #3da55c;
+}
+
+.contact .contact-form .contact-input {
   height: 44px;
 }
 
-.contact .php-email-form textarea {
+.contact .contact-form .contact-textarea {
   padding: 10px 12px;
 }
 
-.contact .php-email-form button[type=submit] {
-  background: #3498db;
+.contact .contact-form button[type=submit] {
+  background: #308148;
   border: 0;
   padding: 10px 24px;
   color: #fff;
@@ -331,8 +278,8 @@ section {
   border-radius: 4px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
-  background: #5faee3;
+.contact .contact-form button[type=submit]:hover {
+  background: #3da55c;
 }
 
 @-webkit-keyframes animate-loading {

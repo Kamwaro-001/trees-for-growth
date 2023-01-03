@@ -8,6 +8,7 @@ import { showAccount } from '../../slices/Account.Slice';
 import { getCommunityAsync, showCommunity } from '../../slices/Communities.slice';
 import { addMemberAsync, getMemberAsync, showMember } from '../../slices/Members.slice';
 import * as Icons from 'react-bootstrap-icons'
+import { toastOnWarn } from '../../redux/utils/Utils';
 
 export const JoinCommunity = (props) => {
   const [show, setShow] = useState(false);
@@ -33,7 +34,7 @@ export const JoinCommunity = (props) => {
       // toast.success("You have joined successfully!")
       // window.location.reload();
     } else {
-      toast.warn("Wrong Verification Code!")
+      toastOnWarn("Wrong Verification Code!")
     }
   }
 

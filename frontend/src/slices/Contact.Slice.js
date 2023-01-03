@@ -1,26 +1,34 @@
-import { createSlice } from "@reduxjs/toolkit"
-import axios from "axios";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { toastAnError, toastOnSuccess } from "../redux/utils/Utils";
+import contactService from "../services/contact.service";
+
+export const contactAsync = createAsyncThunk("contact/sendMessage", async (formValue) => {
+  try {
+    const response = await contactService.sendMessage(formValue)
+    toastOnSuccess("Message sent successfully. We appreciate your feedback.")
+
+    return response.data
+  } catch (error) {
+    toastAnError("An error occurred please try again")
+  }
+})
 
 export const contactSlice = createSlice({
   name: "contact",
   initialState: {
+    sent: false,
     data: []
   },
-  reducers: {
-    sendMessage: (state, action) => {
-      state.data.push(action.payload);
-    }
+  extraReducers: builder => {
+    builder.addCase(contactAsync.fulfilled, (state, action) => {
+      state.sent = true
+      state.data.push(action.payload)
+    })
+    builder.addCase(contactAsync.rejected, (state) => {
+      state.sent = false
+    })
   }
 })
 
-export const ContactAsync = (data) => async (dispatch) => {
-  try {
-    const response = await axios.post("/api/contact/", data);
-    dispatch(sendMessage(response.data))
-  } catch(e) {
-    console.log(e)
-  }
-}
-
-export const { sendMessage } = contactSlice.actions
-export default contactSlice.reducer;
+const { reducer } = contactSlice;
+export default reducer;

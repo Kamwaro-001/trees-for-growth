@@ -30,6 +30,7 @@ const Login = () => {
   };
 
   const handleLogin = (formValue) => {
+    setLoading(true);
     const redirectTo = '/dashboard'
     dispatch(login({ formValue, redirectTo }))
       .unwrap()
