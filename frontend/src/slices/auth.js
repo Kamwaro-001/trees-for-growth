@@ -23,38 +23,26 @@ export const register = createAsyncThunk(
   }
 );
 
-export const login = createAsyncThunk('auth/login', async ({ formValue, redirectTo }, thunkAPI) => {
+export const login = createAsyncThunk('auth/login', async ( formValue, thunkAPI) => {
   try {
     let email = formValue.email
     let password = formValue.password
 
     const data = await authService.login(email, password)
-    thunkAPI.dispatch(setCurrentUser(redirectTo))
-
+    thunkAPI.dispatch(setMessage(""));
     return { user: data }
+
   } catch (error) {
     const message = "wrong username or password"
     thunkAPI.dispatch(setMessage(message));
+    return thunkAPI.rejectWithValue();
   }
 })
-
-export const setCurrentUser = (redirectTo) => dispatch => {
-  console.log('set user' + redirectTo);
-  if (redirectTo !== '') {
-    dispatch(window.location.replace(redirectTo))
-  }
-}
 
 export const setToken = (token) => {
   setAxiosAuthToken(token);
   localStorage.setItem('token', JSON.stringify(token));
 }
-
-export const unsetCurrentUser = () => {
-  setAxiosAuthToken("");
-  localStorage.clear();
-  window.location.replace('/login');
-};
 
 export const logout = createAsyncThunk("auth/logout", async () => {
   try {

@@ -6,7 +6,7 @@ import "./Navbar.css";
 import logo from '../images/color_logo.svg';
 
 const Navbar = () => {
-  const { user: currentUser } = useSelector((state) => state.auth);
+  const { isLoggedIn: currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const logOut = useCallback(() => {
