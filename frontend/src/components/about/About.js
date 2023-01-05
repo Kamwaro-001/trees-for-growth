@@ -12,7 +12,7 @@ const About = () => {
       <div className="mission">
         <h3>Our Mission</h3>
         <p>
-          <b>To encourage everyone to plant more trees and fight desertification</b>
+          <b>Encouraging everyone to plant more trees and fight desertification.</b>
         </p>
 
       </div>
@@ -37,7 +37,7 @@ const About = () => {
             <ul className='features-list'>
               <li><i className="checks"><Icons.CheckAll /></i> Progress badges</li>
               <li><i className="checks"><Icons.CheckAll /></i> Tangible incentives, such as cash - this feature may take a while depending on how long it will take us to find <span className='donor'>donors</span></li>
-              <p className='mt-2'>These are just some of the main features there is more exciting stuff we are still working on. <br/> Stay Tuned!</p>
+              <p className='mt-2'>These are just some of the main features there is more exciting stuff we are still working on. <br /> Stay Tuned!</p>
             </ul>
           </div>
         </div>

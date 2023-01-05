@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import "./Home.css";
-import forest from "../images/forest.jpg";
 import process from "../images/process.svg";
 import community from "../images/community.svg";
 import developer from "../images/developer.jpeg";
@@ -12,7 +11,6 @@ import { Formik, Form, Field } from 'formik';
 
 const Home = () => {
   const dispatch = useDispatch()
-
   const initialValues = {
     name: "",
     email: "",
@@ -31,31 +29,42 @@ const Home = () => {
 
   return (
     <div className='home'>
-      <section id="hero" className="d-flex flex-column justify-content-center align-items-center">
+      <section id="hero" className="main-hero d-flex flex-column justify-content-center align-items-center">
         <div className="container text-center text-md-left" data-aos="fade-up">
-          <h1>Trees for <span>Growth</span></h1>
-          <h2>Tree Planting Meets Technology</h2>
-          <Link to="/register" className="btn-get-started scrollto">Make an Impact</Link>
+          <div className='hero-flex'>
+            <h1>Trees for <span>Growth</span></h1>
+            <h2>Rewards Earned. Forests Restored</h2>
+            <Link to="/register" className="btn-get-started scrollto">Make an Impact</Link>
+          </div>
+        </div>
+        <div className='credit1 w-100 text-end pe-2'>
+          <a href="https://pixabay.com/photos/nature-forest-landscape-at-night-3194001/" target={'_blank'} rel="noreferrer">&copy; Image by Florian Kurz</a>
         </div>
       </section>
 
-      <div className="container my-5" id='#about'>
-        <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-          <div className="col-lg-7 p-3 p-lg-5 pt-lg-3">
-            <h1 className="display-4 fw-bold lh-1">Welcome to Trees for Growth</h1>
-            <p className="lead">Our plan is to motivate everyone to plant trees and help save our planet</p>
+      <div className="container my-5 about-hero" id='#about-hero'>
+        <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg pb-4">
+          <div className="col-lg-7 p-3 p-lg-5 pt-lg-3 about-hero-pt1">
+            <h1 className="display-4 fw-bold lh-1 text-center">Welcome to Trees for Growth</h1>
+            <h3>Fight climate change while supporting local communities</h3>
+            <p className="lead">We plan to motivate local communities to plant trees and help save our planet</p>
             <div className="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-              <Link to="/register">
-                <button type="button" className="home-btn btn btn-success btn-lg px-4 me-md-2 fw-bold">
-                  Join
-                </button></Link>
-              <Link to="/about">
-                <button type="button" className="home-btn2 btn btn-outline-secondary btn-lg px-4" >Learn More</button>
-              </Link>
+              <div className='text-end w-100'>
+                <Link to="/register" className='hero-join-btn'>
+                  <button type="button" className="home-btn btn btn-success btn-lg px-4 me-md-2 fw-bold">
+                    Join
+                  </button>
+                </Link>
+                <Link to="/about">
+                  <button type="button" className="home-btn2 btn btn-outline-secondary btn-lg px-4" >Learn More</button>
+                </Link>
+              </div>
             </div>
           </div>
-          <div className="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-            <img className="rounded-lg-3" src={forest} alt="" width="720" />
+          <div className="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg about-hero-pt2 d-flex">
+            <div className='credit2 text-end p-2'>
+              <a href="https://www.pexels.com/photo/green-trees-1009402/" className='forest-credit' target={'_blank'} rel="noreferrer">&copy; Photo by Pille  Kirsi</a>
+            </div>
           </div>
         </div>
       </div>

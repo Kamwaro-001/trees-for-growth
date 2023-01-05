@@ -1,8 +1,8 @@
 #hero {
   width: 100%;
-  height: 70vh;
+  max-height: 75vh;
+  height: 75vh;
   background: url("../images/nature.jpg");
-  background-position: center center;
   background-size: cover;
   position: relative;
   padding: 0;
@@ -13,9 +13,15 @@
   color: #006400;
 }
 
+.home-btn2:hover {
+  border-color: #a2d5a4;
+  background-color: #a2d5a4;
+  color: #000000;
+}
+
 #hero:before {
   content: "";
-  background: linear-gradient(#25d2593f, rgba(0, 0, 0, 0.182));
+  background: linear-gradient(rgba(37, 210, 89, 0.247), rgba(0, 0, 0, 0.18));
   position: absolute;
   bottom: 0;
   top: 0;
@@ -25,6 +31,10 @@
 
 #hero .container {
   z-index: 2;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #hero h1 {
@@ -63,7 +73,19 @@
 
 #hero .btn-get-started:hover {
   background: #a2d5a4;
+  border-color: #a2d5a4;
   color: #000000;
+}
+
+#hero .credit1 {
+  z-index: 2;
+}
+
+#hero .credit1 a{
+  color: rgba(210, 210, 210, 0.761);
+  text-decoration: none;
+  font-style: italic;
+  font-size: smaller;
 }
 
 @media (max-width: 992px) {
@@ -89,6 +111,44 @@
 .eg2 {
   width: 75%;
   margin: auto;
+}
+
+.about-hero {
+  background-color: #fff;
+}
+
+.about-hero .about-hero-pt1 {
+  background: url("../images/asset2.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.about-hero .about-hero-pt1 .text-end .hero-join-btn{
+  margin-right: 1rem;
+}
+
+.about-hero .about-hero-pt2 {
+  height: 440px;
+  border-radius: 1.7em 0 0 1.7em;
+  overflow: hidden;
+  background: #1a611f;
+  background: -webkit-linear-gradient(rgba(37, 210, 89, 0.247), rgba(0, 0, 0, 0.18)), url("../images/forest.jpg");
+  background: linear-gradient(rgba(37, 210, 89, 0.247), rgba(0, 0, 0, 0.18)), url("../images/forest.jpg");
+  background-repeat: no-repeat;
+  background-size: 720px;
+  vertical-align: bottom;
+}
+
+.about-hero .credit2 {
+  align-self: flex-end;
+  width: 100%;
+}
+
+.about-hero .credit2 a {
+  color: rgb(210, 210, 210);
+  text-decoration: none;
+  font-style: italic;
+  font-size: smaller;
 }
 
 /*--------------------------------------------------------------
