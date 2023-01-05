@@ -33,7 +33,7 @@ const Profile = () => {
   sensitiveUsername = sensitiveInfo.username
 
   return (
-    <div className="container pt-5">
+    <div className="all-profile container pt-5">
       <div className="main-body">
         <div className="row">
           <div className="col-lg-4">

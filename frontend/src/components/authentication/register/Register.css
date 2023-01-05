@@ -9,3 +9,8 @@
   margin-bottom: -1px;
   border-radius: 0;
 }
+
+
+.form-signin .for-usrname:focus, .form-signin .for-rmail:focus {
+  border: 1px solid rgb(61, 164, 92);
+}

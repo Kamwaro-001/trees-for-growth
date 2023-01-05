@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { toastOnError } from "../redux/utils/Utils";
+import { toast } from "react-toastify";
+import { toastAnError, toastOnError } from "../redux/utils/Utils";
 
 export const treeSlice = createSlice({
   name: "trees",
@@ -29,9 +30,10 @@ export const getTreeAsync = () => async (dispatch) => {
 export const addTreeAsync = (data) => async (dispatch) => {
   try {
     const response = await axios.post("/api/trees/", data);
-    dispatch(addTree(response.data));
+    dispatch(addTree(response.data))
+    toast.success("Tree added. Verification should not take too long.")
   } catch (err) {
-    toastOnError(err)
+    toastAnError("An Error occurred, please check your input and try again!")
   }
 }
 

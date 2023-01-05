@@ -8,55 +8,56 @@
 	.st2{font-size:59.1526px;}
 	.st3{font-family:'DINAlternate-Bold';}
 	.st4{font-size:31.6277px;}
-	.st5{fill:#E4D00A;}
+	.st5{fill:#007F2B;}
 	.st6{fill:#C69C6D;}
-	.st7{fill:#454B1B;stroke:#000000;stroke-miterlimit:10;}
-	.st8{fill:#007F2B;}
+	.st7{fill:none;stroke:#000000;stroke-miterlimit:10;}
 </style>
 <g>
-	<g>
-		<path class="st0" d="M715,440.1H123.4c-56.7,0-102.7-46-102.7-102.7V128.8c0-56.7,46-102.7,102.7-102.7H715
-			c56.7,0,102.7,46,102.7,102.7v208.6C817.7,394.2,771.8,440.1,715,440.1z"/>
-		<text transform="matrix(1 0 0 1 246.5981 183.0288)" class="st1 st2">Have a link?</text>
-		<text transform="matrix(1 0 0 1 92.7031 275.1294)"><tspan x="0" y="0" class="st3 st4">Enter the invitation code </tspan><tspan x="0" y="38" class="st3 st4">to start participating in the community’s activities </tspan><tspan x="0" y="75.9" class="st3 st4">or follow what they are doing</tspan></text>
-	</g>
-	<g>
-		<path class="st0" d="M951.9,840.2H459.8c-56.7,0-102.7-46-102.7-102.7V580.6c0-56.7,46-102.7,102.7-102.7h492.1
-			c56.7,0,102.7,46,102.7,102.7v156.9C1054.6,794.2,1008.6,840.2,951.9,840.2z"/>
-		<text transform="matrix(1 0 0 1 514.3042 622.5083)" class="st1 st4">Ready to Start your own?</text>
-		<text transform="matrix(1 0 0 1 400.6772 725.7158)" class="st3 st4">You can create one easily and invite members!</text>
-	</g>
-	<g>
-		<path class="st0" d="M550.4,1189H190.6c-56.7,0-102.7-46-102.7-102.7V998c0-56.7,46-102.7,102.7-102.7h359.9
-			c56.7,0,102.7,46,102.7,102.7v88.2C653.2,1143,607.2,1189,550.4,1189z"/>
-		<text transform="matrix(1 0 0 1 202.3389 1013.4453)"><tspan x="0" y="0" class="st3 st4">Communities can be for </tspan><tspan x="0" y="38" class="st3 st4">a school or organization, </tspan><tspan x="0" y="75.9" class="st3 st4">or even just with your friends!</tspan></text>
-	</g>
-	<g>
-		<circle class="st5" cx="215.3" cy="164.3" r="11.2"/>
-		<path d="M215.3,153.5c5.9,0,10.7,4.8,10.7,10.7s-4.8,10.7-10.7,10.7s-10.7-4.8-10.7-10.7S209.3,153.5,215.3,153.5 M215.3,152.5
-			c-6.5,0-11.7,5.3-11.7,11.7s5.3,11.7,11.7,11.7s11.7-5.3,11.7-11.7S221.7,152.5,215.3,152.5L215.3,152.5z"/>
-	</g>
-	<g>
-		<circle class="st5" cx="487.2" cy="611.6" r="7.6"/>
-		<path d="M487.2,604.4c3.9,0,7.1,3.2,7.1,7.1s-3.2,7.1-7.1,7.1c-3.9,0-7.1-3.2-7.1-7.1S483.3,604.4,487.2,604.4 M487.2,603.4
-			c-4.5,0-8.1,3.6-8.1,8.1s3.6,8.1,8.1,8.1c4.5,0,8.1-3.6,8.1-8.1S491.7,603.4,487.2,603.4L487.2,603.4z"/>
-	</g>
-	<g>
-		<circle class="st6" cx="616" cy="898.5" r="30.3"/>
-	</g>
-	<g>
-		<circle class="st6" cx="633.2" cy="462" r="54.7"/>
-	</g>
-	<g>
-		<g>
-			<path d="M641,822.8c-10.1,24.9-20.2,49.7-30.3,74.6c-2.9,7.2,8.7,10.3,11.6,3.2c10.1-24.9,20.2-49.7,30.3-74.6
-				C655.4,818.8,643.8,815.7,641,822.8L641,822.8z"/>
-		</g>
-	</g>
-	<line class="st7" x1="125.3" y1="439.4" x2="125.3" y2="920.2"/>
-	<line class="st7" x1="354.9" y1="649.1" x2="125.3" y2="649.1"/>
-	<circle class="st8" cx="125.3" cy="440.3" r="12.7"/>
-	<circle class="st8" cx="358" cy="649.5" r="10.4"/>
-	<circle class="st8" cx="125.3" cy="920.2" r="10.4"/>
+	<path class="st0" d="M715,440.1H123.4c-56.7,0-102.7-46-102.7-102.7V128.8c0-56.7,46-102.7,102.7-102.7H715
+		c56.7,0,102.7,46,102.7,102.7v208.6C817.7,394.2,771.8,440.1,715,440.1z"/>
+	<text transform="matrix(1 0 0 1 246.5981 183.0288)" class="st1 st2">Have a link?</text>
+	<text transform="matrix(1 0 0 1 92.7031 275.1294)" class="st3 st4">Enter the invitation code </text>
+	<text transform="matrix(1 0 0 1 92.7031 313.1294)" class="st3 st4">to start participating in the community’s activities </text>
+	<text transform="matrix(1 0 0 1 92.7031 351.0294)" class="st3 st4">or follow what they are doing</text>
 </g>
+<g>
+	<path class="st0" d="M951.9,840.2H459.8c-56.7,0-102.7-46-102.7-102.7V580.6c0-56.7,46-102.7,102.7-102.7h492.1
+		c56.7,0,102.7,46,102.7,102.7v156.9C1054.6,794.2,1008.6,840.2,951.9,840.2z"/>
+	<text transform="matrix(1 0 0 1 514.3042 622.5083)" class="st1 st4">Ready to Start your own?</text>
+	<text transform="matrix(1 0 0 1 400.6772 725.7158)" class="st3 st4">You can create one easily and invite members!</text>
+</g>
+<g>
+	<path class="st0" d="M550.4,1189H190.6c-56.7,0-102.7-46-102.7-102.7V998c0-56.7,46-102.7,102.7-102.7h359.9
+		c56.7,0,102.7,46,102.7,102.7v88.2C653.2,1143,607.2,1189,550.4,1189z"/>
+	<text transform="matrix(1 0 0 1 202.3389 1013.4453)" class="st3 st4">Communities can be for </text>
+	<text transform="matrix(1 0 0 1 202.3389 1051.4453)" class="st3 st4">a school or organization, </text>
+	<text transform="matrix(1 0 0 1 202.3389 1089.3453)" class="st3 st4">or even just with your friends!</text>
+</g>
+<g>
+	<circle class="st5" cx="215.3" cy="164.3" r="11.2"/>
+	<path class="st5" d="M215.3,153.5c5.9,0,10.7,4.8,10.7,10.7s-4.8,10.7-10.7,10.7s-10.7-4.8-10.7-10.7S209.3,153.5,215.3,153.5
+		 M215.3,152.5c-6.5,0-11.7,5.3-11.7,11.7s5.3,11.7,11.7,11.7s11.7-5.3,11.7-11.7S221.7,152.5,215.3,152.5L215.3,152.5z"/>
+</g>
+<g>
+	<circle class="st5" cx="487.2" cy="611.6" r="7.6"/>
+	<path class="st5" d="M487.2,604.4c3.9,0,7.1,3.2,7.1,7.1s-3.2,7.1-7.1,7.1s-7.1-3.2-7.1-7.1S483.3,604.4,487.2,604.4 M487.2,603.4
+		c-4.5,0-8.1,3.6-8.1,8.1s3.6,8.1,8.1,8.1s8.1-3.6,8.1-8.1S491.7,603.4,487.2,603.4L487.2,603.4z"/>
+</g>
+<g>
+	<circle class="st6" cx="616" cy="898.5" r="30.3"/>
+</g>
+<g>
+	<circle class="st6" cx="633.2" cy="462" r="54.7"/>
+</g>
+<g>
+	<g>
+		<path class="st5" d="M641,822.8c-10.1,24.9-20.2,49.7-30.3,74.6c-2.9,7.2,8.7,10.3,11.6,3.2c10.1-24.9,20.2-49.7,30.3-74.6
+			C655.4,818.8,643.8,815.7,641,822.8L641,822.8z"/>
+	</g>
+</g>
+<line class="st7" x1="125.3" y1="439.4" x2="125.3" y2="920.2"/>
+<line class="st7" x1="354.9" y1="649.1" x2="125.3" y2="649.1"/>
+<circle class="st5" cx="125.3" cy="440.3" r="12.7"/>
+<circle class="st5" cx="358" cy="649.5" r="10.4"/>
+<ellipse transform="matrix(3.327798e-02 -0.9994 0.9994 3.327798e-02 -798.5601 1014.8082)" class="st5" cx="125.3" cy="920.2" rx="10.4" ry="10.4"/>
 </svg>

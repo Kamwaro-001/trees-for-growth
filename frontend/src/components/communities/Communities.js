@@ -110,24 +110,24 @@ const Communities = () => {
 					<Modal.Header closeButton>
 						<Modal.Title>Create a Community</Modal.Title>
 					</Modal.Header>
-					<Modal.Body>
+					<Modal.Body className='pb-0'>
 						<Form onSubmit={addNewCommunity}>
 							<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
 								<Form.Label>Community Name</Form.Label>
-								<Form.Control name="name" type="text" placeholder="community name" autoFocus value={newComm.name} onChange={handleInputChange} />
+								<Form.Control name="name" type="text" placeholder="community name" autoFocus value={newComm.name} onChange={handleInputChange} required />
 								<Form.Label>Region</Form.Label>
-								<Form.Control name="region" type="text" placeholder="Primary Region" autoFocus value={newComm.region} onChange={handleInputChange} />
+								<Form.Control name="region" type="text" placeholder="Primary Region" autoFocus value={newComm.region} onChange={handleInputChange} required />
 							</Form.Group>
+							<Modal.Footer>
+								<Button variant="secondary" onClick={handleClose}>
+									Close
+								</Button>
+								<Button variant="primary" type="submit">
+									Create
+								</Button>
+							</Modal.Footer>
 						</Form>
 					</Modal.Body>
-					<Modal.Footer>
-						<Button variant="secondary" onClick={handleClose}>
-							Close
-						</Button>
-						<Button variant="primary" onClick={addNewCommunity} type="submit">
-							<span onClick={handleClose} className="add-btn">Create</span>
-						</Button>
-					</Modal.Footer>
 				</Modal>
 			</div>
 			{

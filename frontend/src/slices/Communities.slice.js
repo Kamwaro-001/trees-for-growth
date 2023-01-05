@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { toastOnError } from "../redux/utils/Utils";
+import { toastAnError } from "../redux/utils/Utils";
 
 export const communitySlice = createSlice({
   name: "communities",
@@ -25,7 +25,7 @@ export const getCommunityAsync = () => async (dispatch) => {
     const response = await axios.get("/api/communities/");
     dispatch(getCommunity(response.data));
   } catch (err) {
-    toastOnError(err);
+    toastAnError('An error occurred! Please try again')
   }
 };
 
@@ -34,7 +34,7 @@ export const addCommunityAsync = (data) => async (dispatch) => {
     const response = await axios.post("/api/communities/", data);
     dispatch(addCommunity(response.data));
   } catch (err) {
-    toastOnError(err);
+    toastAnError('An error occurred, please check your input and try again!')
   }
 };
 
@@ -43,7 +43,7 @@ export const patchCommunity = (id, data) => async (dispatch) => {
     const response = await axios.patch(`/api/communities/${id}/`, data);
     dispatch(updateCommunity(response.data))
   } catch (err) {
-    toastOnError(err);
+    toastAnError('An error occurred, please check your input and try again!')
   }
 }
 
