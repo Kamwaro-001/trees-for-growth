@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Modal, Form } from "react-bootstrap";
-import { addCommunityAsync, getCommunityAsync, showCommunity } from "../../slices/Communities.slice";
+import { addCommunityAsync, getCommunityAsync, getMyCommunities, showCommunity, showMembership, showMyCommunity } from "../../slices/Communities.slice";
 import { JoinCommunity, CommunitiesList } from "./Community.Modals";
-import phoneNumberToken from "generate-sms-verification-code";
 import "./Communities.css";
 import { getAccountUserAsync, showAccount } from "../../slices/Account.Slice";
 import { Link } from "react-router-dom";
@@ -16,24 +15,19 @@ const Communities = () => {
 	const handleShow = () => setShow(true);
 
 	const community = useSelector(showCommunity)
+	const myCommunities = useSelector(showMyCommunity)
 	const { isLoggedIn } = useSelector((state) => state.auth)
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(getCommunityAsync());
+		dispatch(getMyCommunities());
 		dispatch(getAccountUserAsync());
 	}, [dispatch])
-
-	const letter = () => {
-		const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		return alphabet[Math.floor(Math.random() * alphabet.length)]
-	}
+	
 	const user = useSelector(showAccount);
-	console.log(user)
+	console.log(community)
 
-	let generatedToken = phoneNumberToken(8, { type: 'number' });
-
-	const verificationCode = letter() + generatedToken;
 	const [newComm, setNewComm] = useState({
 		name: '',
 		region: '',
@@ -54,7 +48,7 @@ const Communities = () => {
 	let checkMyCommunities = 0;
 
 	return (
-		<div>
+		<div className="community-info">
 			<div className="section-title pt-5">
 				<h2>Communities</h2>
 			</div>
@@ -153,7 +147,7 @@ const Communities = () => {
 										<div className="col-lg-9">
 											<div className="row">
 												{
-													community.map((c) => (
+													myCommunities.map((c) => (
 														c.map((item, i) => (
 															item.created_by === user.username ?
 																<div className="col-md-6 pb-5" key={i}>

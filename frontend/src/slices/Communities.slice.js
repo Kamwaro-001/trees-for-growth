@@ -1,33 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toastAnError } from "../redux/utils/Utils";
+import communitiesService from "../services/communities.service";
 
-export const communitySlice = createSlice({
-  name: "communities",
-  initialState: {
-    data: []
-  },
-  reducers: {
-    addCommunity: (state, action) => {
-      state.data.push(action.payload);
-    },
-    getCommunity: (state, action) => {
-      state.data = [action.payload];
-    },
-    updateCommunity: (state, action) => {
-      state.data.push(action.payload);
-    }
-  }
-});
+export const getCommunityAsync = createAsyncThunk('communities/getAllCommunities', async () => {
+  const data = await communitiesService.communities()
+  return data
+})
 
-export const getCommunityAsync = () => async (dispatch) => {
-  try {
-    const response = await axios.get("/api/communities/");
-    dispatch(getCommunity(response.data));
-  } catch (err) {
-    toastAnError('An error occurred! Please try again')
-  }
-};
+export const getMyCommunities = createAsyncThunk('communities/getMyCommunities', async () => {
+  const data = await communitiesService.myCommunities()
+  return data
+})
+
+export const getMyMembership = createAsyncThunk('communities/getMyMembership', async () => {
+  const data = await communitiesService.membership()
+  return data
+})
 
 export const addCommunityAsync = (data) => async (dispatch) => {
   try {
@@ -47,6 +36,47 @@ export const patchCommunity = (id, data) => async (dispatch) => {
   }
 }
 
-export const { addCommunity, getCommunity, updateCommunity } = communitySlice.actions;
-export const showCommunity = (state) => state.communities.data;
+export const communitySlice = createSlice({
+  name: "communities",
+  initialState: {
+    data: [],
+    allcommunities: [],
+    myCreated: [],
+    membership: []
+  },
+  reducers: {
+    addCommunity: (state, action) => {
+      state.data.push(action.payload);
+    },
+    updateCommunity: (state, action) => {
+      state.data.push(action.payload);
+    }
+  },
+  extraReducers: builder => {
+    builder.addCase(getCommunityAsync.fulfilled, (state, action) => {
+      state.allcommunities = [action.payload]
+    })
+    builder.addCase(getCommunityAsync.rejected, (state) => {
+      state.allcommunities = []
+    })
+    builder.addCase(getMyCommunities.fulfilled, (state, action) => {
+      state.myCreated = [action.payload]
+    })
+    builder.addCase(getMyCommunities.rejected, (state) => {
+      state.myCreated = []
+    })
+    builder.addCase(getMyMembership.fulfilled, (state, action) => {
+      state.membership = [action.payload]
+    })
+    builder.addCase(getMyMembership.rejected, (state) => {
+      state.membership = []
+    })
+  }
+});
+
+export const { addCommunity, getCommunity, updateCommunity, myCreated } = communitySlice.actions;
+export const showCommunity = (state) => state.communities.allcommunities;
+export const showMyCommunity = (state) => state.communities.myCreated;
+export const showMembership = (state) => state.communities.membership;
+
 export default communitySlice.reducer;

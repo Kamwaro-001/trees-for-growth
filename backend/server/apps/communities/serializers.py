@@ -28,12 +28,14 @@ class CommMembersSerializer(serializers.ModelSerializer):
         read_only_fields = (
             'id',
             'joining_date',
+            'community'
         )
         fields = (
             'id',
             'user',
             'member_to',
             'joining_date',
+            'community'
         )
         
 class CommActivitiesSerializer(serializers.ModelSerializer):

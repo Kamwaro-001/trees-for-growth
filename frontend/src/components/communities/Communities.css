@@ -29,6 +29,8 @@
     margin-top: 20px;
 }
 
+
+
 .list-communities .icon-box {
     padding: 30px;
     border-radius: 6px;
@@ -79,7 +81,7 @@
     color: #ff0000;
 }
 
-.my-communities .card {
+.community-info .card {
     position: relative;
     display: flex;
     flex-direction: column;

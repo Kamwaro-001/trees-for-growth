@@ -27,16 +27,28 @@ class Community(models.Model):
             val = getattr(self, field_name, False)
             if val:
                 setattr(self, field_name, val.capitalize())
-        super(Community, self).save(*args, **kwargs)
 
+        CommunityMembers.objects.create(user=getattr(self, 'created_by'), member_to=getattr(self, 'verif_code'), community=getattr(self, 'name'))
+        
+        super(Community, self).save(*args, **kwargs)
+    
     class Meta:
         unique_together = ('name', 'region')
-
 
 class CommunityMembers(models.Model):
     user = models.CharField("Member username", max_length=100)
     member_to = models.CharField("Member to", max_length=255)
     joining_date = models.DateField(auto_now_add=True)
+    community = models.CharField("Community", max_length=255, default="Unknown")
+
+    def save(self, *args, **kwargs):
+        code = getattr(self, 'member_to')
+        comm = getattr(self, 'community')
+        name = Community.objects.filter(verif_code=code).values('name')
+        
+        if comm == "Unknown":
+            setattr(self, 'community', name[0]['name'])
+        super(CommunityMembers, self).save(*args, **kwargs)
 
     class Meta:
         unique_together = ('user', 'member_to')

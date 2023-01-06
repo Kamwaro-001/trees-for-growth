@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { showAccount } from '../../slices/Account.Slice';
-import { getCommunityAsync, showCommunity } from '../../slices/Communities.slice';
+import { getCommunityAsync, getMyMembership, showCommunity, showMembership } from '../../slices/Communities.slice';
 import { addMemberAsync, getMemberAsync, showMember } from '../../slices/Members.slice';
 import * as Icons from 'react-bootstrap-icons'
 import { toastOnWarn } from '../../redux/utils/Utils';
@@ -80,12 +80,12 @@ export const CommunitiesList = () => {
   const dispatch = useDispatch();
   const membership = useSelector(showMember);
   const community = useSelector(showCommunity);
-
-  const user = useSelector(showAccount)
+  const myMembership = useSelector(showMembership);
 
   useEffect(() => {
     dispatch(getMemberAsync());
     dispatch(getCommunityAsync());
+    dispatch(getMyMembership());
   }, [dispatch])
 
   let checkEnteredCommunities = 0
@@ -94,28 +94,23 @@ export const CommunitiesList = () => {
       <div className="container">
         <div className="row">
           {
-            membership.map((member) => (
-              member.map((m, index) => (
-                community.map((comm) => (
-                  comm.map((c, commIndex) => (
-                    m.user === user.username && m.member_to === c.verif_code ?
-                      <div className="col-md-6 pb-5" key={commIndex}>
-                        <div className="icon-box">
-                          <span hidden>{checkEnteredCommunities += 1}</span>
-                          <h4><Link to="#" className="a">{c.name}</Link></h4>
-                          <p className="p1">{c.region}</p>
-                          <p className="p2">joined on: {m.joining_date}</p>
-                          <div className="my-comm text-end">
-                            <button className="btn btn-danger px-4" >Exit</button>
-                          </div>
-                        </div>
-                      </div>
-                      : null
-                  ))
-                ))
+            myMembership.map((member) => (
+              member.map((m, commIndex) => (
+                <div className="col-md-6 pb-5" key={commIndex}>
+                  <div className="icon-box">
+                    <span hidden>{checkEnteredCommunities += 1}</span>
+                    <h4><Link to="#" className="a">{m.community}</Link></h4>
+                    <p className="p1">{m.region}</p>
+                    <p className="p2">joined on: {m.joining_date}</p>
+                    <div className="my-comm text-end">
+                      <button className="btn btn-danger px-4" >Exit</button>
+                    </div>
+                  </div>
+                </div>
               ))
             ))
           }
+
           {
             checkEnteredCommunities === 0 ?
               <div className="col-lg-8 p-1 m-auto">
