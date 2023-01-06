@@ -8,7 +8,8 @@ class CommunitySerializer(serializers.ModelSerializer):
         model = Community
         read_only_fields = (
             'id',
-            'date_created'
+            'date_created',
+            'verif_code'
         )
         fields = (
             'id',

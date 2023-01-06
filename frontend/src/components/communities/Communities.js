@@ -37,8 +37,7 @@ const Communities = () => {
 	const [newComm, setNewComm] = useState({
 		name: '',
 		region: '',
-		created_by: user.username,
-		verif_code: verificationCode
+		created_by: user.username
 	})
 
 	const handleInputChange = event => {
@@ -48,7 +47,7 @@ const Communities = () => {
 
 	const addNewCommunity = () => {
 		dispatch(addCommunityAsync(newComm))
-		window.location.reload();
+		// window.location.reload();
 	}
 
 	let checkCommunities = 0;

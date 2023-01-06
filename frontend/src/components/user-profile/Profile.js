@@ -43,7 +43,7 @@ const Profile = () => {
                   {userinfo &&
                     userinfo.map((p) => (
                       p.map((usr, index) => (
-                        <div className="mt-3" key={index}>
+                        <div className="mt-3 profile-map" key={index}>
                           <h4 className=' text-capitalize'>{usr.first_name} {usr.last_name}</h4>
                           <p className="text-secondary mb-1">{sensitiveMail}</p>
                           <p className="text-muted font-size-sm">{usr.town}, {usr.county}</p>
@@ -73,7 +73,7 @@ const Profile = () => {
               :
               userinfo.map((user) => (
                 user.map((info, i) => (
-                  <Details key={i} id={info.id} fname={info.first_name} lname={info.last_name} email={info.email} pnumber={info.phonenumber} area={info.county} place={info.town} />
+                  <Details key={i} id={info.id} fname={info.first_name} lname={info.last_name} email={sensitiveMail} pnumber={info.phonenumber} area={info.county} place={info.town} />
                 ))
               ))
           }

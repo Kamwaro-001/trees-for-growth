@@ -92,7 +92,7 @@ const Trees = () => {
 									<Field type="text" name="tree_name" className="form-control" id="tree-name" placeholder="Tree Name" required maxLength={255} />
 								</div>
 								<label htmlFor="more-info">More Info</label>
-								<div className="form-group">
+								<div className="form-group pb-3">
 									<Field type="text" name="more_info" className="form-control" id="more-info" placeholder="Any more information about the tree" required maxLength={255} />
 								</div>
 								<Modal.Footer>

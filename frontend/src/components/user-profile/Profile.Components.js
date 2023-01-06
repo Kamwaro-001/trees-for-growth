@@ -49,14 +49,6 @@ export const Details = (props) => {
           </div>
           <div className="row mb-3">
             <div className="col-sm-3">
-              <h6 className="mb-0">Email</h6>
-            </div>
-            <div className="col-sm-9 text-secondary">
-              <input type="email" name="email" className="form-control" defaultValue={props.email} onChange={handleInputChange} />
-            </div>
-          </div>
-          <div className="row mb-3">
-            <div className="col-sm-3">
               <h6 className="mb-0">Phone</h6>
             </div>
             <div className="col-sm-9 text-secondary">
