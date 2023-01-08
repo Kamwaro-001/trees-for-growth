@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Modal, Form } from "react-bootstrap";
-import { addCommunityAsync, getCommunityAsync, getMyCommunities, showCommunity, showMembership, showMyCommunity } from "../../slices/Communities.slice";
-import { JoinCommunity, CommunitiesList } from "./Community.Modals";
+import { addCommunityAsync, getCommunityAsync, getMyCommunities, showCommunity, showMyCommunity } from "../../slices/Communities.slice";
+import { JoinCommunity, CommunitiesList, MyCreatedCommunities } from "./Community.Modals";
 import "./Communities.css";
 import { getAccountUserAsync, showAccount } from "../../slices/Account.Slice";
 import { Link } from "react-router-dom";
-import * as Icons from 'react-bootstrap-icons'
-
 
 const Communities = () => {
 	const [show, setShow] = useState(false);
@@ -24,9 +22,8 @@ const Communities = () => {
 		dispatch(getMyCommunities());
 		dispatch(getAccountUserAsync());
 	}, [dispatch])
-	
+
 	const user = useSelector(showAccount);
-	console.log(community)
 
 	const [newComm, setNewComm] = useState({
 		name: '',
@@ -43,7 +40,7 @@ const Communities = () => {
 		dispatch(addCommunityAsync(newComm))
 		// window.location.reload();
 	}
-
+	
 	let checkCommunities = 0;
 	let checkMyCommunities = 0;
 
@@ -151,17 +148,8 @@ const Communities = () => {
 														c.map((item, i) => (
 															item.created_by === user.username ?
 																<div className="col-md-6 pb-5" key={i}>
-																	<div className="icon-box">
-																		<span hidden>{checkMyCommunities += 1}</span>
-																		<h4><Link to="#" className="a">{item.name}</Link></h4>
-																		<p className="p1">{item.region}</p>
-																		<p className="p2">created on: {item.date_created}</p>
-																		<div className="my-comm text-end">
-																			<div className="my-comm-del">
-																				<Icons.Trash />
-																			</div>
-																		</div>
-																	</div>
+																	<span hidden>{checkMyCommunities += 1}</span>
+																	<MyCreatedCommunities id={item.id} name={item.name} region={item.region} date={item.date_created} />
 																</div>
 																: null
 														))

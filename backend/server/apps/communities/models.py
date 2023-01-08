@@ -2,8 +2,10 @@ import secrets
 import string
 
 from django.db import models
+from django.db.models import F
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
+from django.db.models.signals import post_delete
 from django.dispatch import receiver
 
 Person = get_user_model()
@@ -12,6 +14,8 @@ Person = get_user_model()
 def verification_code():
     return ''.join(secrets.choice(string.ascii_uppercase + string.digits) for _ in range(8))
 
+def onDelete(code):
+    CommunityMembers.objects.filter(member_to=code).delete
 
 class Community(models.Model):
     name = models.CharField("Community name", max_length=255)
@@ -20,9 +24,11 @@ class Community(models.Model):
     date_created = models.DateField(auto_now_add=True)
     verif_code = models.CharField(
         "Verification code", max_length=9, unique=True)
+    members_no = models.IntegerField("Number of members", default=0)
 
     def save(self, *args, **kwargs):
         setattr(self, 'verif_code', verification_code())
+        setattr(self, 'members_no', 1)
         for field_name in ['name', 'region']:
             val = getattr(self, field_name, False)
             if val:
@@ -51,7 +57,7 @@ class CommunityMembers(models.Model):
         super(CommunityMembers, self).save(*args, **kwargs)
 
     class Meta:
-        unique_together = ('user', 'member_to')
+        unique_together = ('user', 'community')
 
 
 class CommunityActivities(models.Model):

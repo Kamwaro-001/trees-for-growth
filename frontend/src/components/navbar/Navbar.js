@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../slices/auth";
 import "./Navbar.css";
 import logo from '../images/color_logo.svg';
+import * as Icons from 'react-bootstrap-icons'
 
 const Navbar = () => {
   const { isLoggedIn: currentUser } = useSelector((state) => state.auth);
@@ -35,7 +36,8 @@ const Navbar = () => {
 
             {currentUser ? <>
               <li className="nav-item">
-                <Link to="/dashboard/" className="nav-link active">Dashboard</Link> </li>
+                <Link to="/dashboard/" className="nav-link active">Dashboard</Link>
+              </li>
               <li className="nav-item dropdown">
                 <Link className="nav-link dropdown-toggle active" to="/trees" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Planting </Link>
@@ -56,16 +58,79 @@ const Navbar = () => {
           </ul>
           <div>
             {currentUser ?
-              <ul className="nav navbar-nav ms-auto">
-                <li className="nav-item dropdown">
-                  <Link to="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profile</Link>
-                  <div className="dropdown-menu dropdown-menu-end">
-                    <Link to="/profile" className="dropdown-item">Settings</Link>
-                    <div className="dropdown-divider"></div>
-                    <Link to="/login" className="dropdown-item" onClick={logOut}>Logout</Link>
-                  </div>
-                </li>
-              </ul>
+              <>
+                <ul className="nav navbar-nav ms-auto">
+
+                  <li className="my-messages nav-item dropdown">
+                    <Link to="#" id="dLabel" data-target="#" className="nav-link nav-msgs" data-bs-toggle="dropdown">
+                      <i className="glyphicon glyphicon-bell"><Icons.Bell /></i>
+                      <span className="badge">3</span>
+                    </Link>
+
+                    <ul className="dropdown-menu dropdown-menu-end notifications" role="menu" aria-labelledby="dLabel">
+
+                      <div className="notification-heading"><h4 className="menu-title">Notifications</h4>
+                      </div>
+                      {/* <li className="divider"></li> */}
+                      <hr />
+                      <div className="notifications-wrapper">
+                        <Link className="content" to="#">
+
+                          <div className="notification-item">
+                            <h4 className="item-title">Evaluation Deadline 1 · day ago</h4>
+                            <p className="item-info">Marketing 101, Video Assignment</p>
+                          </div>
+
+                        </Link>
+                        <Link className="content" to="#">
+                          <div className="notification-item">
+                            <h4 className="item-title">Evaluation Deadline 1 · day ago</h4>
+                            <p className="item-info">Marketing 101, Video Assignment</p>
+                          </div>
+                        </Link>
+                        <Link className="content" to="#">
+                          <div className="notification-item">
+                            <h4 className="item-title">Evaluation Deadline 1 • day ago</h4>
+                            <p className="item-info">Marketing 101, Video Assignment</p>
+                          </div>
+                        </Link>
+                        <Link className="content" to="#">
+                          <div className="notification-item">
+                            <h4 className="item-title">Evaluation Deadline 1 • day ago</h4>
+                            <p className="item-info">Marketing 101, Video Assignment</p>
+                          </div>
+
+                        </Link>
+                        <Link className="content" to="#">
+                          <div className="notification-item">
+                            <h4 className="item-title">Evaluation Deadline 1 • day ago</h4>
+                            <p className="item-info">Marketing 101, Video Assignment</p>
+                          </div>
+                        </Link>
+                        <Link className="content" to="#">
+                          <div className="notification-item">
+                            <h4 className="item-title">Evaluation Deadline 1 • day ago</h4>
+                            <p className="item-info">Marketing 101, Video Assignment</p>
+                          </div>
+                        </Link>
+
+                      </div>
+                      <li className="divider"></li>
+                      <div className="notification-footer"><h4 className="menu-title">View all<i className="glyphicon glyphicon-circle-arrow-right"></i></h4></div>
+                    </ul>
+
+                  </li>
+
+                  <li className="nav-item dropdown">
+                    <Link to="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profile</Link>
+                    <div className="dropdown-menu dropdown-menu-end">
+                      <Link to="/profile" className="dropdown-item">Settings</Link>
+                      <div className="dropdown-divider"></div>
+                      <Link to="/login" className="dropdown-item" onClick={logOut}>Logout</Link>
+                    </div>
+                  </li>
+                </ul>
+              </>
               :
               <Link to="/login" id="nav-login" className='nav-item'>Sign in</Link>
             }

@@ -47,5 +47,11 @@ class CurrentUserMembership(viewsets.ModelViewSet):
 
 
 def getCommName(request):
-    name = CommunityMembers.objects.values_list('community')
-    return HttpResponse(name)
+    # name = Community.objects.all('name').values_list()
+    communit = Community.objects.filter(verif_code='W9E9JUKJ').values()
+    # communit = Community.objects.get(verif_code='4HTBTMTZ')
+    # name = comm.values('name')
+    # name = communit[0]['name']
+    # name = communit.name
+    # communit.members_no += 1
+    return HttpResponse(communit)

@@ -9,7 +9,8 @@ class CommunitySerializer(serializers.ModelSerializer):
         read_only_fields = (
             'id',
             'date_created',
-            'verif_code'
+            'verif_code',
+            'members_no'
         )
         fields = (
             'id',
@@ -18,6 +19,7 @@ class CommunitySerializer(serializers.ModelSerializer):
             'created_by',
             'date_created',
             'verif_code',
+            'members_no'
         )
 
 

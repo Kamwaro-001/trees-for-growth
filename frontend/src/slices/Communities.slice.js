@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { toastAnError } from "../redux/utils/Utils";
+import { toastAnError, toastOnSuccess } from "../redux/utils/Utils";
 import communitiesService from "../services/communities.service";
 
 export const getCommunityAsync = createAsyncThunk('communities/getAllCommunities', async () => {
@@ -36,6 +36,11 @@ export const patchCommunity = (id, data) => async (dispatch) => {
   }
 }
 
+export const deleteCommunity = createAsyncThunk('communities/deleteCommunity', async ({id}) => {
+  const data = await communitiesService.deleteComm(id)
+  return data
+})
+
 export const communitySlice = createSlice({
   name: "communities",
   initialState: {
@@ -70,6 +75,10 @@ export const communitySlice = createSlice({
     })
     builder.addCase(getMyMembership.rejected, (state) => {
       state.membership = []
+    })
+    builder.addCase(deleteCommunity.fulfilled, (state, action) => {
+      window.location.reload()
+      toastOnSuccess('Community deleted!')
     })
   }
 });

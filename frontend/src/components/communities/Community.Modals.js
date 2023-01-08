@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Modal, Form } from "react-bootstrap";
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { showAccount } from '../../slices/Account.Slice';
-import { getCommunityAsync, getMyMembership, showCommunity, showMembership } from '../../slices/Communities.slice';
-import { addMemberAsync, getMemberAsync, showMember } from '../../slices/Members.slice';
+import { deleteCommunity, getCommunityAsync, getMyMembership, showMembership } from '../../slices/Communities.slice';
+import { addMemberAsync, getMemberAsync } from '../../slices/Members.slice';
 import * as Icons from 'react-bootstrap-icons'
 import { toastOnWarn } from '../../redux/utils/Utils';
 
@@ -31,8 +30,6 @@ export const JoinCommunity = (props) => {
   const joinCommunity = () => {
     if (newMember.member_to === props.check) {
       dispatch(addMemberAsync(newMember)) && window.location.reload();
-      // toast.success("You have joined successfully!")
-      // window.location.reload();
     } else {
       toastOnWarn("Wrong Verification Code!")
     }
@@ -51,7 +48,7 @@ export const JoinCommunity = (props) => {
       <Button variant="success" onClick={checkLogin} className='modal-join-btn'>
         Join
       </Button>
-      <Modal show={show} onHide={handleClose} centered>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Join {" " + props.community_name}</Modal.Title>
         </Modal.Header>
@@ -78,8 +75,6 @@ export const JoinCommunity = (props) => {
 
 export const CommunitiesList = () => {
   const dispatch = useDispatch();
-  const membership = useSelector(showMember);
-  const community = useSelector(showCommunity);
   const myMembership = useSelector(showMembership);
 
   useEffect(() => {
@@ -126,5 +121,28 @@ export const CommunitiesList = () => {
         </div>
       </div>
     </section>
+  )
+}
+
+export const MyCreatedCommunities = (props) => {
+  const dispatch = useDispatch()
+  const handleDelete = () => {
+    let id = props.id
+    console.log(id)
+    dispatch(deleteCommunity({id}))
+      .unwrap()
+  }
+
+  return (
+      <div className="icon-box">
+        <h4><Link to="#" className="a">{props.name}</Link></h4>
+        <p className="p1">{props.region}</p>
+        <p className="p2">created on: {props.date}</p>
+        <div className="my-comm text-end">
+          <div className="my-comm-del">
+            <Icons.Trash data-bs-toggle='tooltip' data-bs-placement='bottom' title='delete' onClick={handleDelete} />
+          </div>
+        </div>
+      </div>
   )
 }

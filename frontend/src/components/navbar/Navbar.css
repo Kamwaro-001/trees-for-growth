@@ -27,7 +27,7 @@ body {
     padding-bottom: 8px;
 }
 
-.navbar .mid-nav{
+.navbar .mid-nav {
     margin: auto;
 }
 
@@ -60,3 +60,81 @@ body {
 #nav-login:hover {
     background-color: #3da55c;
 }
+
+.my-messages {
+    /* display: inline-block; */
+    margin-right: 20px;
+}
+
+.my-messages .notifications {
+    min-width: 350px;
+}
+
+.my-messages .notifications-wrapper {
+    overflow: auto;
+    max-height: 250px;
+}
+
+.my-messages .menu-title {
+    color: #ff7788;
+    /* font-size: 1.5rem; */
+    /* display: inline-block; */
+}
+
+.my-messages .glyphicon-circle-arrow-right {
+    margin-left: 10px;
+}
+
+
+.my-messages .notification-heading,
+.my-messages .notification-footer {
+    /* padding: 2px 10px; */
+    padding-left: 10px;
+    background-color: #308148;
+    /* padding-bottom: 2px; */
+}
+
+
+/* .my-messages .dropdown-menu .divider {
+    margin: 5px 0;
+} */
+
+.my-messages .item-title {
+
+    font-size: 1.3rem;
+    color: #000;
+
+}
+
+.notifications .content {
+    text-decoration: none;
+    background: #ccc;
+}
+
+.notification-item {
+    padding: 10px;
+    margin: 5px;
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.my-messages .badge {
+    position: absolute;
+    /* top: 2px;
+    right: 2px; */
+    padding: 2px;
+    border-radius: 10%;
+    background-color: red;
+    color: white;
+}
+
+/* .my-messages .nav-msgs {
+    background-color: #555;
+    width: 100px;
+    color: white;
+    text-decoration: none;
+    padding: 15px 26px;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+} */
