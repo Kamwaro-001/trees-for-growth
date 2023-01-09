@@ -12,5 +12,6 @@ router.register('mymembership', CurrentUserMembership, basename="mymembership")
 
 urlpatterns = [
     path('api/', include(router.urls)),
+    path('api/allcommunities/', CommunitiesList.as_view()),
     path('api/testing/', getCommName)
 ]

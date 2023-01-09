@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+import pandas as pd
+import datetime
 
 # Create your models here.
 
@@ -53,3 +55,29 @@ class Contact(models.Model):
             if val:
                 setattr(self, field_name, val.capitalize())
         super(Contact, self).save(*args, **kwargs)
+
+
+def get_time():
+    timestamp = pd.Timestamp(datetime.datetime(2023, 1, 9))
+    curr = timestamp.today()
+    time = f'{curr.day_name()}, {curr.date()} at {curr.time().strftime("%H:%M:%S")}'
+    return time
+
+
+status_choices = (
+    ('unread', 'unread'),
+    ('read', 'read')
+)
+
+
+class Notifications(models.Model):
+    username = models.CharField("Username", max_length=255)
+    title = models.CharField("Notification Title", max_length=255)
+    status = models.CharField("Status", max_length=255,
+                              choices=status_choices, default=status_choices[0][0])
+    time_sent = models.CharField("Time sent", max_length=150)
+
+    def save(self, *args, **kwargs):
+        setattr(self, 'time_sent', get_time())
+
+        super(Notifications, self).save(*args, **kwargs)

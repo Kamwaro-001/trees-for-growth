@@ -1,6 +1,13 @@
 from rest_framework import serializers
-from .models import User, TreeInfo, Contact
+from .models import User, TreeInfo, Contact, Notifications
 
+
+# from django.contrib.auth.models import User
+
+class User2Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username']
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -13,16 +20,17 @@ class UserSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'username',
-            'first_name', 
+            'first_name',
             'last_name',
-            'email', 
+            'email',
             'phonenumber',
             'county',
             'town',
-            )
-        
+        )
+
+
 class TreeInfoSerializer(serializers.ModelSerializer):
-    
+
     class Meta:
         model = TreeInfo
         read_only_fields = (
@@ -36,6 +44,25 @@ class TreeInfoSerializer(serializers.ModelSerializer):
             'more_info',
             'files',
         )
+
+
+class NotificationsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Notifications
+        read_only_fields = (
+            'id',
+            'username',
+            'time_sent'
+        )
+        fields = (
+            'id',
+            'username',
+            'title',
+            'status',
+            'time_sent'
+        )
+
 
 class ContactSerializer(serializers.ModelSerializer):
 

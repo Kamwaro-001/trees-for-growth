@@ -48,7 +48,7 @@ export const JoinCommunity = (props) => {
       <Button variant="success" onClick={checkLogin} className='modal-join-btn'>
         Join
       </Button>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Join {" " + props.community_name}</Modal.Title>
         </Modal.Header>

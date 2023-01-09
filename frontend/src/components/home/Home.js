@@ -104,7 +104,7 @@ const Home = () => {
                   <h4>Job Kamwaro</h4>
                   {/* <span></span> */}
                   <p>
-                    Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                   He is currently a student following his passion in computer science. He started his coding journey at 14 and he uses the vast knowledge in computers coming up with solutions for challenges in the STEM field. If you wish to find more about him you can find his contacts below.
                   </p>
                   <div className="social">
                     <a href="https://www.linkedin.com/in/job-k-bb07b518b/" target={'_blank'} rel="noreferrer"><i><Icons.Linkedin /></i></a>

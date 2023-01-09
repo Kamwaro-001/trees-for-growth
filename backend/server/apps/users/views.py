@@ -1,12 +1,17 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 # from django.contrib.auth.models import User
+from django.http import HttpResponse
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view
 
-from rest_framework import viewsets
+# from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
-from .models import User, TreeInfo, Contact
+from rest_framework import viewsets, generics
 
-from .serializers import UserSerializer, TreeInfoSerializer, ContactSerializer
+from .models import *
+
+from .serializers import *
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -33,6 +38,18 @@ class TreeInfoViewSet(viewsets.ModelViewSet):
         return self.queryset.filter(username=self.request.user)
 
 
+class NotificationsViewSet(viewsets.ModelViewSet):
+
+    serializer_class = NotificationsSerializer
+    queryset = Notifications.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(username=self.request.user)
+
+    def get_queryset(self):
+        return self.queryset.filter(username=self.request.user)
+
+
 class ContactViewSet(viewsets.ModelViewSet):
     authentication_classes = []
     permission_classes = []
@@ -40,10 +57,39 @@ class ContactViewSet(viewsets.ModelViewSet):
     queryset = Contact.objects.all()
 
 
+@api_view(['GET'])
 def currentUser(request):
-    current_user = request.user
-    if request.user.is_authenticated:
-        return HttpResponse("userid: " + str(current_user.id) + " username: " + str(current_user))
-    else:
-        return HttpResponse("Not logged in")
+    # current_user = request.user
+    # if request.user.is_authenticated:
+    #     return HttpResponse("userid: " + str(current_user.id) + " username: " + str(current_user))
+    # else:
+    #     return HttpResponse("Not logged in")
+    name = 'kamwaro'
+    
+    content = {
+        'user': str(request.user),
+        'auth': str(request.auth),
+    }
+    return Response(content)
+
+
+# class ExampleView(APIView):
+
+#     def get(self, request, format=None):
+#         content = {
+#             'user': str(request.user),
+#             'auth': str(request.auth),
+#         }
+#         return Response(content)
+
+class ExampleView(APIView):
+    def get(self, request, format=None):
+        User = get_user_model()
+        user = User.objects.all()
         
+        content = {
+            'users': ''
+        }
+        for i in user:
+            content['users'] += (str(i) + ', ')
+        return Response(content)

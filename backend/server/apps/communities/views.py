@@ -10,6 +10,12 @@ from .serializers import *
 
 # Create your views here.
 
+class CommunitiesList(generics.ListAPIView):
+    authentication_classes = []
+    permission_classes = []
+    queryset = Community.objects.all().order_by('-date_created', 'region')
+    serializer_class = CommunitySerializer
+
 
 class CommunityView(viewsets.ModelViewSet):
     authentication_classes = []

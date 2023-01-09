@@ -39,11 +39,11 @@ const Navbar = () => {
                 <Link to="/dashboard/" className="nav-link active">Dashboard</Link>
               </li>
               <li className="nav-item dropdown">
-                <Link className="nav-link dropdown-toggle active" to="/trees" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <Link className="nav-link dropdown-toggle active" to="/trees" data-bs-toggle="dropdown" aria-expanded="false">
                   Planting </Link>
                 <ul className="dropdown-menu">
                   <li><Link className="dropdown-item" to="/trees">plant</Link></li>
-                  <li><hr className="dropdown-divider" /></li>
+                  {/* <li><hr className="dropdown-divider" /></li> */}
                   <li><Link className="dropdown-item" to="/store">Buy</Link></li>
                 </ul>
               </li>
@@ -62,7 +62,7 @@ const Navbar = () => {
                 <ul className="nav navbar-nav ms-auto">
 
                   <li className="my-messages nav-item dropdown">
-                    <Link to="#" id="dLabel" data-target="#" className="nav-link nav-msgs" data-bs-toggle="dropdown">
+                    <Link to="#" id="dLabel" data-target="#" className="nav-link nav-msgs dropdown-toggle" data-bs-display="static" data-bs-toggle="dropdown">
                       <i className="glyphicon glyphicon-bell"><Icons.Bell /></i>
                       <span className="badge">3</span>
                     </Link>
@@ -122,11 +122,10 @@ const Navbar = () => {
                   </li>
 
                   <li className="nav-item dropdown">
-                    <Link to="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profile</Link>
+                    <Link to="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" ><Icons.Person /></Link>
                     <div className="dropdown-menu dropdown-menu-end">
-                      <Link to="/profile" className="dropdown-item">Settings</Link>
-                      <div className="dropdown-divider"></div>
-                      <Link to="/login" className="dropdown-item" onClick={logOut}>Logout</Link>
+                      <Link to="/profile" className="dropdown-item"><Icons.Gear />  Settings</Link>
+                      <Link to="/login" className="dropdown-item" onClick={logOut}><Icons.BoxArrowRight /> Sign out</Link>
                     </div>
                   </li>
                 </ul>
