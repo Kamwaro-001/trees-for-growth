@@ -8,7 +8,7 @@
 }
 
 body {
-    padding-top: 80px;
+    padding-top: 75px;
     background: url(../images/asset3.svg);
 }
 
@@ -61,6 +61,13 @@ body {
     background-color: #3da55c;
 }
 
+/* @media (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu{ display: none; }
+	.navbar .nav-item:hover .nav-link{   }
+	.navbar .nav-item:hover .dropdown-menu{ display: block; }
+	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+} */
+
 .my-messages {
     margin-right: 20px;
 }
@@ -89,7 +96,7 @@ body {
 .my-messages .notification-footer {
     /* padding: 2px 10px; */
     padding-left: 10px;
-    background-color: #308148;
+    /* background-color: #308148; */
     /* padding-bottom: 2px; */
 }
 
@@ -117,23 +124,11 @@ body {
     border-radius: 4px;
 }
 
-.my-messages .badge {
-    position: absolute;
-    /* top: 2px;
-    right: 2px; */
-    padding: 2px;
-    border-radius: 10%;
-    background-color: red;
-    color: white;
-}
-
 /* .my-messages .nav-msgs {
-    background-color: #555;
-    width: 100px;
-    color: white;
     text-decoration: none;
     padding: 15px 26px;
     position: relative;
     display: inline-block;
     border-radius: 2px;
+    background-color: #308148;
 } */

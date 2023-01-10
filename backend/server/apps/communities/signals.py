@@ -13,6 +13,8 @@ def currentUser(request):
 @receiver(post_delete, sender=Community)
 def on_delete_update_members(sender, instance, **kwargs):
     CommunityMembers.objects.filter(member_to=instance.verif_code).delete()
+    
+    Notifications.objects.create(username=instance.created_by, title=f'You deleted {instance.name}.')
 
 @receiver(post_save, sender=Community, dispatch_uid="send_notification")
 def send_notification(sender, instance, **kwargs):

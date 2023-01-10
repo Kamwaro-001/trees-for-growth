@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { addTreeAsync, getTreeAsync, showTree } from '../../slices/Trees.slice';
 import { Link } from 'react-router-dom';
 import './Trees.css';

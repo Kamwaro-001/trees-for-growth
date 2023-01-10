@@ -4,7 +4,11 @@ import "./App.css"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { Flip, ToastContainer } from "react-toastify";
-import "bootstrap/dist/css/bootstrap.min.css";
+
+// import "bootstrap/dist/css/bootstrap.min.css";
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
 import Register from './components/authentication/register/Register';
 import Login from './components/authentication/login/Login';
 import Home from './components/home/Home';
