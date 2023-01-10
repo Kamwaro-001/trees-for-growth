@@ -79,6 +79,8 @@ body {
 .my-messages .notifications-wrapper {
     overflow: auto;
     max-height: 250px;
+    background-color: #308148;
+    margin-bottom: 0.2em;
 }
 
 .my-messages .menu-title {
@@ -114,13 +116,14 @@ body {
 
 .notifications .content {
     text-decoration: none;
-    background: #ccc;
+    /* background: #ccc; */
+    box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
 }
 
 .notification-item {
     padding: 10px;
-    margin: 5px;
-    background: #ccc;
+    /* margin: 5px; */
+    background: #fff;
     border-radius: 4px;
 }
 

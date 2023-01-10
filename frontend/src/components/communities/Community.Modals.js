@@ -128,7 +128,6 @@ export const MyCreatedCommunities = (props) => {
   const dispatch = useDispatch()
   const handleDelete = () => {
     let id = props.id
-    console.log(id)
     dispatch(deleteCommunity({id}))
       .unwrap()
   }

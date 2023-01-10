@@ -1,21 +1,32 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../slices/auth";
 import "./Navbar.css";
 import logo from '../images/color_logo.svg';
 import * as Icons from 'react-bootstrap-icons'
-import { getNotifications } from '../../slices/Notifications.Slice';
+import { getNotifications, showNotifications, updateNotifications } from '../../slices/Notifications.Slice';
 
 const Navbar = () => {
   const { isLoggedIn: currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (currentUser){
+    if (currentUser) {
       dispatch(getNotifications())
     }
   }, [currentUser, dispatch])
+
+  const notifications = useSelector(showNotifications)
+  const unread = useSelector((state) => (state.notifications.all))
+
+  const all_notif = []
+  const all_unread = []
+  notifications.map((e) => (all_notif.push(e)))
+  unread.map((e) => (all_unread.push(e)))
+  const notif_number = all_unread.length
+
+console.log(notifications)
 
   const logOut = useCallback(() => {
     dispatch(logout())
@@ -71,7 +82,7 @@ const Navbar = () => {
                   <li className="my-messages nav-item dropdown">
                     <Link to="#" id="dLabel" role='button' data-target="#" className="nav-link nav-msgs dropdown-toggle hidden-arrow" data-bs-toggle="dropdown" aria-expanded="false">
                       <i className="fas fa-bell"></i>
-                      <span className="badge rounded-pill badge-notification bg-danger">5</span>
+                      <span className="badge rounded-pill badge-notification bg-danger">{notif_number}</span>
                     </Link>
 
                     <ul className="dropdown-menu dropdown-menu-lg-end notifications" role="menu" aria-labelledby="dLabel">
@@ -79,52 +90,21 @@ const Navbar = () => {
                       <div className="notification-heading"><h4 className="menu-title">Notifications</h4>
                       </div>
                       <hr />
-                      <div className="notifications-wrapper">
-                        <Link className="nav-link content" to="#">
 
-                          <div className="notification-item">
-                            <h4 className="item-title">Evaluation Deadline 1 · day ago</h4>
-                            <p className="item-info">Marketing 101, Video Assignment</p>
-                          </div>
-
-                        </Link>
-                        <Link className="content" to="#">
-                          <div className="notification-item">
-                            <h4 className="item-title">Evaluation Deadline 1 · day ago</h4>
-                            <p className="item-info">Marketing 101, Video Assignment</p>
-                          </div>
-                        </Link>
-                        <Link className="content" to="#">
-                          <div className="notification-item">
-                            <h4 className="item-title">Evaluation Deadline 1 • day ago</h4>
-                            <p className="item-info">Marketing 101, Video Assignment</p>
-                          </div>
-                        </Link>
-                        <Link className="content" to="#">
-                          <div className="notification-item">
-                            <h4 className="item-title">Evaluation Deadline 1 • day ago</h4>
-                            <p className="item-info">Marketing 101, Video Assignment</p>
-                          </div>
-
-                        </Link>
-                        <Link className="content" to="#">
-                          <div className="notification-item">
-                            <h4 className="item-title">Evaluation Deadline 1 • day ago</h4>
-                            <p className="item-info">Marketing 101, Video Assignment</p>
-                          </div>
-                        </Link>
-                        <Link className="content" to="#">
-                          <div className="notification-item">
-                            <h4 className="item-title">Evaluation Deadline 1 • day ago</h4>
-                            <p className="item-info">Marketing 101, Video Assignment</p>
-                          </div>
-                        </Link>
-
+                      <div className='row bg-danger'>
+                        {notifications &&
+                          notifications.map((n, i) => (
+                            <div className="col-md-6 w-100 notifications-wrapper" key={i}>
+                              <Notifs id={n.id} title={n.title} status={n.status} sent={n.time_sent} />
+                            </div>
+                          ))
+                        }
                       </div>
+
                       <li className="divider"></li>
                       <div className="notification-footer"><h4 className="menu-title">View all<i className="glyphicon glyphicon-circle-arrow-right"></i></h4></div>
                     </ul>
- 
+
                   </li>
 
                   <li className="nav-item dropdown">
@@ -143,6 +123,49 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+  )
+}
+
+const Notifs = (props) => {
+  const dispatch = useDispatch()
+    
+  const [statusR, setStatus] = useState(props.status)
+  const read = () => setStatus('read')
+  const unread = () => setStatus('unread')
+
+  const CheckStatus = () => {
+    if (props.status === 'unread') {
+      return <Icons.EyeFill className='text-danger'/>
+    } else {
+      return <Icons.EyeSlashFill />
+    }
+  }
+
+  // const [state, setState] = useState({
+  //   title: props.title,
+  //   status: props.status
+  // })
+
+  // const handleStatus = () => {
+  //   setState({ ...state, status: statusR })
+  // } 
+
+  // const updateStatus = () => {
+  //   let id = props.id
+  //   let data = state
+  //   dispatch(updateNotifications({data, id}))
+  // }
+
+  return (
+    <div className="content" to="#">
+
+      <div className="notification-item">
+        <h4 className="item-title">{props.title}</h4>
+        <p className="item-info eye "><CheckStatus /></p>
+        <p className="item-info">{props.sent}</p>
+      </div>
+
+    </div>
   )
 }
 

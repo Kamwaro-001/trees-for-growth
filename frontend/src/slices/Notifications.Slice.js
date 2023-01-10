@@ -21,7 +21,15 @@ export const unset = () => dispatch => {
   return dispatch(unset())
 }
 
-const initialState = (all !== null) ? { isSet: true, all } : { isSet: false, all: [] }
+// unread: all.filter(a => a.status === 'unread')
+
+// const initialState = (all !== null) ? { isSet: true, all, unread: [] } : { isSet: false, all: [], unread: [] }
+
+const initialState = {
+  all: [],
+  unread: [],
+  isSet: []
+}
 
 const notificationSlice = createSlice({
   name: 'notifications',
@@ -30,16 +38,19 @@ const notificationSlice = createSlice({
     unSet: (state) => {
       state.isSet = false
       state.all = []
+      state.unread = []
     }
   },
   extraReducers: builder => {
     builder.addCase(getNotifications.fulfilled, (state, action) => {
       state.isSet = true
       state.all = action.payload
+      state.unread = action.payload.filter(a => a.status === 'unread')
     })
     builder.addCase(getNotifications.rejected, (state) => {
       state.isSet = false
       state.all = []
+      state.unread = []
     })
     builder.addCase(updateNotifications.fulfilled, (state, action) => {
       state.isSet = true
