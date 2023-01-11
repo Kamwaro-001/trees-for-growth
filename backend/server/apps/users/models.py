@@ -78,14 +78,14 @@ class Notifications(models.Model):
     title = models.CharField("Notification Title", max_length=255)
     status = models.CharField("Status", max_length=255,
                               choices=status_choices, default=status_choices[0][0])
-    when = models.DateTimeField(default=now())
+    when = models.DateTimeField(default=now)
     time_sent = models.CharField("Time sent", max_length=150)
 
     def save(self, *args, **kwargs):
         # setattr(self, 'time_sent', get_time())
         
         # if self.when:
-        setattr(self, 'time_sent', timesince(self.when))
+        setattr(self, 'time_sent', f'{timesince(self.when)} ago')
         # else:
         #     setattr(self, 'time_sent', '')
 

@@ -57,19 +57,10 @@ def getCommName(request):
     # name = Community.objects.all().values()
     name = Community.objects.all()
     # name = Community.objects.get('name').values_list()
-    # communit = Community.objects.filter(verif_code='W9E9JUKJ').values()
-    # communit = Community.objects.get(verif_code='4HTBTMTZ')
-    # name = comm.values('name')
-    # name = communit[0]['name']
-    # name = communit.name
-    # communit.members_no += 1
     
     tests = {}
-    # for i, n in name[0].items():
     for i in name.values():
         # tests['names'] = n[i].items()
         tests[i['id']] = i['name']
     
-    # return Response(name[0]['name'])
-    # return HttpResponse(name)
     return Response(tests)

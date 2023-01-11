@@ -9,6 +9,7 @@ from django.contrib.auth import get_user_model
 
 from django.db.models import F
 from django.utils.timesince import timesince
+from datetime import datetime
 
 from rest_framework import viewsets, generics
 
@@ -44,15 +45,15 @@ class TreeInfoViewSet(viewsets.ModelViewSet):
 class NotificationsViewSet(viewsets.ModelViewSet):
 
     serializer_class = NotificationsSerializer
-    queryset = Notifications.objects.all()
+    queryset = Notifications.objects.all().order_by('-id')
 
     def perform_create(self, serializer):
         serializer.save(username=self.request.user)
-        # serializer.update(time_sent=F('when'))
 
     def get_queryset(self):
-        # self.queryset.update(time_sent=timesince(F('when')))
-        # for q in self.queryset:
+        get_notif = Notifications.objects.all()
+        for q in get_notif:
+            q.save(update_fields=['time_sent'])
             
         return self.queryset.filter(username=self.request.user)
 
@@ -66,11 +67,6 @@ class ContactViewSet(viewsets.ModelViewSet):
 
 @api_view(['GET'])
 def currentUser(request):
-    # current_user = request.user
-    # if request.user.is_authenticated:
-    #     return HttpResponse("userid: " + str(current_user.id) + " username: " + str(current_user))
-    # else:
-    #     return HttpResponse("Not logged in")
     name = 'kamwaro'
     
     content = {
@@ -78,16 +74,6 @@ def currentUser(request):
         'auth': str(request.auth),
     }
     return Response(content)
-
-
-# class ExampleView(APIView):
-
-#     def get(self, request, format=None):
-#         content = {
-#             'user': str(request.user),
-#             'auth': str(request.auth),
-#         }
-#         return Response(content)
 
 class ExampleView(APIView):
     def get(self, request, format=None):
