@@ -7,6 +7,9 @@ from rest_framework.decorators import api_view
 # from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 
+from django.db.models import F
+from django.utils.timesince import timesince
+
 from rest_framework import viewsets, generics
 
 from .models import *
@@ -45,8 +48,12 @@ class NotificationsViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(username=self.request.user)
+        # serializer.update(time_sent=F('when'))
 
     def get_queryset(self):
+        # self.queryset.update(time_sent=timesince(F('when')))
+        # for q in self.queryset:
+            
         return self.queryset.filter(username=self.request.user)
 
 
@@ -88,8 +95,14 @@ class ExampleView(APIView):
         user = User.objects.all()
         
         content = {
-            'users': ''
+            # 'users': ''
         }
+        
         for i in user:
-            content['users'] += (str(i) + ', ')
-        return Response(content)
+            # content['users'] += (str(i) + ', ')
+            content[str(i)] = (str(i) + ', ')
+        testing = {
+            'all': content
+        }
+            
+        return Response(testing)

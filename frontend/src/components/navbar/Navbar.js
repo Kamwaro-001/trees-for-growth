@@ -26,7 +26,7 @@ const Navbar = () => {
   unread.map((e) => (all_unread.push(e)))
   const notif_number = all_unread.length
 
-console.log(notifications)
+  console.log(notifications)
 
   const logOut = useCallback(() => {
     dispatch(logout())
@@ -86,23 +86,24 @@ console.log(notifications)
                     </Link>
 
                     <ul className="dropdown-menu dropdown-menu-lg-end notifications" role="menu" aria-labelledby="dLabel">
+                      <form>
+                        <div className="notification-heading"><h4 className="menu-title">Notifications</h4>
+                        </div>
+                        <hr />
 
-                      <div className="notification-heading"><h4 className="menu-title">Notifications</h4>
-                      </div>
-                      <hr />
+                        <div className='row bg-danger'>
+                          {notifications &&
+                            notifications.map((n, i) => (
+                              <div className="col-md-6 w-100 notifications-wrapper" key={i}>
+                                <Notifs id={n.id} title={n.title} status={n.status} sent={n.time_sent} />
+                              </div>
+                            ))
+                          }
+                        </div>
 
-                      <div className='row bg-danger'>
-                        {notifications &&
-                          notifications.map((n, i) => (
-                            <div className="col-md-6 w-100 notifications-wrapper" key={i}>
-                              <Notifs id={n.id} title={n.title} status={n.status} sent={n.time_sent} />
-                            </div>
-                          ))
-                        }
-                      </div>
-
-                      <li className="divider"></li>
-                      <div className="notification-footer"><h4 className="menu-title">View all<i className="glyphicon glyphicon-circle-arrow-right"></i></h4></div>
+                        <li className="divider"></li>
+                        <div className="notification-footer"><h4 className="menu-title">View all<i className="glyphicon glyphicon-circle-arrow-right"></i></h4></div>
+                      </form>
                     </ul>
 
                   </li>
@@ -128,14 +129,14 @@ console.log(notifications)
 
 const Notifs = (props) => {
   const dispatch = useDispatch()
-    
+
   const [statusR, setStatus] = useState(props.status)
   const read = () => setStatus('read')
   const unread = () => setStatus('unread')
 
   const CheckStatus = () => {
     if (props.status === 'unread') {
-      return <Icons.EyeFill className='text-danger'/>
+      return <Icons.EyeFill className='text-danger' />
     } else {
       return <Icons.EyeSlashFill />
     }

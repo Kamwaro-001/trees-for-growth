@@ -89,7 +89,7 @@ const Home = () => {
         <div className="container">
 
           <div className="section-title">
-            <h2>Developer Info</h2>
+            <h2>Meet the Developer</h2>
             <p>Some information about the developer</p>
           </div>
           <div>

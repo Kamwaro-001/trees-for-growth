@@ -53,14 +53,16 @@ class NotificationsSerializer(serializers.ModelSerializer):
         read_only_fields = (
             'id',
             'username',
-            'time_sent'
+            'time_sent',
+            'when'
         )
         fields = (
             'id',
             'username',
             'title',
             'status',
-            'time_sent'
+            'time_sent',
+            'when'
         )
 
 

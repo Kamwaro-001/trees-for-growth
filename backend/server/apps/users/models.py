@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.utils.timesince import timesince
 import pandas as pd
 import datetime
+from django.utils.timezone import now
+
 
 # Create your models here.
 
@@ -75,9 +78,15 @@ class Notifications(models.Model):
     title = models.CharField("Notification Title", max_length=255)
     status = models.CharField("Status", max_length=255,
                               choices=status_choices, default=status_choices[0][0])
+    when = models.DateTimeField(default=now())
     time_sent = models.CharField("Time sent", max_length=150)
 
     def save(self, *args, **kwargs):
-        setattr(self, 'time_sent', get_time())
+        # setattr(self, 'time_sent', get_time())
+        
+        # if self.when:
+        setattr(self, 'time_sent', timesince(self.when))
+        # else:
+        #     setattr(self, 'time_sent', '')
 
         super(Notifications, self).save(*args, **kwargs)
