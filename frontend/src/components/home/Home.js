@@ -56,7 +56,7 @@ const Home = () => {
                   </button>
                 </Link>
                 <Link to="/about">
-                  <button type="button" className="home-btn2 btn btn-outline-secondary btn-lg px-4" >Learn More</button>
+                  <button type="button" className="home-btn2 btn btn-outline-secondary btn-lg px-4 text-success" >Learn More</button>
                 </Link>
               </div>
             </div>

@@ -8,17 +8,6 @@
   padding: 0;
 }
 
-.home-btn2 {
-  border-color: #006400;
-  color: #006400;
-}
-
-.home-btn2:hover {
-  border-color: #a2d5a4;
-  background-color: #a2d5a4;
-  color: #000000;
-}
-
 #hero:before {
   content: "";
   background: linear-gradient(rgba(37, 210, 89, 0.247), rgba(0, 0, 0, 0.18));

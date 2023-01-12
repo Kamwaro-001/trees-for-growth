@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Modal, Form } from "react-bootstrap";
 import { addCommunityAsync, getCommunityAsync, getMyCommunities, showCommunity, showMyCommunity } from "../../slices/Communities.slice";
-import { JoinCommunity, CommunitiesList, MyCreatedCommunities, NoActivities } from "./Community.Modals";
+import { JoinCommunity, CommunitiesList, MyCreatedCommunities } from "./Community.Modals";
 import "./Communities.css";
 import { getAccountUserAsync, showAccount } from "../../slices/Account.Slice";
 import { Link } from "react-router-dom";

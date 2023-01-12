@@ -236,25 +236,3 @@ export const MyCreatedCommunities = (props) => {
     </div>
   )
 }
-
-export const NoActivities = () => {
-  const [no_act, setNo_act] = useState(false);
-  const handleActClose = () => setNo_act(false);
-  const handleActShow = () => setNo_act(true);
-
-  return (
-    <Modal show={no_act} onHide={handleActClose} centered className='text-center'>
-      <Modal.Header closeButton>
-        <Modal.Title>Community Information</Modal.Title>
-      </Modal.Header>
-      <Modal.Body className='pb-0'>
-        <p>Community information is coming <span className='text-info'>soon</span>.<br /> Please stay tuned for such updates!</p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="success" onClick={handleActClose}>
-          Okay
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  )
-}

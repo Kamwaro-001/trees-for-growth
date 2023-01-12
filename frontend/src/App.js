@@ -5,8 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { Flip, ToastContainer } from "react-toastify";
 
-// import "bootstrap/dist/css/bootstrap.min.css";
-import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import Register from './components/authentication/register/Register';
@@ -15,7 +13,6 @@ import Home from './components/home/Home';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import Dashboard from './components/dashboard/Dashboard';
-import BoardUser from './components/dashboard/BoardUser';
 import Communities from './components/communities/Communities';
 import Profile from './components/user-profile/Profile';
 import Buy from './components/buy/Buy';
@@ -49,7 +46,6 @@ function App() {
                      <Route path='/store' element={<RequireAuth component={Buy} />} />
                      <Route path='/profile' element={<RequireAuth component={Profile} />} />
                      <Route path='/about' element={<About />} />
-                     <Route path='/boarduser' element={<RequireAuth component={BoardUser} />} />
                   </Routes>
                </div>
                <Footer />
