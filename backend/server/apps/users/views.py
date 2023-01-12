@@ -80,13 +80,13 @@ class ExampleView(APIView):
         User = get_user_model()
         user = User.objects.all()
         
+        
         content = {
-            # 'users': ''
+            'users': ''
         }
         
         for i in user:
-            # content['users'] += (str(i) + ', ')
-            content[str(i)] = (str(i) + ', ')
+            content['users'] += (str(i) + ', ')
         testing = {
             'all': content
         }

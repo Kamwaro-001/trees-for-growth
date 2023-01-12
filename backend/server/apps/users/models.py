@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils.timesince import timesince
-import pandas as pd
-import datetime
 from django.utils.timezone import now
 
 
@@ -60,12 +58,6 @@ class Contact(models.Model):
         super(Contact, self).save(*args, **kwargs)
 
 
-def get_time():
-    timestamp = pd.Timestamp(datetime.datetime(2023, 1, 9))
-    curr = timestamp.today()
-    time = f'{curr.day_name()}, {curr.date()} at {curr.time().strftime("%H:%M:%S")}'
-    return time
-
 
 status_choices = (
     ('unread', 'unread'),
@@ -82,11 +74,11 @@ class Notifications(models.Model):
     time_sent = models.CharField("Time sent", max_length=150)
 
     def save(self, *args, **kwargs):
-        # setattr(self, 'time_sent', get_time())
-        
-        # if self.when:
-        setattr(self, 'time_sent', f'{timesince(self.when)} ago')
-        # else:
-        #     setattr(self, 'time_sent', '')
+        # setattr(self, 'time_sent', f'{timesince(self.when)} ago')
+        val = timesince(self.when)
+        if val:
+            replacer = val.replace('hour', 'hr')
+            replacer = replacer.replace('minute', 'min')
+            setattr(self, 'time_sent', f'{replacer} ago')
 
         super(Notifications, self).save(*args, **kwargs)

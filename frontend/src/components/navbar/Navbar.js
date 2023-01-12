@@ -79,7 +79,7 @@ const Navbar = () => {
               <>
                 <ul className="nav navbar-nav ms-auto">
 
-                  <li className="my-messages nav-item dropdown">
+                  {/* <li className="my-messages nav-item dropdown">
                     <Link to="#" id="dLabel" role='button' data-target="#" className="nav-link nav-msgs dropdown-toggle hidden-arrow" data-bs-toggle="dropdown" aria-expanded="false">
                       <i className="fas fa-bell"></i>
                       <span className="badge rounded-pill badge-notification bg-danger">{notif_number}</span>
@@ -91,7 +91,7 @@ const Navbar = () => {
                         </div>
                         <hr />
 
-                        <div className='row bg-danger'>
+                        <div className='row notif-container'>
                           {notifications &&
                             notifications.map((n, i) => (
                               <div className="col-md-6 w-100 notifications-wrapper" key={i}>
@@ -106,6 +106,135 @@ const Navbar = () => {
                       </form>
                     </ul>
 
+                  </li> */}
+
+                  <li className="nav-item dropdown notification-ui show">
+                    <Link to="#" id="navbarDropdown" role='button' data-target="#" className="nav-link nav-msgs dropdown-toggle hidden-arrow" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i className="fas fa-bell"></i>
+                      {/* <span className="badge rounded-pill badge-notification bg-danger">{notif_number}</span> */}
+                      <span className="unread-notification"></span>
+                    </Link>
+
+                    <ul className="dropdown-menu dropdown-menu-end notification-ui_dd show" aria-labelledby="navbarDropdown">
+                      <form>
+                        <div className="notification-ui_dd-header">
+                          <h3 className="text-center">Notifications</h3>
+                        </div>
+
+                        <div className='notification-ui_dd-content'>
+                          {notifications &&
+                            notifications.map((n, i) => (
+                              <div className="" key={i}>
+                                <Notifs id={n.id} title={n.title} status={n.status} sent={n.time_sent} />
+                              </div>
+                            ))
+                          }
+                        </div>
+
+                        <li className="divider"></li>
+                        <div className="notification-ui_dd-footer">
+                          <a href="#!" className="btn btn-success btn-block">View All</a>
+                        </div>
+                      </form>
+                    </ul>
+
+                  </li>
+
+                  <li className="nav-item dropdown notification-ui show">
+                    <Link className="nav-link dropdown-toggle notification-ui_icon" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i className="fa fa-bell"></i>
+                      <span className="unread-notification"></span>
+                    </Link>
+                    <div className="dropdown-menu dropdown-menu-end notification-ui_dd show" aria-labelledby="navbarDropdown">
+                      <div className="notification-ui_dd-header">
+                        <h3 className="text-center">Notifications</h3>
+                      </div>
+                      <div className="notification-ui_dd-content">
+                        <a href="#!" className="notification-list notification-list--unread text-dark">
+                          <div className="notification-list_img">
+                            
+                          </div>
+                          <div className="notification-list_detail">
+                            <p><b>John Doe</b> <br /><span className="text-muted">reacted to your post</span></p>
+                            <p className="nt-link text-truncate">How to travel long way home from here.</p>
+                          </div>
+                          <p><small>10 mins ago</small></p>
+                        </a>
+                        <a href="#!" className="notification-list notification-list--unread text-dark">
+                          <div className="notification-list_img">
+                            
+                          </div>
+                          <div className="notification-list_detail">
+                            <p><b>Richard Miles</b> <br /><span className="text-muted">reacted to your post</span></p>
+                            <p className="nt-link text-truncate">How to travel long way home from here.</p>
+                          </div>
+                          <p><small>1 day ago</small></p>
+                        </a>
+                        <a href="#!" className="notification-list text-dark">
+                          <div className="notification-list_img">
+                            
+                          </div>
+                          <div className="notification-list_detail">
+                            <p><b>Brian Cumin</b> <br /><span className="text-muted">reacted to your post</span></p>
+                            <p className="nt-link text-truncate">How to travel long way home from here.</p>
+                          </div>
+                          <p><small>1 day ago</small></p>
+                        </a>
+                        <a href="#!" className="notification-list text-dark">
+                          <div className="notification-list_img">
+                            
+                          </div>
+                          <div className="notification-list_detail">
+                            <p><b>Lance Bogrol</b> <br /><span className="text-muted">reacted to your post</span></p>
+                            <p className="nt-link text-truncate">How to travel long way home from here.</p>
+                          </div>
+                          <p><small>1 day ago</small></p>
+                        </a>
+                        <a href="#!" className="notification-list notification-list--unread text-dark">
+                          <div className="notification-list_img">
+                            
+                          </div>
+                          <div className="notification-list_detail">
+                            <p><b>John Doe</b> <br /><span className="text-muted">reacted to your post</span></p>
+                            <p className="nt-link text-truncate">How to travel long way home from here.</p>
+                          </div>
+                          <p><small>10 mins ago</small></p>
+                        </a>
+                        <a href="#!" className="notification-list notification-list--unread text-dark">
+                          <div className="notification-list_img">
+                            
+                          </div>
+                          <div className="notification-list_detail">
+                            <p><b>Richard Miles</b> <br /><span className="text-muted">reacted to your post</span></p>
+                            <p className="nt-link text-truncate">How to travel long way home from here.</p>
+                          </div>
+                          <p><small>1 day ago</small></p>
+                        </a>
+                        <a href="#!" className="notification-list text-dark">
+                          <div className="notification-list_img">
+                            
+                          </div>
+                          <div className="notification-list_detail">
+                            <p><b>Brian Cumin</b> <br /><span className="text-muted">reacted to your post</span></p>
+                            <p className="nt-link text-truncate">How to travel long way home from here.</p>
+                          </div>
+                          <p><small>1 day ago</small></p>
+                        </a>
+                        <a href="#!" className="notification-list text-dark">
+                          <div className="notification-list_img">
+                            
+                          </div>
+                          <div className="notification-list_detail">
+                            <p><b>Lance Bogrol</b> <br /><span className="text-muted">reacted to your post</span></p>
+                            <p className="nt-link text-truncate">How to travel long way home from here.</p>
+                          </div>
+                          <p><small>1 day ago</small></p>
+                        </a>
+                      </div>
+                      <div className="notification-ui_dd-footer">
+                        <a href="#!" className="btn btn-success btn-block">View All</a>
+                      </div>
+                    </div>
                   </li>
 
                   <li className="nav-item dropdown">
@@ -136,9 +265,31 @@ const Notifs = (props) => {
 
   const CheckStatus = () => {
     if (props.status === 'unread') {
-      return <Icons.EyeFill className='text-danger' />
+      // return <Icons.Dot className='item-eye text-info' />
+      return (
+        <a href="#!" className="notification-list notification-list--unread text-dark">
+          <div className="notification-list_img">
+            {/* <img src="images/users/user1.jpg" alt="user"> */}
+          </div>
+          <div className="notification-list_detail">
+            <p><b>{props.title}</b> <br /></p>
+          </div>
+          <p><small>{props.sent}</small></p>
+        </a>
+      )
     } else {
-      return <Icons.EyeSlashFill />
+      // return <Icons.EyeSlashFill />
+      return (
+        <a href="#!" className="notification-list text-dark">
+          <div className="notification-list_img">
+            {/* <img src="images/users/user3.jpg" alt="user"> */}
+          </div>
+          <div className="notification-list_detail">
+            <p><b>{props.title}</b> <br /></p>
+          </div>
+          <p><small>{props.sent}</small></p>
+        </a>
+      )
     }
   }
 
@@ -158,15 +309,16 @@ const Notifs = (props) => {
   // }
 
   return (
-    <div className="content" to="#">
+    // <div className="content" to="#">
 
-      <div className="notification-item">
-        <h4 className="item-title">{props.title}</h4>
-        <p className="item-info eye "><CheckStatus /></p>
-        <p className="item-info">{props.sent}</p>
-      </div>
+    //   <div className="notification-item">
+    //     <h4 className="item-title">{props.title}</h4>
+    //     <CheckStatus />
+    //     <p className="item-time">{props.sent}</p>
+    //   </div>
 
-    </div>
+    // </div>
+    <CheckStatus />
   )
 }
 
