@@ -13,7 +13,12 @@ export const getNotifications = createAsyncThunk('notifications/getall', async (
 
 export const updateNotifications = createAsyncThunk('notifications/update', async ({ data, id }) => {
   const response = await notificationService.updateNotifications({ data, id })
-  return response
+  return response.data
+})
+
+export const deleteNotification = createAsyncThunk('notifications/delete', async ({ id }) => {
+  const response = await notificationService.deleteNotification({ id })
+  return response.data
 })
 
 export const unset = () => dispatch => {
@@ -21,15 +26,7 @@ export const unset = () => dispatch => {
   return dispatch(unset())
 }
 
-// unread: all.filter(a => a.status === 'unread')
-
-// const initialState = (all !== null) ? { isSet: true, all, unread: [] } : { isSet: false, all: [], unread: [] }
-
-const initialState = {
-  all: [],
-  unread: [],
-  isSet: []
-}
+const initialState = (all !== null) ? { isSet: true, all, unread: [] } : { isSet: false, all: [], unread: [] }
 
 const notificationSlice = createSlice({
   name: 'notifications',
@@ -45,7 +42,7 @@ const notificationSlice = createSlice({
     builder.addCase(getNotifications.fulfilled, (state, action) => {
       state.isSet = true
       state.all = action.payload
-      state.unread = action.payload.filter(a => a.status === 'unread')
+      state.unread = state.all.filter((item) => item.status === 'unread')
     })
     builder.addCase(getNotifications.rejected, (state) => {
       state.isSet = false
@@ -54,22 +51,32 @@ const notificationSlice = createSlice({
     })
     builder.addCase(updateNotifications.fulfilled, (state, action) => {
       state.isSet = true
+      const updated = state.all.map(item => {
+        if (item.id === action.payload.id) {
+          return { ...item, ...action.payload }
+        }
+        return item
+      })
+      state.all = updated
+    })
+    builder.addCase(updateNotifications.rejected, () => {
+      toastAnError('An error occurred')
+    })
+    builder.addCase(deleteNotification.fulfilled, (state, action) => {
+      state.isSet = true
       const {
         arg: { id },
       } = action.meta;
       if (id) {
-        state.all = state.all.map((item) =>
-          item._id === id ? action.payload : item
-        )
+        state.all = state.all.filter((item) => item.id !== id)
       }
     })
-    builder.addCase(updateNotifications.rejected, () => {
+    builder.addCase(deleteNotification.rejected, () => {
       toastAnError('An error occurred')
     })
   }
 })
 
-const { unSet } = notificationSlice.actions
 const { reducer } = notificationSlice;
 export const showNotifications = (state) => state.notifications.all
 export default reducer;

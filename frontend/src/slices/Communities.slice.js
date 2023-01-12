@@ -18,6 +18,11 @@ export const getMyMembership = createAsyncThunk('communities/getMyMembership', a
   return data
 })
 
+export const leaveCommunity = createAsyncThunk('communities/leave', async(id) => {
+  const response = await communitiesService.leaveCommunity(id)
+  return response
+})
+
 export const addCommunityAsync = (data) => async (dispatch) => {
   try {
     const response = await axios.post("/api/communities/", data);

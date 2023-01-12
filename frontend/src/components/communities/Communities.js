@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Modal, Form } from "react-bootstrap";
 import { addCommunityAsync, getCommunityAsync, getMyCommunities, showCommunity, showMyCommunity } from "../../slices/Communities.slice";
-import { JoinCommunity, CommunitiesList, MyCreatedCommunities } from "./Community.Modals";
+import { JoinCommunity, CommunitiesList, MyCreatedCommunities, NoActivities } from "./Community.Modals";
 import "./Communities.css";
 import { getAccountUserAsync, showAccount } from "../../slices/Account.Slice";
 import { Link } from "react-router-dom";
@@ -11,6 +11,10 @@ const Communities = () => {
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
+
+	const [no_act, setNo_act] = useState(false);
+	const handleActClose = () => setNo_act(false);
+	const handleActShow = () => setNo_act(true);
 
 	const community = useSelector(showCommunity)
 	const myCommunities = useSelector(showMyCommunity)
@@ -40,7 +44,7 @@ const Communities = () => {
 		dispatch(addCommunityAsync(newComm))
 		// window.location.reload();
 	}
-	
+
 	let checkCommunities = 0;
 	let checkMyCommunities = 0;
 
@@ -58,7 +62,7 @@ const Communities = () => {
 									<div className="col-md-6 pb-5" key={i}>
 										<div className="icon-box">
 											<span hidden>{checkCommunities += 1}</span>
-											<h4><Link to="#" className="a">{item.name}</Link></h4>
+											<h4><Link to="#" className="a" onClick={handleActShow}>{item.name}</Link></h4>
 											<p className="p1">{item.region}</p>
 											<p className="p2">created by: {item.created_by}</p>
 											<div className="join-btn text-end w-100">
@@ -118,6 +122,20 @@ const Communities = () => {
 							</Modal.Footer>
 						</Form>
 					</Modal.Body>
+				</Modal>
+
+				<Modal show={no_act} onHide={handleActClose} centered className='text-center'>
+					<Modal.Header closeButton>
+						<Modal.Title>Community Information</Modal.Title>
+					</Modal.Header>
+					<Modal.Body className='pb-0'>
+						<p>Community information is coming <span className='text-info'>soon</span>.<br /> Please stay tuned for such updates!</p>
+					</Modal.Body>
+					<Modal.Footer>
+						<Button variant="success" onClick={handleActClose}>
+							Okay
+						</Button>
+					</Modal.Footer>
 				</Modal>
 			</div>
 			{

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { showAccount } from '../../slices/Account.Slice';
-import { deleteCommunity, getCommunityAsync, getMyMembership, showMembership } from '../../slices/Communities.slice';
+import { deleteCommunity, getCommunityAsync, getMyMembership, leaveCommunity, showMembership } from '../../slices/Communities.slice';
 import { addMemberAsync, getMemberAsync } from '../../slices/Members.slice';
 import * as Icons from 'react-bootstrap-icons'
 import { toastOnWarn } from '../../redux/utils/Utils';
@@ -73,9 +73,49 @@ export const JoinCommunity = (props) => {
   )
 }
 
+const ExitBtn = (props) => {
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const dispatch = useDispatch()
+  const handleExit = () => {
+    dispatch(leaveCommunity(props.id))
+  }
+  if (props.owner === props.me) {
+    return (
+      <button className="btn btn-info px-4">You Own this community</button>
+    )
+  } else {
+    return (
+      <>
+        <button className="btn btn-danger px-4" onClick={handleShow}>Exit</button>
+        <Modal show={show} onHide={handleClose} centered className=''>
+          <Modal.Header closeButton>
+            <Modal.Title>Delete community</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className='pb-0'>
+            <p>You are about to exit <span className='text-danger text-capitalize'>{props.community}</span>.<br /> Leaving a community means you will not receive any updates on the activities of the community.</p> <p>Are you sure you want to proceed?</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="danger" onClick={handleClose && handleExit}>
+              confirm
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+    )
+  }
+}
+
 export const CommunitiesList = () => {
   const dispatch = useDispatch();
   const myMembership = useSelector(showMembership);
+
+
+  const [no_act, setNo_act] = useState(false);
+  const handleActClose = () => setNo_act(false);
+  const handleActShow = () => setNo_act(true);
 
   useEffect(() => {
     dispatch(getMemberAsync());
@@ -94,18 +134,32 @@ export const CommunitiesList = () => {
                 <div className="col-md-6 pb-5" key={commIndex}>
                   <div className="icon-box">
                     <span hidden>{checkEnteredCommunities += 1}</span>
-                    <h4><Link to="#" className="a">{m.community}</Link></h4>
+                    <h4><Link to="#" className="a" onClick={handleActShow}>{m.community}</Link></h4>
                     <p className="p1">{m.region}</p>
                     <p className="p2">joined on: {m.joining_date}</p>
                     <div className="my-comm text-end">
-                      <button className="btn btn-danger px-4" >Exit</button>
+                      <ExitBtn id={m.id} community={m.community} me={m.user} owner={m.community_owner} />
                     </div>
                   </div>
                 </div>
               ))
             ))
           }
-
+          <div>
+            <Modal show={no_act} onHide={handleActClose} centered className='text-center'>
+              <Modal.Header closeButton>
+                <Modal.Title>Community Information</Modal.Title>
+              </Modal.Header>
+              <Modal.Body className='pb-0'>
+                <p>Community information is coming <span className='text-info'>soon</span>.<br /> Please stay tuned for such updates!</p>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="success" onClick={handleActClose}>
+                  Okay
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </div>
           {
             checkEnteredCommunities === 0 ?
               <div className="col-lg-8 p-1 m-auto">
@@ -125,23 +179,82 @@ export const CommunitiesList = () => {
 }
 
 export const MyCreatedCommunities = (props) => {
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [no_act, setNo_act] = useState(false);
+  const handleActClose = () => setNo_act(false);
+  const handleActShow = () => setNo_act(true);
+
   const dispatch = useDispatch()
   const handleDelete = () => {
     let id = props.id
-    dispatch(deleteCommunity({id}))
+    dispatch(deleteCommunity({ id }))
       .unwrap()
   }
 
   return (
-      <div className="icon-box">
-        <h4><Link to="#" className="a">{props.name}</Link></h4>
-        <p className="p1">{props.region}</p>
-        <p className="p2">created on: {props.date}</p>
-        <div className="my-comm text-end">
-          <div className="my-comm-del">
-            <Icons.Trash data-bs-toggle='tooltip' data-bs-placement='bottom' title='delete' onClick={handleDelete} />
-          </div>
+    <div className="icon-box">
+      <h4><Link to="#" className="a" onClick={handleActShow}>{props.name}</Link></h4>
+      <p className="p1">{props.region}</p>
+      <p className="p2">created on: {props.date}</p>
+      <div className="my-comm text-end">
+        <div className="my-comm-del">
+          <Link className='text-danger'><Icons.Trash data-bs-toggle='tooltip' data-bs-placement='bottom' title='delete' onClick={handleShow} /></Link>
+          <Modal show={show} onHide={handleClose} centered className='text-center'>
+            <Modal.Header closeButton>
+              <Modal.Title>Delete community</Modal.Title>
+            </Modal.Header>
+            <Modal.Body className='pb-0'>
+              <p>Are you sure you want to delete <span className='text-info text-capitalize'>{props.name}</span>?<br /> This process cannot be undone.</p>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="danger" onClick={handleClose && handleDelete}>
+                confirm
+              </Button>
+            </Modal.Footer>
+          </Modal>
+
+          <Modal show={no_act} onHide={handleActClose} centered className='text-center'>
+            <Modal.Header closeButton>
+              <Modal.Title>Community Information</Modal.Title>
+            </Modal.Header>
+            <Modal.Body className='pb-0'>
+              <p>You currently cannot view or record any information to you created communities. This feature is coming <span className='text-success'>soon</span>.<br />We are sorry for this inconvenience.<br /> Please stay tuned for this update!</p>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="success" onClick={handleActClose}>
+                Okay
+              </Button>
+            </Modal.Footer>
+          </Modal>
+
         </div>
       </div>
+    </div>
+  )
+}
+
+export const NoActivities = () => {
+  const [no_act, setNo_act] = useState(false);
+  const handleActClose = () => setNo_act(false);
+  const handleActShow = () => setNo_act(true);
+
+  return (
+    <Modal show={no_act} onHide={handleActClose} centered className='text-center'>
+      <Modal.Header closeButton>
+        <Modal.Title>Community Information</Modal.Title>
+      </Modal.Header>
+      <Modal.Body className='pb-0'>
+        <p>Community information is coming <span className='text-info'>soon</span>.<br /> Please stay tuned for such updates!</p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="success" onClick={handleActClose}>
+          Okay
+        </Button>
+      </Modal.Footer>
+    </Modal>
   )
 }

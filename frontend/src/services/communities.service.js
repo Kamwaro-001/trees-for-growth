@@ -15,6 +15,10 @@ const membership = async () => {
   return response.data
 }
 
+const leaveCommunity = (id) => {
+  return axios.delete(`/api/mymembership/${id}/`)
+}
+
 const deleteComm = async(id) => {
   const response = await axios.delete(`/api/communities/${id}/`)
   return response.data
@@ -24,7 +28,8 @@ const communitiesService = {
   myCommunities,
   communities,
   membership,
-  deleteComm
+  deleteComm,
+  leaveCommunity
 }
 
 export default communitiesService;

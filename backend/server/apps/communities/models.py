@@ -34,7 +34,7 @@ class Community(models.Model):
             if val:
                 setattr(self, field_name, val.capitalize())
 
-        CommunityMembers.objects.create(user=getattr(self, 'created_by'), member_to=getattr(self, 'verif_code'), community=getattr(self, 'name'))
+        CommunityMembers.objects.create(user=getattr(self, 'created_by'), member_to=getattr(self, 'verif_code'), community=getattr(self, 'name'), community_owner=getattr(self, 'created_by'))
         
         super(Community, self).save(*args, **kwargs)
     
@@ -46,14 +46,17 @@ class CommunityMembers(models.Model):
     member_to = models.CharField("Member to", max_length=255)
     joining_date = models.DateField(auto_now_add=True)
     community = models.CharField("Community", max_length=255, default="Unknown")
+    community_owner = models.CharField("Community created by", max_length=150, default="unknown")
 
     def save(self, *args, **kwargs):
         code = getattr(self, 'member_to')
         comm = getattr(self, 'community')
         name = Community.objects.filter(verif_code=code).values('name')
+        communits = Community.objects.filter(verif_code=code).values('created_by')
         
         if comm == "Unknown":
             setattr(self, 'community', name[0]['name'])
+            setattr(self, 'community_owner', communits[0]['created_by'])
         super(CommunityMembers, self).save(*args, **kwargs)
 
     class Meta:

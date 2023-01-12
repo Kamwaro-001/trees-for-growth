@@ -4,8 +4,10 @@ import { setMessage } from "./message";
 import authService from "../services/auth.service";
 import { setAxiosAuthToken } from "../redux/utils/Utils";
 import { toast } from "react-toastify";
+import { Cookies } from "react-cookie";
 
-const user = JSON.parse(localStorage.getItem("token"));
+const cookie = new Cookies()
+const user = cookie.get('loggedIn')
 
 export const register = createAsyncThunk(
   "/accounts/users/",
@@ -52,7 +54,7 @@ export const logout = createAsyncThunk("auth/logout", async () => {
   }
 });
 
-const initialState = (user !== null)
+const initialState = (user !== undefined)
   ? { isLoggedIn: true, user }
   : { isLoggedIn: false, user: null };
 

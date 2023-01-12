@@ -12,9 +12,14 @@ const updateNotifications = ({data, id}) => {
   return axios.patch(`/api/notifications/${id}/`, data)
 }
 
+const deleteNotification = ({id}) => {
+  return axios.delete(`/api/notifications/${id}`)
+}
+
 const notificationService = {
   GetNotifications,
-  updateNotifications
+  updateNotifications,
+  deleteNotification
 }
 
 export default notificationService;
