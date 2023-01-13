@@ -1,0 +1,352 @@
+#hero {
+  width: 100%;
+  max-height: 75vh;
+  height: 75vh;
+  background: url("../images/nature.jpg");
+  background-size: cover;
+  position: relative;
+  padding: 0;
+}
+
+#hero:before {
+  content: "";
+  background: linear-gradient(rgba(37, 210, 89, 0.247), rgba(0, 0, 0, 0.18));
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#hero .container {
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #fff;
+}
+
+#hero h1 span {
+  border-bottom: 4px solid #a2d5a4;
+}
+
+#hero h2 {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+#hero .btn-get-started {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 2px;
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 4px;
+  transition: ease-in-out 0.3s;
+  color: #fff;
+  border: solid 1px;
+  background: none;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+#hero .btn-get-started:hover {
+  background: #a2d5a4;
+  border-color: #a2d5a4;
+  color: #000000;
+}
+
+#hero .credit1 {
+  z-index: 2;
+}
+
+#hero .credit1 a{
+  color: rgba(210, 210, 210, 0.761);
+  text-decoration: none;
+  font-style: italic;
+  font-size: smaller;
+}
+
+@media (max-width: 992px) {
+  #hero {
+    height: calc(100vh - 70px);
+  }
+}
+
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  #hero h2 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+.home .eg1,
+.eg2 {
+  width: 75%;
+  margin: auto;
+}
+
+.about-hero {
+  background-color: #fff;
+}
+
+.about-hero .about-hero-pt1 {
+  background: url("../images/asset2.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.about-hero .about-hero-pt1 .text-end .hero-join-btn{
+  margin-right: 1rem;
+}
+
+.about-hero .about-hero-pt2 {
+  height: 440px;
+  border-radius: 1.7em 0 0 1.7em;
+  overflow: hidden;
+  background: #1a611f;
+  background: -webkit-linear-gradient(rgba(37, 210, 89, 0.247), rgba(0, 0, 0, 0.18)), url("../images/forest.jpg");
+  background: linear-gradient(rgba(37, 210, 89, 0.247), rgba(0, 0, 0, 0.18)), url("../images/forest.jpg");
+  background-repeat: no-repeat;
+  background-size: 720px;
+  vertical-align: bottom;
+}
+
+.about-hero .credit2 {
+  align-self: flex-end;
+  width: 100%;
+}
+
+.about-hero .credit2 a {
+  color: rgb(210, 210, 210);
+  text-decoration: none;
+  font-style: italic;
+  font-size: smaller;
+}
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+section {
+  padding: 40px 0;
+}
+
+.section-bg {
+  background-color: #f7fbfe8f;
+}
+
+.section-title {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.section-title h2::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: #ddd;
+  bottom: 1px;
+  left: calc(50% - 60px);
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #006400;
+  bottom: 0;
+  left: calc(50% - 20px);
+}
+
+.section-title p {
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Developer
+--------------------------------------------------------------*/
+.developer-info .member {
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  background: #fff;
+}
+
+.developer-info .member img {
+  max-width: 60%;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.developer-info .member h4 {
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.developer-info .member span {
+  font-style: italic;
+  display: block;
+  font-size: 13px;
+}
+
+.developer-info .member p {
+  padding-top: 10px;
+  color: #084a08;
+}
+
+.developer-info .member .social {
+  margin-top: 15px;
+}
+
+.developer-info .member .social a {
+  color: #084a08;
+  transition: 0.3s;
+  margin-left: 5px;
+}
+
+.developer-info .member .social a:hover {
+  color: #3da55c;
+}
+
+.developer-info .member .social i {
+  font-size: 18px;
+  margin: 0 2px;
+}
+
+
+
+/*--------------------------------------------------------------
+# Contact
+--------------------------------------------------------------*/
+.contact .info-wrap {
+  padding: 30px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.contact .info i {
+  font-size: 20px;
+  color: #3da55c;
+  float: left;
+  width: 44px;
+  height: 44px;
+  background: #eaf4fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.contact .info h4 {
+  padding: 0 0 0 60px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #384046;
+}
+
+.contact .info p {
+  padding: 0 0 0 60px;
+  margin-bottom: 0;
+  font-size: 14px;
+  color: #65747f;
+}
+
+.contact .info:hover i {
+  background: #3da55c;
+  color: #fff;
+}
+
+.contact .contact-form {
+  width: 100%;
+  padding: 30px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.contact .contact-form .form-group {
+  padding-bottom: 8px;
+}
+
+.contact .contact-form .contact-input,
+.contact .contact-form textarea {
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+}
+
+.contact .contact-form .contact-input:focus,
+.contact .contact-form textarea:focus {
+  border-color: #3da55c;
+}
+
+.contact .contact-form .contact-input {
+  height: 44px;
+}
+
+.contact .contact-form .contact-textarea {
+  padding: 10px 12px;
+}
+
+.contact .contact-form button[type=submit] {
+  background: #308148;
+  border: 0;
+  padding: 10px 24px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+.contact .contact-form button[type=submit]:hover {
+  background: #3da55c;
+}
+
+@-webkit-keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

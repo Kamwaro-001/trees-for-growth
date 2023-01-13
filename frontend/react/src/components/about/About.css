@@ -1,0 +1,75 @@
+.about-us {
+  padding: 10px 0;
+  background: linear-gradient(#ffffff9b, rgba(49, 99, 44, 0.523));
+}
+
+#about-us .mission {
+  width: 100%;
+  height: 20vh;
+  padding: 0;
+  text-align: center;
+}
+
+#about-us .part1 {
+  text-align: center;
+}
+
+#about-us .part1 {
+  text-align: center;
+}
+
+#about-us p {
+  font-size: large;
+}
+
+.about-us .checks {
+  color: #006837;
+}
+
+.about-us h3 {
+  font-weight: 600;
+  font-size: 35px;
+  color: #308148;
+}
+
+.about-us ul {
+  list-style: none;
+  padding: 0;
+  font-size: medium;
+}
+
+.about-us ul li+li {
+  margin-top: 10px;
+}
+
+.about-us ul li {
+  padding-left: 26px;
+}
+
+.about-us ul i {
+  left: 0;
+  top: 0;
+  font-size: 22px;
+  color: #000306;
+}
+
+.about-us .icon-boxes {
+  padding-top: 10px;
+}
+
+.about-us .icon-boxes h4 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 5px;
+  color: #488568;
+}
+
+.about-us .abt-future {
+  width: 100;
+  padding: 1em;
+}
+
+.abt-future .features-list {
+  border-left: 0.5px solid #000306;
+  padding-left: 0.5em;
+}

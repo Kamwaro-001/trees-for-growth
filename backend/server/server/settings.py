@@ -6,7 +6,7 @@ SECRET_KEY = 'django-insecure-bdx_@hip(+3eqav1n0bq$lxb24q$j)y7n#gp9u(dt^5%8gtr#0
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0']
+ALLOWED_HOSTS = ['www.treesforgrowth.com','127.0.0.1', 'localhost', '0.0.0.0']
 
 # Application definition
 
