@@ -35,7 +35,7 @@ const Login = () => {
       .unwrap()
       .catch((e) => {
         setLoading(false);
-        console.log(e)
+        
       });
   };
 

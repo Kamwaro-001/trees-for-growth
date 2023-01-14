@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { toastAnError, toastOnError } from "../redux/utils/Utils";
+import { toastAnError } from "../redux/utils/Utils";
 
 export const treeSlice = createSlice({
   name: "trees",
@@ -23,7 +23,6 @@ export const getTreeAsync = () => async (dispatch) => {
     const response = await axios.get("/api/trees/");
     dispatch(getTrees(response.data))
   } catch (err) {
-    toastOnError(err)
   }
 }
 
