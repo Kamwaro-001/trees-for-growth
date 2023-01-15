@@ -32,20 +32,19 @@ const Dashboard = () => {
 
   return (
     <section id="dashboard" className="dashboard">
+
+      <div className="section-title">
+        <h2>Dashboard</h2>
+        <p>Here is most of your progress</p>
+      </div>
       <div className="container">
-
-        <div className="section-title">
-          <h2>Dashboard</h2>
-          <p>Here is most of your progress</p>
-        </div>
-
         <div className="row">
           <div className="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div className="icon-box">
               <div className="icon"><i className="bx bxl-dribbble"><Icons.Tree /></i></div>
               <h4><Link to="/trees">{l}</Link></h4>
               <p className="dash-p">Number of Trees Planted</p>
-              <p>You can also join a community for motivation!</p>
+              <p>Doing activities as a group may give you the motivation to plant more trees.</p>
             </div>
           </div>
 
@@ -54,7 +53,7 @@ const Dashboard = () => {
               <div className="icon"><i className="bx bx-file"><Icons.Bullseye /></i></div>
               <h4><Link to="/trees">{goal}</Link></h4>
               <p className="dash-p">My Next Goal</p>
-              <p>Plant {goal - l} more trees to reach your next goal!</p>
+              <p>You are {goal - l} trees away from your next goal!</p>
             </div>
           </div>
 
@@ -63,12 +62,21 @@ const Dashboard = () => {
               <div className="icon"><i className="bx bx-tachometer"><Icons.Box /></i></div>
               <h4><Link to="/trees">{doneGoals}</Link></h4>
               <p className="dash-p">Passed Goals</p>
-              <p>Not Satisfied? You know what to do!</p>
+              <p>Plant more trees and achieve more goals? The more goals passed the better the rewards!</p>
             </div>
           </div>
 
         </div>
 
+      </div>
+
+      <div className="col-lg-8 p-1 m-auto mt-3">
+        <div className="card bg-info">
+          <div className="card-body ">
+            <i className="fa fa-info-circle"></i>
+            <p className=' text-center'>More features are coming soon</p>
+          </div>
+        </div>
       </div>
     </section>
   )

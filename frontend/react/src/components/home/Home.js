@@ -100,11 +100,10 @@ const Home = () => {
                 </div>
               </div>
               <div className="col-lg-6 col-md-6">
-                <div className="member-bio">
+                <div className="member-bio mt-4">
                   <h4>Job Kamwaro</h4>
-                  {/* <span></span> */}
                   <p>
-                   He is currently a student following his passion in computer science. He started his coding journey at 14 and he uses the vast knowledge in computers coming up with solutions for challenges in the STEM field. If you wish to find more about him you can find his contacts below.
+                   He is currently a student following his passion in computer science. He started his coding journey at 14 and he uses the vast knowledge in this field coming up with solutions for challenges in STEM. If you wish to find more about him you can find his contacts below.
                   </p>
                   <div className="social">
                     <a href="https://www.linkedin.com/in/job-k-bb07b518b/" target={'_blank'} rel="noreferrer"><i><Icons.Linkedin /></i></a>

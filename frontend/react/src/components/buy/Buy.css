@@ -1,8 +1,18 @@
 .buy-section{
 	background: url("../images/store.svg" );
 	height: 700px;
-/*	background-repeat: no-repeat;*/
-
 	background-size: cover;
 	background-position: center center;
+	display: flex;
+}
+
+.buy-section .mail-us {
+	margin-bottom: 10%;
+	width: 100%;
+	align-self: flex-end;
+	text-align: center;
+}
+
+.buy-section a {
+	color: #fff;
 }

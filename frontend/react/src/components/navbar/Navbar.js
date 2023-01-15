@@ -156,7 +156,6 @@ const Notifs = (props) => {
       return (
         <Link to="#!" className="notification-list notification-list--unread text-dark" onClick={updateStatus}>
           <div className="notification-list_img">
-            {/* <img src={logo} alt="user" /> */}
           </div>
           <div className="notification-list_detail">
             <p><b>{props.title}</b> <br /></p>
@@ -169,7 +168,6 @@ const Notifs = (props) => {
       return (
         <Link to="#!" className="notification-list text-dark">
           <div className="notification-list_img">
-            {/* <img src={logo} alt="user" /> */}
           </div>
           <div className="notification-list_detail">
             <p><b>{props.title}</b> <br /></p>
