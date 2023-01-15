@@ -20,12 +20,20 @@ import store from './store/store';
 import Trees from './components/planting/Trees';
 import About from './components/about/About';
 import RequireAuth from './components/authentication/RequireAuth';
+import { isEmpty } from './redux/utils/Utils';
+import { Cookies } from 'react-cookie';
+import { setToken } from './slices/auth';
 
 
 if (window.location.origin === "http://localhost:3000") {
    axios.defaults.baseURL = "http://127.0.0.1:8000";
 } else {
    axios.defaults.baseURL = window.location.origin;
+}
+const cookie = new Cookies()
+
+if (!isEmpty(cookie.get('loggedIn'))) {
+   store.dispatch(setToken(cookie.get('loggedIn')))
 }
 
 function App() {

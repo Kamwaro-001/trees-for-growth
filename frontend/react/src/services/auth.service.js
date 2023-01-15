@@ -16,11 +16,9 @@ const register = (username, email, password) => {
 const login = async (email, password) => {
   const response = await axios
     .post("/api/accounts/token/login/", { email, password });
-  if (response.data.auth_token) {
-    setAxiosAuthToken(response.data.auth_token);
-
-    cookie.set('loggedIn', response.data.auth_token)
-  }
+  const { auth_token } = response.data
+  setAxiosAuthToken(auth_token);
+  cookie.set('loggedIn', auth_token)
   return response.data;
 };
 
@@ -31,6 +29,7 @@ const logout = async () => {
   setAxiosAuthToken("");
   localStorage.clear();
   cookie.remove('loggedIn')
+  cookie.remove('user')
   cookie.remove('notifications')
   toast.success("logout successful");
 };

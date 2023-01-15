@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "./message";
 
 import authService from "../services/auth.service";
-import { setAxiosAuthToken } from "../redux/utils/Utils";
+import { isEmpty, setAxiosAuthToken } from "../redux/utils/Utils";
 import { toast } from "react-toastify";
 import { Cookies } from "react-cookie";
 
@@ -41,26 +41,31 @@ export const login = createAsyncThunk('auth/login', async ( formValue, thunkAPI)
   }
 })
 
-export const setToken = (token) => {
+export const setToken = (token) => dispatch => {
   setAxiosAuthToken(token);
-  localStorage.setItem('token', JSON.stringify(token));
+  dispatch(addToken(token))
 }
 
 export const logout = createAsyncThunk("auth/logout", async () => {
   try {
     await authService.logout();
   } catch (error) {
-    localStorage.setItem('e', JSON.stringify(error))
+
   }
 });
 
-const initialState = (user !== undefined)
+const initialState = !isEmpty(user)
   ? { isLoggedIn: true, user }
   : { isLoggedIn: false, user: null };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
+  reducers: {
+    addToken: (state, action) => {
+      state.user = [action.payload]
+    }
+  },
   extraReducers: builder => {
     builder.addCase(register.fulfilled, (state) => {
       state.isLoggedIn = false;
@@ -83,6 +88,7 @@ const authSlice = createSlice({
   }
 });
 
+const { addToken } = authSlice.actions
 const { reducer } = authSlice;
 export const showUser = (state) => state.auth;
 export default reducer;

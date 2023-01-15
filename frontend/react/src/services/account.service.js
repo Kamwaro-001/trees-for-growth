@@ -1,8 +1,11 @@
 import axios from "axios";
+import { Cookies } from "react-cookie";
+
+const cookie = new Cookies()
 
 const getCurrentUserInfo = async () => {
   const response = await axios.get('/api/accounts/users/me/');
-  localStorage.setItem('user', JSON.stringify(response.data));
+  cookie.set('user', response.data)
   return response.data;
 }
 

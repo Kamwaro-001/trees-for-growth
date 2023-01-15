@@ -1,10 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { Cookies } from "react-cookie";
 import { toast } from "react-toastify";
+import { isEmpty } from "../redux/utils/Utils";
 import accountService from "../services/account.service";
 
-const user = JSON.parse(localStorage.getItem('user'))
+const cookie = new Cookies()
+const user = cookie.get('user')
 
-const initialState = (user !== null) ? { isSet: true, user } : { isSet: false, user: [] }
+const initialState = !isEmpty(user) ? { isSet: true, user } : { isSet: false, user: [] }
 
 export const getAccountUserAsync = createAsyncThunk('user/getuser', async () => {
   const data = await accountService.getCurrentUserInfo()
