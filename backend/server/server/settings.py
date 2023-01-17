@@ -1,12 +1,14 @@
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+REAL_BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
 
 SECRET_KEY = 'django-insecure-bdx_@hip(+3eqav1n0bq$lxb24q$j)y7n#gp9u(dt^5%8gtr#0'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.treesforgrowth.com','127.0.0.1', 'localhost', '0.0.0.0']
+ALLOWED_HOSTS = ['treesforgrowth.com','127.0.0.1', 'localhost', '0.0.0.0']
 
 # Application definition
 
@@ -46,7 +48,7 @@ ROOT_URLCONF = 'server.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(REAL_BASE_DIR, 'frontend', 'react', 'build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -111,6 +113,9 @@ USE_TZ = True
 MEDIA_URL = '/media/'
 STATIC_URL = '/django_static/' 
 STATIC_ROOT = BASE_DIR / 'django_static'
+
+STATICFILES_DIRS = [os.path.join(REAL_BASE_DIR, 'frontend', 'react', 'build', 'static')]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

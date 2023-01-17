@@ -222,7 +222,7 @@ export const MyCreatedCommunities = (props) => {
               <Modal.Title>Community Information</Modal.Title>
             </Modal.Header>
             <Modal.Body className='pb-0'>
-              <p>You currently cannot view or record any information to you created communities. This feature is coming <span className='text-success'>soon</span>.<br />We are sorry for this inconvenience.<br /> Please stay tuned for this update!</p>
+              <p>You currently cannot view or record any information to your created communities. This feature is coming <span className='text-success'>soon</span>.<br />We are sorry for this inconvenience.<br /> Please stay tuned for this update!</p>
             </Modal.Body>
             <Modal.Footer>
               <Button variant="success" onClick={handleActClose}>
