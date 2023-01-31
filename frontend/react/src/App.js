@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import "./App.css"
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { Flip, ToastContainer } from "react-toastify";
 
@@ -45,7 +45,8 @@ function App() {
             <Router >
                <Navbar />
                <div className='all-items'>
-                  <Routes basename="/static">
+                  {/* <Routes basename="/static"> */}
+                  <Routes>
                      <Route exact path='/' element={<Home />} />
                      <Route path='/login' element={<Login />} />
                      <Route path='/register' element={<Register />} />

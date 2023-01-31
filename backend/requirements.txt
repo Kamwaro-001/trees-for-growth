@@ -5,4 +5,5 @@ djoser==2.1.0
 markdown==3.4.1
 django-filter==22.1
 psycopg2-binary==2.9.5
+whitenoise==6.3.0
 gunicorn

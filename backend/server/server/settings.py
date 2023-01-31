@@ -33,6 +33,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -116,6 +117,11 @@ STATIC_ROOT = BASE_DIR / 'django_static'
 
 STATICFILES_DIRS = [os.path.join(REAL_BASE_DIR, 'frontend', 'react', 'build', 'static')]
 
+######## TEST #########
+# STATICFILES_DIRS = [os.path.join(REAL_BASE_DIR, 'frontend', 'react', 'build', 'static')]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+#######################
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
